@@ -46,7 +46,7 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', 'x', 1, 'ROLE_ADMIN');
+INSERT INTO `user` (`id`, `username`, `password`, `enabled`, `role`) VALUES (1, 'admin', '$2a$10$V25oQit1gJhP0lZO77yX2eE4Qs6qJp39FTpIBwAFQD/mZk6Nf2Qbe', 1, 'ROLE_ADMIN');
 
 COMMIT;
 
