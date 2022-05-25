@@ -3,11 +3,13 @@ package com.skilldistillery.skillguild.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
+@Entity
 public class Member {
 
 	@ManyToOne

@@ -6,10 +6,12 @@
     
     <!-- Begin Entities Here -->
     <class>com.skilldistillery.skillguild.entities.Category</class>
+    <class>com.skilldistillery.skillguild.entities.Comment</class>
     <class>com.skilldistillery.skillguild.entities.Content</class>
     <class>com.skilldistillery.skillguild.entities.Guild</class>
     <class>com.skilldistillery.skillguild.entities.Interaction</class>
     <class>com.skilldistillery.skillguild.entities.InteractionType</class>
+    <class>com.skilldistillery.skillguild.entities.Member</class>
     <class>com.skilldistillery.skillguild.entities.Question</class>
     <class>com.skilldistillery.skillguild.entities.Resource</class>
     <class>com.skilldistillery.skillguild.entities.ResourceType</class>
