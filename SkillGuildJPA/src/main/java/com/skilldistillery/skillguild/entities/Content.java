@@ -9,7 +9,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -45,7 +47,9 @@ public class Content {
 	@ManyToMany(mappedBy = "contents")
 	private List<Resource> resources;
 	
-	@ManyToOne(mappedBy)
+	@ManyToOne
+	@JoinColumn(name = "guild_id") 
+	private Guild guild;
 
 	public Content() {
 	}
