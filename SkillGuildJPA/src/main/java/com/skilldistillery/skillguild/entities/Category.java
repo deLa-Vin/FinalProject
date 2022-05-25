@@ -1,5 +1,7 @@
 package com.skilldistillery.skillguild.entities;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity
 public class Category {
@@ -21,7 +24,29 @@ public class Category {
 
 	@Column(name = "img_url")
 	private String imgUrl;
+	
+	@ManyToMany(mappedBy = "categories")
+	private List<Guild> guilds;
 
+	
+	public void addGuild(Guild guild) {
+		if (guild == null)
+			guilds = new ArrayList<>();
+
+		if (!guilds.contains(guild)) {
+			guilds.add(guild);
+			guild.addCategories(this);
+		}
+	}
+
+	public void removeGuild(Guild guild) {
+		if (guilds != null && guilds.contains(guild)) {
+			guilds.remove(guild);
+			guild.removeCategories(this);
+		}
+		
+	}
+	
 	public Category() {
 	}
 
@@ -55,6 +80,14 @@ public class Category {
 
 	public void setImgUrl(String imgUrl) {
 		this.imgUrl = imgUrl;
+	}
+
+	public List<Guild> getGuilds() {
+		return guilds;
+	}
+
+	public void setGuilds(List<Guild> guilds) {
+		this.guilds = guilds;
 	}
 
 	@Override

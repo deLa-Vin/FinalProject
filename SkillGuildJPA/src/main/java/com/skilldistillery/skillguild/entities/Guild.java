@@ -1,6 +1,8 @@
 package com.skilldistillery.skillguild.entities;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -38,6 +43,32 @@ public class Guild {
 	@UpdateTimestamp
 	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;
+	
+	@ManyToMany
+	@JoinTable(name = "group_category",
+	joinColumns= @JoinColumn(name= "category_id"), 
+	inverseJoinColumns=@JoinColumn(name = "guild_id")
+	)
+	private List<Category> categories;
+	
+	
+	public void addCategories(Category category) {
+	    if(category == null) categories = new ArrayList<>();
+	    
+	    if(!categories.contains(category)) {
+	    	categories.add(category);
+	    	category.addGuild(this);
+	    }
+	}
+
+	public void removeCategories(Category category) {
+	    if(categories != null && categories.contains(category)) {
+	    	categories.remove(category);
+	    	category.removeGuild(this);
+	    }
+	}
+	
+
 
 	public Guild() {
 	}
@@ -104,6 +135,14 @@ public class Guild {
 
 	public void setLastUpdated(LocalDateTime lastUpdated) {
 		this.lastUpdated = lastUpdated;
+	}
+
+	public List<Category> getCategories() {
+		return categories;
+	}
+
+	public void setCategories(List<Category> categories) {
+		this.categories = categories;
 	}
 
 	@Override
