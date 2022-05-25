@@ -10,8 +10,10 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -44,13 +46,101 @@ public class Content {
 	@Column(name = "presentation_date")
 	private LocalDateTime presentationDate;
 
-	@ManyToMany(mappedBy = "contents")
-	private List<Resource> resources;
-	
 	@ManyToOne
 	@JoinColumn(name = "guild_id") 
 	private Guild guild;
+	
+	@ManyToOne
+	@JoinColumn(name = "created_by_user_id") 	
+	private User user;
+	
+	@ManyToOne
+	@JoinColumn(name = "status_id") 	
+	private Status status;
+	
+	@ManyToMany
+	@JoinTable (
+			name="content_topic",
+			joinColumns = @JoinColumn(name ="content_id"),
+			inverseJoinColumns = @JoinColumn(name ="topic_id")
+			)
+	private List < Topic> topics;
+	
+	@OneToMany(mappedBy = "comment")
+	private List<Comment> comments;
+	
+	@OneToMany(mappedBy = "interaction")
+	private List<Interaction> interactions;
+	
+	public Guild getGuild() {
+		return guild;
+	}
 
+	public void setGuild(Guild guild) {
+		this.guild = guild;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+	public Status getStatus() {
+		return status;
+	}
+
+	public void setStatus(Status status) {
+		this.status = status;
+	}
+
+	public List<Topic> getTopics() {
+		return topics;
+	}
+
+	public void setTopics(List<Topic> topics) {
+		this.topics = topics;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
+	}
+
+	public List<Interaction> getInteractions() {
+		return interactions;
+	}
+
+	public void setInteractions(List<Interaction> interactions) {
+		this.interactions = interactions;
+	}
+
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
+
+	@ManyToMany
+	@JoinTable (
+			name="content_resource",
+			joinColumns = @JoinColumn(name ="content_id"),
+			inverseJoinColumns = @JoinColumn(name ="resource_id")
+			)
+	private List <Resource> resources;
+	
+	@OneToMany(mappedBy = "question")
+	private List<Question> questions;
+	
+	//  Methods
+	
 	public Content() {
 	}
 
