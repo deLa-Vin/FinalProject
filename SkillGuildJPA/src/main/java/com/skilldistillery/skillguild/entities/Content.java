@@ -66,7 +66,7 @@ public class Content {
 			)
 	private List <Resource> resources;
 	
-	@OneToMany(mappedBy = "question")
+	@OneToMany(mappedBy = "content")
 	private List<Question> questions;
 	
 	@ManyToMany
