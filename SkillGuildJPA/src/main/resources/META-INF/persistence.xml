@@ -5,6 +5,8 @@
 	<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
     
     <!-- Begin Entities Here -->
+    <class>com.skilldistillery.skillguild.entities.Category</class>
+    <class>com.skilldistillery.skillguild.entities.Guild</class>
     <class>com.skilldistillery.skillguild.entities.User</class>
     <!-- End Entities Here -->
 
