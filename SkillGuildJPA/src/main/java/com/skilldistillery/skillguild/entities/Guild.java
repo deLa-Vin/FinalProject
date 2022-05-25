@@ -17,6 +17,8 @@ import javax.persistence.ManyToMany;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Guild {
 
@@ -43,32 +45,32 @@ public class Guild {
 	@UpdateTimestamp
 	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;
-	
+
 	@ManyToMany
-	@JoinTable(name = "group_category",
-	joinColumns= @JoinColumn(name= "category_id"), 
-	inverseJoinColumns=@JoinColumn(name = "guild_id")
-	)
+	@JoinTable(name = "group_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "guild_id"))
 	private List<Category> categories;
-	
-	
+
+	@JsonIgnore
+	@ManyToMany
+	@JoinTable(name = "member", joinColumns = @JoinColumn(name = "guild_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
+	private List<User> users;
+
 	public void addCategories(Category category) {
-	    if(category == null) categories = new ArrayList<>();
-	    
-	    if(!categories.contains(category)) {
-	    	categories.add(category);
-	    	category.addGuild(this);
-	    }
+		if (category == null)
+			categories = new ArrayList<>();
+
+		if (!categories.contains(category)) {
+			categories.add(category);
+			category.addGuild(this);
+		}
 	}
 
 	public void removeCategories(Category category) {
-	    if(categories != null && categories.contains(category)) {
-	    	categories.remove(category);
-	    	category.removeGuild(this);
-	    }
+		if (categories != null && categories.contains(category)) {
+			categories.remove(category);
+			category.removeGuild(this);
+		}
 	}
-	
-
 
 	public Guild() {
 	}
@@ -143,6 +145,14 @@ public class Guild {
 
 	public void setCategories(List<Category> categories) {
 		this.categories = categories;
+	}
+
+	public List<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(List<User> users) {
+		this.users = users;
 	}
 
 	@Override

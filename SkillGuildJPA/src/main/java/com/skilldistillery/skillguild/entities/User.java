@@ -9,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -52,6 +53,10 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Interaction> interactions;
+
+	@JsonIgnore
+	@ManyToMany(mappedBy = "users")
+	private List<Guild> guilds;
 
 	public User() {
 	}
@@ -158,6 +163,14 @@ public class User {
 
 	public void setInteractions(List<Interaction> interactions) {
 		this.interactions = interactions;
+	}
+
+	public List<Guild> getGuilds() {
+		return guilds;
+	}
+
+	public void setGuilds(List<Guild> guilds) {
+		this.guilds = guilds;
 	}
 
 	@Override
