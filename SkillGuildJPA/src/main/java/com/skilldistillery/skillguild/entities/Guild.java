@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -54,6 +55,11 @@ public class Guild {
 	@ManyToMany
 	@JoinTable(name = "member", joinColumns = @JoinColumn(name = "guild_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private List<User> users;
+
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name = "created_by_user_id")
+	private User userCreatedBy;
 
 	public void addCategories(Category category) {
 		if (category == null)
@@ -153,6 +159,14 @@ public class Guild {
 
 	public void setUsers(List<User> users) {
 		this.users = users;
+	}
+
+	public User getUserCreatedBy() {
+		return userCreatedBy;
+	}
+
+	public void setUserCreatedBy(User userCreatedBy) {
+		this.userCreatedBy = userCreatedBy;
 	}
 
 	@Override

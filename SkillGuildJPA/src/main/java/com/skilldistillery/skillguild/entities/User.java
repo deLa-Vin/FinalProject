@@ -58,6 +58,10 @@ public class User {
 	@ManyToMany(mappedBy = "users")
 	private List<Guild> guilds;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "userCreatedBy")
+	private List<Guild> guildsCreated;
+
 	public User() {
 	}
 
@@ -171,6 +175,14 @@ public class User {
 
 	public void setGuilds(List<Guild> guilds) {
 		this.guilds = guilds;
+	}
+
+	public List<Guild> getGuildsCreated() {
+		return guildsCreated;
+	}
+
+	public void setGuildsCreated(List<Guild> guildsCreated) {
+		this.guildsCreated = guildsCreated;
 	}
 
 	@Override
