@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.swing.text.AbstractDocument.Content;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 @Entity
 public class Comment {
@@ -35,6 +36,7 @@ public class Comment {
 	private LocalDateTime createdOn;
 	
 	@Column(name="last_updated")
+	@UpdateTimestamp
 	private LocalDateTime lastUpdated;
 	
 	@ManyToOne
