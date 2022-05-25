@@ -6,6 +6,7 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.MapsId;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -16,10 +17,12 @@ public class Member {
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
+	@MapsId(value="guildId")
 	private Guild guild;
 	
 	@ManyToOne
 	@JoinColumn(name="user_id")
+	@MapsId(value="userId")
 	private User user;
 	
 	@JoinColumn(name="approved_by")
