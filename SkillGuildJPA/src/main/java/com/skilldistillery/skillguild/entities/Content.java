@@ -44,6 +44,8 @@ public class Content {
 
 	@ManyToMany(mappedBy = "contents")
 	private List<Resource> resources;
+	
+	@ManyToOne(mappedBy)
 
 	public Content() {
 	}

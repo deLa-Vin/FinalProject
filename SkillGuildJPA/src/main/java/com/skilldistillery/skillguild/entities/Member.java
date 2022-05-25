@@ -17,9 +17,8 @@ public class Member {
 	@EmbeddedId
 	private MemberId id;
 	
-	
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name="guild_id")
 	@MapsId(value="guildId")
 	private Guild guild;
 	
@@ -30,7 +29,6 @@ public class Member {
 	
 	@JoinColumn(name="approved_by")
 	private int approvedBy;
-	
 	
 	private boolean moderator;
 	
@@ -113,8 +111,6 @@ public class Member {
 		return "Member [user=" + user + ", approvedBy=" + approvedBy + ", moderator=" + moderator + ", createdOn="
 				+ createdOn + "]";
 	}
-	
-	
 	
 	
 }
