@@ -10,6 +10,7 @@
     <class>com.skilldistillery.skillguild.entities.Guild</class>
     <class>com.skilldistillery.skillguild.entities.Resource</class>
     <class>com.skilldistillery.skillguild.entities.ResourceType</class>
+    <class>com.skilldistillery.skillguild.entities.Status</class>
     <class>com.skilldistillery.skillguild.entities.Topic</class>
     <class>com.skilldistillery.skillguild.entities.User</class>
     <!-- End Entities Here -->
