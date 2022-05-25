@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,6 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Resource {
@@ -21,6 +26,14 @@ public class Resource {
 
 	@Column(name = "resource_url")
 	private String resourceUrl;
+
+	@ManyToOne
+	@JoinColumn(name = "resource_type_id")
+	private ResourceType resourceType;
+
+	@ManyToMany
+	@JoinTable(name = "content_resource", joinColumns = @JoinColumn(name = "resource_id"), inverseJoinColumns = @JoinColumn(name = "content_id"))
+	private List<Content> contents;
 
 	public Resource() {
 	}
@@ -55,6 +68,22 @@ public class Resource {
 
 	public void setResourceUrl(String resourceUrl) {
 		this.resourceUrl = resourceUrl;
+	}
+
+	public ResourceType getResourceType() {
+		return resourceType;
+	}
+
+	public void setResourceType(ResourceType resourceType) {
+		this.resourceType = resourceType;
+	}
+
+	public List<Content> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
 	}
 
 	@Override

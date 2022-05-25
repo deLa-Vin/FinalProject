@@ -1,11 +1,15 @@
 package com.skilldistillery.skillguild.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class ResourceType {
@@ -17,6 +21,10 @@ public class ResourceType {
 	private String name;
 
 	private String description;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "resourceType")
+	private List<Resource> resources;
 
 	public ResourceType() {
 	}
@@ -43,6 +51,14 @@ public class ResourceType {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public List<Resource> getResources() {
+		return resources;
+	}
+
+	public void setResources(List<Resource> resources) {
+		this.resources = resources;
 	}
 
 	@Override

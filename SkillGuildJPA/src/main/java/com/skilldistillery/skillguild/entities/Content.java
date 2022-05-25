@@ -1,6 +1,7 @@
 package com.skilldistillery.skillguild.entities;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -8,6 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -39,6 +41,9 @@ public class Content {
 
 	@Column(name = "presentation_date")
 	private LocalDateTime presentationDate;
+
+	@ManyToMany(mappedBy = "contents")
+	private List<Resource> resources;
 
 	public Content() {
 	}
@@ -113,6 +118,14 @@ public class Content {
 
 	public void setPresentationDate(LocalDateTime presentationDate) {
 		this.presentationDate = presentationDate;
+	}
+
+	public List<Resource> getResources() {
+		return resources;
+	}
+
+	public void setResources(List<Resource> resources) {
+		this.resources = resources;
 	}
 
 	@Override
