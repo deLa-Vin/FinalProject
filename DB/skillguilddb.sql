@@ -16,11 +16,11 @@ CREATE SCHEMA IF NOT EXISTS `skillguilddb` DEFAULT CHARACTER SET utf8 ;
 USE `skillguilddb` ;
 
 -- -----------------------------------------------------
--- Table `group`
+-- Table `guild`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `group` ;
+DROP TABLE IF EXISTS `guild` ;
 
-CREATE TABLE IF NOT EXISTS `group` (
+CREATE TABLE IF NOT EXISTS `guild` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(100) NOT NULL,
   `description` TEXT NULL,
@@ -38,7 +38,7 @@ DROP TABLE IF EXISTS `content` ;
 
 CREATE TABLE IF NOT EXISTS `content` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `group_id` INT NOT NULL,
+  `guild_id` INT NOT NULL,
   `title` VARCHAR(100) NOT NULL,
   `description` TEXT NULL,
   `publish_date` DATE NULL,
@@ -52,10 +52,10 @@ CREATE TABLE IF NOT EXISTS `content` (
   `question_answer` TEXT NULL,
   `related_resources` TEXT NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_content_group1_idx` (`group_id` ASC),
+  INDEX `fk_content_group1_idx` (`guild_id` ASC),
   CONSTRAINT `fk_content_group1`
-    FOREIGN KEY (`group_id`)
-    REFERENCES `group` (`id`)
+    FOREIGN KEY (`guild_id`)
+    REFERENCES `guild` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
 ENGINE = InnoDB;
@@ -175,31 +175,6 @@ ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
--- Table `content_has_topic`
--- -----------------------------------------------------
-DROP TABLE IF EXISTS `content_has_topic` ;
-
-CREATE TABLE IF NOT EXISTS `content_has_topic` (
-  `content_id` INT NOT NULL,
-  `content_topic_id1` INT NOT NULL,
-  `topic_id` INT NOT NULL,
-  PRIMARY KEY (`content_id`, `content_topic_id1`, `topic_id`),
-  INDEX `fk_content_has_topic_topic1_idx` (`topic_id` ASC),
-  INDEX `fk_content_has_topic_content1_idx` (`content_id` ASC, `content_topic_id1` ASC),
-  CONSTRAINT `fk_content_has_topic_content1`
-    FOREIGN KEY (`content_id`)
-    REFERENCES `content` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_content_has_topic_topic1`
-    FOREIGN KEY (`topic_id`)
-    REFERENCES `topic` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
--- -----------------------------------------------------
 -- Table `content_topic`
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS `content_topic` ;
@@ -229,16 +204,16 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `member` ;
 
 CREATE TABLE IF NOT EXISTS `member` (
-  `group_id` INT NOT NULL,
+  `guild_id` INT NOT NULL,
   `user_id` INT NOT NULL,
   `approved_by` INT NULL,
   `moderator` TINYINT NULL,
-  PRIMARY KEY (`group_id`, `user_id`),
+  PRIMARY KEY (`guild_id`, `user_id`),
   INDEX `fk_group_has_user_user1_idx` (`user_id` ASC),
-  INDEX `fk_group_has_user_group1_idx` (`group_id` ASC),
+  INDEX `fk_group_has_user_group1_idx` (`guild_id` ASC),
   CONSTRAINT `fk_group_has_user_group1`
-    FOREIGN KEY (`group_id`)
-    REFERENCES `group` (`id`)
+    FOREIGN KEY (`guild_id`)
+    REFERENCES `guild` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_group_has_user_user1`
@@ -255,14 +230,14 @@ ENGINE = InnoDB;
 DROP TABLE IF EXISTS `group_category` ;
 
 CREATE TABLE IF NOT EXISTS `group_category` (
-  `group_id` INT NOT NULL,
+  `guild_id` INT NOT NULL,
   `category_id` INT NOT NULL,
-  PRIMARY KEY (`group_id`, `category_id`),
+  PRIMARY KEY (`guild_id`, `category_id`),
   INDEX `fk_group_has_category_category1_idx` (`category_id` ASC),
-  INDEX `fk_group_has_category_group1_idx` (`group_id` ASC),
+  INDEX `fk_group_has_category_group1_idx` (`guild_id` ASC),
   CONSTRAINT `fk_group_has_category_group1`
-    FOREIGN KEY (`group_id`)
-    REFERENCES `group` (`id`)
+    FOREIGN KEY (`guild_id`)
+    REFERENCES `guild` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_group_has_category_category1`
@@ -284,11 +259,11 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
--- Data for table `group`
+-- Data for table `guild`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `group` (`id`, `name`, `description`, `visibility`, `cover_img`, `membership_criteria`) VALUES (1, 'Frontend Development', 'We share content on fundamentals and advanced frontend development', 'public', 'https://images.unsplash.com/3/doctype-hi-res.jpg', 'Anyone with an interest in learning frontend development can join. We encourage publishing at least 2-3 times per month');
+INSERT INTO `guild` (`id`, `name`, `description`, `visibility`, `cover_img`, `membership_criteria`) VALUES (1, 'Frontend Development', 'We share content on fundamentals and advanced frontend development', 'public', 'https://images.unsplash.com/3/doctype-hi-res.jpg', 'Anyone with an interest in learning frontend development can join. We encourage publishing at least 2-3 times per month');
 
 COMMIT;
 
@@ -298,7 +273,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `content` (`id`, `group_id`, `title`, `description`, `publish_date`, `status`, `visibility`, `is_tech`, `is_live`, `slides_url`, `video_url`, `blog_article`, `question_answer`, `related_resources`) VALUES (1, 1, 'Angular Fundamentals', 'Overview of Angular application architecture essentials', '2022-05-25', 'published', 'public', 1, 0, 'https://docs.google.com/presentation/d/1XXJrCPqYbSV2cdk8z8rBNjmMe2sBGjIT6Eil0a3l56I/edit?usp=sharing', 'https://www.youtube.com/watch?v=k5E2AVpwsko', 'https://www.freecodecamp.org/news/learn-angular-full-course/', '{}', '{}');
+INSERT INTO `content` (`id`, `guild_id`, `title`, `description`, `publish_date`, `status`, `visibility`, `is_tech`, `is_live`, `slides_url`, `video_url`, `blog_article`, `question_answer`, `related_resources`) VALUES (1, 1, 'Angular Fundamentals', 'Overview of Angular application architecture essentials', '2022-05-25', 'published', 'public', 1, 0, 'https://docs.google.com/presentation/d/1XXJrCPqYbSV2cdk8z8rBNjmMe2sBGjIT6Eil0a3l56I/edit?usp=sharing', 'https://www.youtube.com/watch?v=k5E2AVpwsko', 'https://www.freecodecamp.org/news/learn-angular-full-course/', '{}', '{}');
 
 COMMIT;
 
@@ -381,7 +356,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `member` (`group_id`, `user_id`, `approved_by`, `moderator`) VALUES (1, 2, 1, 2);
+INSERT INTO `member` (`guild_id`, `user_id`, `approved_by`, `moderator`) VALUES (1, 2, 1, 2);
 
 COMMIT;
 
@@ -391,7 +366,7 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `group_category` (`group_id`, `category_id`) VALUES (1, 1);
+INSERT INTO `group_category` (`guild_id`, `category_id`) VALUES (1, 1);
 
 COMMIT;
 
