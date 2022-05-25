@@ -58,6 +58,14 @@ public class User {
 	@ManyToMany(mappedBy = "users")
 	private List<Guild> guilds;
 
+	public List<Content> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
+	}
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "userCreatedBy")
 	private List<Guild> guildsCreated;

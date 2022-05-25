@@ -27,6 +27,14 @@ public class Member {
 	@MapsId(value="userId")
 	private User user;
 	
+	public MemberId getId() {
+		return id;
+	}
+
+	public void setId(MemberId id) {
+		this.id = id;
+	}
+
 	@JoinColumn(name="approved_by")
 	private int approvedBy;
 	

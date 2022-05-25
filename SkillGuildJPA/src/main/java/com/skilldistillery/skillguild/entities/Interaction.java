@@ -32,6 +32,14 @@ public class Interaction {
 	@JoinColumn(name = "content_id")
 	private Content content;
 	
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
+	}
+
 	public Interaction() {
 	}
 

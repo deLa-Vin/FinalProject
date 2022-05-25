@@ -28,6 +28,14 @@ public class Status {
 		return id;
 	}
 
+	public List<Content> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
+	}
+
 	public void setId(int id) {
 		this.id = id;
 	}

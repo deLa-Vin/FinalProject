@@ -25,6 +25,14 @@ public class Question {
 	public Question() {
 	}
 
+	public Content getContent() {
+		return content;
+	}
+
+	public void setContent(Content content) {
+		this.content = content;
+	}
+
 	@ManyToOne
 	@JoinColumn(name="content_id")
 	private Content content;

@@ -51,6 +51,14 @@ public class Guild {
 	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;
 
+	public List<Content> getContents() {
+		return contents;
+	}
+
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
+	}
+
 	@ManyToMany
 	@JoinTable(name = "group_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "guild_id"))
 	private List<Category> categories;
