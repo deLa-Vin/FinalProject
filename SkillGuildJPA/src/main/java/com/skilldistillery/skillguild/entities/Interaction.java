@@ -8,6 +8,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -21,6 +23,10 @@ public class Interaction {
 	@CreationTimestamp
 	@Column(name = "created_on")
 	private LocalDateTime createdOn;
+
+	@ManyToOne
+	@JoinColumn(name = "user_id")
+	private User user;
 
 	public Interaction() {
 	}
@@ -44,6 +50,14 @@ public class Interaction {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	@Override
