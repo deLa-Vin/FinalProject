@@ -61,6 +61,10 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "userCreatedBy")
 	private List<Guild> guildsCreated;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "userCreatedContent")
+	private List<Content> contents;
 
 	public User() {
 	}

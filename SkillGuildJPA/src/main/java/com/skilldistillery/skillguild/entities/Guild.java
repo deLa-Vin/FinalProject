@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -43,6 +44,9 @@ public class Guild {
 	@Column(name = "created_on")
 	private LocalDateTime createdOn;
 
+	@OneToMany(mappedBy = "guild")
+	private List<Content> contents;
+	
 	@UpdateTimestamp
 	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;

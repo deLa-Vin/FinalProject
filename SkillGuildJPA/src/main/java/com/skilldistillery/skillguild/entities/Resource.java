@@ -31,10 +31,9 @@ public class Resource {
 	@JoinColumn(name = "resource_type_id")
 	private ResourceType resourceType;
 
-	@ManyToMany
-	@JoinTable(name = "content_resource", joinColumns = @JoinColumn(name = "resource_id"), inverseJoinColumns = @JoinColumn(name = "content_id"))
+	@ManyToMany(mappedBy = "resources")
 	private List<Content> contents;
-
+	
 	public Resource() {
 	}
 

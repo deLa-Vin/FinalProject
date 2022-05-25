@@ -1,11 +1,13 @@
 package com.skilldistillery.skillguild.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 @Entity
 public class Status {
@@ -15,6 +17,9 @@ public class Status {
 	private int id;
 
 	private String name;
+	
+	@OneToMany(mappedBy = "status")
+	private List<Content> contents;
 
 	public Status() {
 	}

@@ -52,11 +52,22 @@ public class Content {
 	
 	@ManyToOne
 	@JoinColumn(name = "created_by_user_id") 	
-	private User user;
+	private User userCreatedContent;
 	
 	@ManyToOne
 	@JoinColumn(name = "status_id") 	
 	private Status status;
+	
+	@ManyToMany
+	@JoinTable (
+			name="content_resource",
+			joinColumns = @JoinColumn(name ="content_id"),
+			inverseJoinColumns = @JoinColumn(name ="resource_id")
+			)
+	private List <Resource> resources;
+	
+	@OneToMany(mappedBy = "question")
+	private List<Question> questions;
 	
 	@ManyToMany
 	@JoinTable (
@@ -66,10 +77,10 @@ public class Content {
 			)
 	private List < Topic> topics;
 	
-	@OneToMany(mappedBy = "comment")
+	@OneToMany(mappedBy = "content")
 	private List<Comment> comments;
 	
-	@OneToMany(mappedBy = "interaction")
+	@OneToMany(mappedBy = "content")
 	private List<Interaction> interactions;
 	
 	public Guild getGuild() {
@@ -80,12 +91,14 @@ public class Content {
 		this.guild = guild;
 	}
 
-	public User getUser() {
-		return user;
+
+
+	public User getUserCreatedContent() {
+		return userCreatedContent;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserCreatedContent(User userCreatedContent) {
+		this.userCreatedContent = userCreatedContent;
 	}
 
 	public Status getStatus() {
@@ -127,17 +140,6 @@ public class Content {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
-
-	@ManyToMany
-	@JoinTable (
-			name="content_resource",
-			joinColumns = @JoinColumn(name ="content_id"),
-			inverseJoinColumns = @JoinColumn(name ="resource_id")
-			)
-	private List <Resource> resources;
-	
-	@OneToMany(mappedBy = "question")
-	private List<Question> questions;
 	
 	//  Methods
 	
@@ -243,13 +245,12 @@ public class Content {
 
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Content [id=").append(id).append(", title=").append(title).append(", description=")
-				.append(description).append(", publishDate=").append(publishDate).append(", isPublic=").append(isPublic)
-				.append(", isLive=").append(isLive).append(", lastUpdated=").append(lastUpdated)
-				.append(", lengthMinutes=").append(lengthMinutes).append(", presentationDate=").append(presentationDate)
-				.append("]");
-		return builder.toString();
+		return "Content [id=" + id + ", title=" + title + ", description=" + description + ", publishDate="
+				+ publishDate + ", isPublic=" + isPublic + ", isLive=" + isLive + ", lastUpdated=" + lastUpdated
+				+ ", lengthMinutes=" + lengthMinutes + ", presentationDate=" + presentationDate + ", guild=" + guild
+				+ ", userCreatedContent=" + userCreatedContent + ", status=" + status + ", topics=" + topics
+				+ ", comments=" + comments + ", interactions=" + interactions + ", resources=" + resources
+				+ ", questions=" + questions + "]";
 	}
 
 }
