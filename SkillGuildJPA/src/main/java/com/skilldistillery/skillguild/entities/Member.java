@@ -12,6 +12,8 @@ import org.hibernate.annotations.CreationTimestamp;
 @Entity
 public class Member {
 
+	
+	
 	@ManyToOne
 	@JoinColumn(name="user_id")
 	private Guild guild;
