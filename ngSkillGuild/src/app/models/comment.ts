@@ -7,15 +7,15 @@ export class Comment {
 
   constructor(
     id: number = 0,
-  inReplyTo: number = 0,
-  textContent: string ="",
-  edited: boolean = false,
-  createdOn: string =""
-  ){
-this.id =id;
-this.inReplyTo = inReplyTo;
-this.textContent = textContent;
-this.edited = edited;
-this.createdOn = createdOn;
+    inReplyTo: number = 0,
+    textContent: string = "",
+    edited: boolean = false,
+    createdOn: string = ""
+  ) {
+    this.id = id;
+    this.inReplyTo = inReplyTo;
+    this.textContent = textContent;
+    this.edited = edited;
+    this.createdOn = createdOn;
   }
 }

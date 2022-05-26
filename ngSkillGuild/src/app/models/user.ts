@@ -7,14 +7,13 @@ export class User {
   enabled: boolean;
   role: string;
 
-
-  constructor(id: number=0, username: string = "", password: string="", email: string="", enabled: boolean = false, role: string="" ){
+  constructor(id: number = 0, username: string = "", password: string = "", email: string = "", enabled: boolean = false, role: string = "") {
     this.id = id;
-  this.username= username;
-  this.password= password;
-  this.email= email;
-  this.enabled= enabled;
-  this.role= role;
+    this.username = username;
+    this.password = password;
+    this.email = email;
+    this.enabled = enabled;
+    this.role = role;
   }
 
 }

@@ -4,13 +4,13 @@ export class Question {
   correctAnswer: string;
 
   constructor(
-    id: number=0,
-    question: string="",
-    correctAnswer: string=""
-  ){
-  this.id = id;
-  this.question = question;
-  this.correctAnswer = correctAnswer;
+    id: number = 0,
+    question: string = "",
+    correctAnswer: string = ""
+  ) {
+    this.id = id;
+    this.question = question;
+    this.correctAnswer = correctAnswer;
   }
 
 }

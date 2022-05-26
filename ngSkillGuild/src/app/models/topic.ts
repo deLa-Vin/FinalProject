@@ -5,14 +5,14 @@ export class Topic {
   isTech: boolean;
 
   constructor(
-    id: number=0,
-    name: string="",
-    description: string="",
+    id: number = 0,
+    name: string = "",
+    description: string = "",
     isTech: boolean = false
-  ){
- this.id = id;
- this.name = name;
- this.description = description;
- this.isTech = isTech;
+  ) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.isTech = isTech;
   }
 }

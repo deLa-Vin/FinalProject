@@ -4,12 +4,12 @@ export class Member {
   createdOn: string;
 
   constructor(
-    approvedBy: number =0,
-  moderator: boolean =false,
-  createdOn: string=""
-  ){
-this.approvedBy = approvedBy;
-this.moderator = moderator;
-this.createdOn = createdOn;
+    approvedBy: number = 0,
+    moderator: boolean = false,
+    createdOn: string = ""
+  ) {
+    this.approvedBy = approvedBy;
+    this.moderator = moderator;
+    this.createdOn = createdOn;
   }
 }

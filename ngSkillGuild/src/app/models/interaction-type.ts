@@ -4,12 +4,12 @@ export class InteractionType {
   imgUrl: string;
 
   constructor(
-    id: number =0,
-    name: string="",
-    imgUrl: string=""
-  ){
-this.id = id;
-this.name = name;
-this.imgUrl = imgUrl;
+    id: number = 0,
+    name: string = "",
+    imgUrl: string = ""
+  ) {
+    this.id = id;
+    this.name = name;
+    this.imgUrl = imgUrl;
   }
 }

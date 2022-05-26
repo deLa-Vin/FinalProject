@@ -4,16 +4,15 @@ export class Category {
   description: string;
   imgUrl: string;
 
-
   constructor(
     id: number = 0,
-    name: string ="",
-    description: string ="",
-    imgUrl: string =""
-  ){
-this.id =id;
-this.name = name;
-this.description = description;
-this.imgUrl = imgUrl;
+    name: string = "",
+    description: string = "",
+    imgUrl: string = ""
+  ) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+    this.imgUrl = imgUrl;
   }
 }
