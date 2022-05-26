@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +14,31 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+
+	@Override
+	public List<User> index() {
+		return userRepo.findAll();
+	}
 	
 	@Override
 	public User getUserById(int userId) {
 		Optional<User> userOpt = userRepo.findById(userId);
-		if(userOpt.isPresent()) {
+		if (userOpt.isPresent()) {
 			return userOpt.get();
 		}
 		return null;
+	}
+
+	@Override
+	public boolean deleteUser(int userId) {
+		Optional<User> userOpt = userRepo.findById(userId);
+		if (userOpt.isPresent()) {
+			User user = userOpt.get();
+			userRepo.delete(user);
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }
