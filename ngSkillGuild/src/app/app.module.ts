@@ -11,6 +11,7 @@ import { GuildComponent } from './components/guild/guild.component';
 import { UserComponent } from './components/user/user.component';
 import { UserService } from './services/user.service';
 import { GuildService } from './services/guild.service';
+import { ContentComponent } from './components/content/content.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GuildService } from './services/guild.service';
     NavigationComponent,
     HomeComponent,
     GuildComponent,
-    UserComponent
+    UserComponent,
+    ContentComponent
   ],
   imports: [
     BrowserModule,
