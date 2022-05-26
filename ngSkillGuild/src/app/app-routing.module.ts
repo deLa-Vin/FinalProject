@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GuildComponent } from './guild/guild.component';
-import { HomeComponent } from './home/home.component';
-import { UserComponent } from './user/user.component';
+import { GuildComponent } from './components/guild/guild.component';
+import { HomeComponent } from './components/home/home.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
