@@ -51,10 +51,8 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-
 		}
 		return user;
-
 	}
 	
 	@DeleteMapping("users/{userId}")
