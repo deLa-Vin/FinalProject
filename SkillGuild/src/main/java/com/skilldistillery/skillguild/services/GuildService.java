@@ -8,5 +8,6 @@ public interface GuildService {
 	
 	public List<Guild> index();
 	public Guild show(int gid);
+	public Guild create(int uid, Guild guild);
 
 }
