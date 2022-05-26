@@ -11,7 +11,7 @@ export class ContentService {
 
   private url = environment.baseUrl + 'v1/contents/';
 
-  private guilds: Content[] = [];
+  private content: Content[] = [];
 
   constructor(
     private http: HttpClient
@@ -24,11 +24,29 @@ export class ContentService {
   show(id: number): Observable<Content> {
     return this.http.get<Content>(this.url + id);
   }
+
+  create(uid: number, gid: number, sid: number, content: Content) {
+    return this.http.post<Content>(environment.baseUrl + 'v1/users/' + uid + '/guilds/' + gid + '/statuses/' + sid + '/contents', content).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Content service create() error: ' + err
+          )
+        );
+      })
+    );
+  }
+
   delete(id: number) {
     return this.http.delete<boolean>(this.url + id).pipe(
       catchError((err: any) => {
         console.log(err);
-        return throwError(err);
+        return throwError(
+          () => new Error(
+            'Content service delete() error: ' + err
+          )
+        );
       })
     );
   }
@@ -37,7 +55,11 @@ export class ContentService {
     return this.http.put<Content>(this.url + '/' + updateContent.id, updateContent).pipe(
       catchError((err: any) => {
         console.log(err);
-        return throwError("Error in content update");
+        return throwError(
+          () => new Error(
+            'Content service update() error: ' + err
+          )
+        );
       })
     );
   }
