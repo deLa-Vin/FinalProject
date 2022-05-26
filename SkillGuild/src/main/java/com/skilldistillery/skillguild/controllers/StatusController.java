@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.skillguild.entities.Guild;
 import com.skilldistillery.skillguild.entities.Status;
 import com.skilldistillery.skillguild.services.StatusService;
 

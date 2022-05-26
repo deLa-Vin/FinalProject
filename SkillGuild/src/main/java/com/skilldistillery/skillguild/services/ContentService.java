@@ -11,4 +11,6 @@ public interface ContentService {
 	Content show(int cid);
 
 	Content create(int uid, int gid, int sid, Content content);
+	
+	Content update(int cid, Content content);
 }
