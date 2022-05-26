@@ -6,4 +6,6 @@ import com.skilldistillery.skillguild.entities.Guild;
 
 public interface GuildRepository extends JpaRepository<Guild, Integer> {
 
+	
+	
 }

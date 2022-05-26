@@ -47,37 +47,35 @@ public class Guild {
 	@UpdateTimestamp
 	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "guild")
 	private List<Content> contents;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "guild")
 	private List<Member> members;
 
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "group_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "guild_id"))
 	private List<Category> categories;
 
-	
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "created_by_user_id")
 	private User userCreatedBy;
 
-	
-	
 	// Methods
-		
-	
+
 	public List<Content> getContents() {
 		return contents;
 	}
-	
+
 	public void setContents(List<Content> contents) {
 		this.contents = contents;
 	}
-	
-	
+
 	public List<Member> getMembers() {
 		return members;
 	}
