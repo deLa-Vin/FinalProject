@@ -64,8 +64,23 @@ public class ContentController {
 	}
 
 	@PutMapping("contents/{cid}")
-	public Content update(@RequestBody Content content, @PathVariable int cid) {
-		return contentServ.update(cid, content);
+	public Content update(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid,
+			@RequestBody Content content) {
+
+		Content newContent;
+		try {
+			newContent = contentServ.update(cid, content);
+			if (newContent == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			newContent = null;
+		}
+
+		return newContent;
+
 	}
 
 	@DeleteMapping("contents/{cid}")

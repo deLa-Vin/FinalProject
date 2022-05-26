@@ -95,7 +95,6 @@ public class ContentServiceImpl implements ContentService {
 
 		Optional<Content> op = contentRepo.findById(cid);
 		if (op.isPresent()) {
-			Content result = op.get();
 			contentRepo.deleteById(cid);
 			op = contentRepo.findById(cid);
 			return !op.isPresent();

@@ -32,12 +32,12 @@ public class Comment {
 	@Column(name = "has_been_edited")
 	private boolean edited;
 
-	@Column(name = "created_on")
 	@CreationTimestamp
+	@Column(name = "created_on")
 	private LocalDateTime createdOn;
 
-	@Column(name = "last_updated")
 	@UpdateTimestamp
+	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;
 
 	@ManyToOne
