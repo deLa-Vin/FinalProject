@@ -2,7 +2,7 @@ import { environment } from './../../environments/environment';
 import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -23,5 +23,14 @@ private users: User[] = [];
 
   show(id: number): Observable<User> {
     return this.http.get<User>(this.url + id);
+  }
+
+  delete(id: number) {
+    return this.http.delete<boolean>(this.url + id).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(err);
+      })
+    );
   }
 }

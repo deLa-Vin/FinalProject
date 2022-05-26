@@ -11,7 +11,7 @@ export class ContentService {
 
   private url = environment.baseUrl + 'v1/contents/';
 
-  private guilds: Content[] = [];
+  private content: Content[] = [];
 
   constructor(
     private http: HttpClient
@@ -32,6 +32,32 @@ export class ContentService {
         return throwError(
           () => new Error(
             'Content service create() error: ' + err
+          )
+        );
+      })
+    );
+  }
+
+  delete(id: number) {
+    return this.http.delete<boolean>(this.url + id).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Content service delete() error: ' + err
+          )
+        );
+      })
+    );
+  }
+
+  update(updateContent: Content) {
+    return this.http.put<Content>(this.url + '/' + updateContent.id, updateContent).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Content service update() error: ' + err
           )
         );
       })

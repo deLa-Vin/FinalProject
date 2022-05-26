@@ -14,6 +14,10 @@ import { GuildService } from './services/guild.service';
 import { ContentComponent } from './components/content/content.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DatePipe } from '@angular/common';
+import { FooterComponent } from './components/footer/footer.component';
+import { LoginComponent } from './components/login/login.component';
+import { LogoutComponent } from './components/logout/logout.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { DatePipe } from '@angular/common';
     HomeComponent,
     GuildComponent,
     UserComponent,
-    ContentComponent
+    ContentComponent,
+    FooterComponent,
+    LoginComponent,
+    LogoutComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,
