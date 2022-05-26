@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.skillguild.entities.Content;
 import com.skilldistillery.skillguild.entities.Topic;
 import com.skilldistillery.skillguild.services.TopicService;
 
