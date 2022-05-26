@@ -429,9 +429,9 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (1, 'Frontend', 'Angular specific', 1);
-INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (2, 'Backend', 'All about Java', 1);
-INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (3, 'Product', NULL, 0);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (1, 'Frontend', 'Angular specific', 1);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (2, 'Backend', 'Java basics', 1);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (3, 'Product', 'Final product', 0);
 
 COMMIT;
 
