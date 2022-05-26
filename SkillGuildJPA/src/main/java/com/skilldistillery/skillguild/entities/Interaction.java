@@ -31,16 +31,20 @@ public class Interaction {
 	@ManyToOne
 	@JoinColumn(name = "content_id")
 	private Content content;
-	
+
+	@ManyToOne
+	@JoinColumn(name = "interaction_type_id")
+	private InteractionType interactionType;
+
+	public Interaction() {
+	}
+
 	public Content getContent() {
 		return content;
 	}
 
 	public void setContent(Content content) {
 		this.content = content;
-	}
-
-	public Interaction() {
 	}
 
 	public int getId() {
@@ -70,6 +74,14 @@ public class Interaction {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public InteractionType getInteractionType() {
+		return interactionType;
+	}
+
+	public void setInteractionType(InteractionType interactionType) {
+		this.interactionType = interactionType;
 	}
 
 	@Override

@@ -22,8 +22,8 @@ public class Comment {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="in_reply_to")
-	private int inReplyTo;
+	@Column(name="in_reply_to_id")
+	private Integer inReplyTo;
 	
 	@Column(name="text_content")
 	private String textContent;

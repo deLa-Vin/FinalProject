@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.entities;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
@@ -7,10 +8,13 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
+@Table(name = "interaction_type")
 public class InteractionType {
 
 	@Id
@@ -25,19 +29,10 @@ public class InteractionType {
 	public InteractionType() {
 	}
 
-	public Content getContent() {
-		return content;
-	}
+	@JsonIgnore
+	@OneToMany(mappedBy = "interactionType")
+	private List<Interaction> interactions;
 
-	public void setContent(Content content) {
-		this.content = content;
-	}
-
-	@ManyToOne
-	@JoinColumn(name="content_id")
-	private Content content;
-	
-	
 	public int getId() {
 		return id;
 	}
@@ -65,6 +60,14 @@ public class InteractionType {
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
+	}
+
+	public List<Interaction> getInteractions() {
+		return interactions;
+	}
+
+	public void setInteractions(List<Interaction> interactions) {
+		this.interactions = interactions;
 	}
 
 	@Override

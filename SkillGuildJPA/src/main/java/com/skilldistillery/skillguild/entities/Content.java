@@ -75,7 +75,7 @@ public class Content {
 			joinColumns = @JoinColumn(name ="content_id"),
 			inverseJoinColumns = @JoinColumn(name ="topic_id")
 			)
-	private List < Topic> topics;
+	private List <Topic> topics;
 	
 	@OneToMany(mappedBy = "content")
 	private List<Comment> comments;

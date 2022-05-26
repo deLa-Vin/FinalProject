@@ -32,7 +32,7 @@ class MemberTest {
 	@BeforeEach
 	void setUp() throws Exception {
 		em = emf.createEntityManager();
-		member = em.find(Member.class, 1);
+		member = em.find(Member.class, new MemberId(1, 2));
 	}
 
 	@AfterEach
@@ -44,7 +44,8 @@ class MemberTest {
 	@Test
 	void test_entity() {
 		assertNotNull(member);
-		// assertEquals(2, member.getUser().getId());
+//		assertEquals(1, member.getGuild().getId());
+//		assertEquals(2, member.getUser().getId());
 	}
 
 }
