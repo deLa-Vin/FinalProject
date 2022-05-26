@@ -3,6 +3,7 @@ package com.skilldistillery.skillguild.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.Column;
 import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -27,20 +28,13 @@ public class Member {
 	@MapsId(value="userId")
 	private User user;
 	
-	public MemberId getId() {
-		return id;
-	}
 
-	public void setId(MemberId id) {
-		this.id = id;
-	}
-
-	@JoinColumn(name="approved_by")
+	@Column(name="approved_by")
 	private int approvedBy;
 	
 	private boolean moderator;
 	
-	@JoinColumn(name="created_on")
+	@Column(name="created_on")
 	@CreationTimestamp
 	private LocalDateTime createdOn;
 
@@ -48,6 +42,14 @@ public class Member {
 		super();
 	}
 
+	public MemberId getId() {
+		return id;
+	}
+	
+	public void setId(MemberId id) {
+		this.id = id;
+	}
+	
 	public Guild getGuild() {
 		return guild;
 	}
@@ -116,8 +118,8 @@ public class Member {
 
 	@Override
 	public String toString() {
-		return "Member [user=" + user + ", approvedBy=" + approvedBy + ", moderator=" + moderator + ", createdOn="
-				+ createdOn + "]";
+		return "Member [id=" + id + ", guild=" + guild + ", user=" + user + ", approvedBy=" + approvedBy
+				+ ", moderator=" + moderator + ", createdOn=" + createdOn + "]";
 	}
 	
 	

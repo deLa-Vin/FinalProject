@@ -44,34 +44,47 @@ public class Guild {
 	@Column(name = "created_on")
 	private LocalDateTime createdOn;
 
-	@OneToMany(mappedBy = "guild")
-	private List<Content> contents;
-	
 	@UpdateTimestamp
 	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;
-
-	public List<Content> getContents() {
-		return contents;
-	}
-
-	public void setContents(List<Content> contents) {
-		this.contents = contents;
-	}
+	
+	@OneToMany(mappedBy = "guild")
+	private List<Content> contents;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "guild")
+	private List<Member> members;
 
 	@ManyToMany
 	@JoinTable(name = "group_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "guild_id"))
 	private List<Category> categories;
 
-	@JsonIgnore
-	@ManyToMany
-	@JoinTable(name = "member", joinColumns = @JoinColumn(name = "guild_id"), inverseJoinColumns = @JoinColumn(name = "user_id"))
-	private List<User> users;
-
-	@JsonIgnore
+	
 	@ManyToOne
 	@JoinColumn(name = "created_by_user_id")
 	private User userCreatedBy;
+
+	
+	
+	// Methods
+		
+	
+	public List<Content> getContents() {
+		return contents;
+	}
+	
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
+	}
+	
+	
+	public List<Member> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<Member> members) {
+		this.members = members;
+	}
 
 	public void addCategories(Category category) {
 		if (category == null)
@@ -165,13 +178,13 @@ public class Guild {
 		this.categories = categories;
 	}
 
-	public List<User> getUsers() {
-		return users;
-	}
-
-	public void setUsers(List<User> users) {
-		this.users = users;
-	}
+//	public List<User> getUsers() {
+//		return users;
+//	}
+//
+//	public void setUsers(List<User> users) {
+//		this.users = users;
+//	}
 
 	public User getUserCreatedBy() {
 		return userCreatedBy;

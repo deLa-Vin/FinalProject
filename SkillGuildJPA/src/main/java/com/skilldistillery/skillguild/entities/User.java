@@ -50,21 +50,6 @@ public class User {
 	@Column(name = "about_me")
 	private String aboutMe;
 
-	@JsonIgnore
-	@OneToMany(mappedBy = "user")
-	private List<Interaction> interactions;
-
-	@JsonIgnore
-	@ManyToMany(mappedBy = "users")
-	private List<Guild> guilds;
-
-	public List<Content> getContents() {
-		return contents;
-	}
-
-	public void setContents(List<Content> contents) {
-		this.contents = contents;
-	}
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "userCreatedBy")
@@ -74,7 +59,24 @@ public class User {
 	@OneToMany(mappedBy = "userCreatedContent")
 	private List<Content> contents;
 
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<Interaction> interactions;
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user")
+	private List<Member> members;
+	
+	//methods
 	public User() {
+	}
+	
+	public List<Content> getContents() {
+		return contents;
+	}
+	
+	public void setContents(List<Content> contents) {
+		this.contents = contents;
 	}
 
 	public int getId() {
@@ -181,16 +183,16 @@ public class User {
 		this.interactions = interactions;
 	}
 
-	public List<Guild> getGuilds() {
-		return guilds;
-	}
-
-	public void setGuilds(List<Guild> guilds) {
-		this.guilds = guilds;
-	}
-
 	public List<Guild> getGuildsCreated() {
 		return guildsCreated;
+	}
+
+	public List<Member> getMembers() {
+		return members;
+	}
+
+	public void setMembers(List<Member> members) {
+		this.members = members;
 	}
 
 	public void setGuildsCreated(List<Guild> guildsCreated) {
