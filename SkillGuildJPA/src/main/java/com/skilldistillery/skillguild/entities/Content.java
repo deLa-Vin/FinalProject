@@ -60,16 +60,16 @@ public class Content {
 	@JoinColumn(name = "status_id")
 	private Status status;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "content_resource", joinColumns = @JoinColumn(name = "content_id"), inverseJoinColumns = @JoinColumn(name = "resource_id"))
 	private List<Resource> resources;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@OneToMany(mappedBy = "content")
 	private List<Question> questions;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "content_topic", joinColumns = @JoinColumn(name = "content_id"), inverseJoinColumns = @JoinColumn(name = "topic_id"))
 	private List<Topic> topics;

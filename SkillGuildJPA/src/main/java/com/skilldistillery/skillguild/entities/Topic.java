@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Topic {
 
@@ -24,6 +26,7 @@ public class Topic {
 	@Column(name = "is_tech")
 	private boolean isTech;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "topics")
 	private List<Content> contents;
 	

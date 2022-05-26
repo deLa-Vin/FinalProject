@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Question {
 
@@ -21,6 +23,12 @@ public class Question {
 
 	@Column(name = "correct_answer")
 	private String correctAnswer;
+	
+//	@JsonIgnoreProperties({"questions"})
+	@JsonIgnore
+	@ManyToOne
+	@JoinColumn(name="content_id")
+	private Content content;
 
 	public Question() {
 	}
@@ -33,9 +41,6 @@ public class Question {
 		this.content = content;
 	}
 
-	@ManyToOne
-	@JoinColumn(name="content_id")
-	private Content content;
 	
 	public int getId() {
 		return id;

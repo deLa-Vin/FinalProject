@@ -20,6 +20,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 public class Guild {
@@ -48,7 +49,7 @@ public class Guild {
 	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;
 
-	@JsonIgnore
+	@JsonIgnoreProperties({"guild"})
 	@OneToMany(mappedBy = "guild")
 	private List<Content> contents;
 
@@ -56,7 +57,7 @@ public class Guild {
 	@OneToMany(mappedBy = "guild")
 	private List<Member> members;
 
-	@JsonIgnore
+//	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "group_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "guild_id"))
 	private List<Category> categories;
