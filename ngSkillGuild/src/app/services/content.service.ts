@@ -11,8 +11,6 @@ export class ContentService {
 
   private url = environment.baseUrl + 'v1/contents/';
 
-  private content: Content[] = [];
-
   constructor(
     private http: HttpClient
   ) { }

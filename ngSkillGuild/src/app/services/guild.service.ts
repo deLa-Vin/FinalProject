@@ -11,8 +11,6 @@ export class GuildService {
 
   private url = environment.baseUrl + 'v1/guilds/';
 
-  private guilds: Guild[] = [];
-
   constructor(
     private http: HttpClient
   ) { }
