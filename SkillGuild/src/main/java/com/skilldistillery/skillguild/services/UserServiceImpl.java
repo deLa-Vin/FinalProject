@@ -31,6 +31,12 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
+	public User create(User newUser) {
+		return userRepo.saveAndFlush(newUser);
+	}
+	
+	
+	@Override
 	public boolean deleteUser(int userId) {
 		Optional<User> userOpt = userRepo.findById(userId);
 		if (userOpt.isPresent()) {
@@ -42,10 +48,6 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	@Override
-	public User create(User newUser) {
-			return userRepo.saveAndFlush(newUser);
-		}
 
 
 	}

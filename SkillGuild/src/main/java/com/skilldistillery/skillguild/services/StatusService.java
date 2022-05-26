@@ -7,5 +7,6 @@ import com.skilldistillery.skillguild.entities.Status;
 public interface StatusService {
 
 	List<Status> index();
+	Status show(int sid);
 
 }
