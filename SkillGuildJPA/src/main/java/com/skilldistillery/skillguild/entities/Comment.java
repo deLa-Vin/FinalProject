@@ -3,6 +3,7 @@ package com.skilldistillery.skillguild.entities;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,7 +11,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -21,32 +21,33 @@ public class Comment {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
-	@Column(name="in_reply_to_id")
-	private Integer inReplyTo;
-	
-	@Column(name="text_content")
+
+	@ManyToOne(cascade = { CascadeType.ALL })
+	@JoinColumn(name = "in_reply_to_id")
+	private Comment commentInReplyTo;
+
+	@Column(name = "text_content")
 	private String textContent;
-	
-	@Column(name="has_been_edited")
+
+	@Column(name = "has_been_edited")
 	private boolean edited;
-	
-	@Column(name="created_on")
+
+	@Column(name = "created_on")
 	@CreationTimestamp
 	private LocalDateTime createdOn;
-	
-	@Column(name="last_updated")
+
+	@Column(name = "last_updated")
 	@UpdateTimestamp
 	private LocalDateTime lastUpdated;
-	
+
 	@ManyToOne
-	@JoinColumn(name="user_id")
+	@JoinColumn(name = "user_id")
 	private User user;
-	
+
 	@ManyToOne
-	@JoinColumn(name="content_id")
+	@JoinColumn(name = "content_id")
 	private Content content;
-	
+
 	public Comment() {
 		super();
 	}
@@ -59,12 +60,12 @@ public class Comment {
 		this.id = id;
 	}
 
-	public int getInReplyTo() {
-		return inReplyTo;
+	public Comment getCommentInReplyTo() {
+		return commentInReplyTo;
 	}
 
-	public void setInReplyTo(int inReplyTo) {
-		this.inReplyTo = inReplyTo;
+	public void setCommentInReplyTo(Comment commentInReplyTo) {
+		this.commentInReplyTo = commentInReplyTo;
 	}
 
 	public String getTextContent() {
@@ -132,31 +133,14 @@ public class Comment {
 		return id == other.id;
 	}
 
-	public Comment(int id, int inReplyTo, String textContent, boolean edited, LocalDateTime createdOn,
-			LocalDateTime lastUpdated, User user, Content content) {
-		super();
-		this.id = id;
-		this.inReplyTo = inReplyTo;
-		this.textContent = textContent;
-		this.edited = edited;
-		this.createdOn = createdOn;
-		this.lastUpdated = lastUpdated;
-		this.user = user;
-		this.content = content;
-	}
-
 	@Override
 	public String toString() {
-		return "Comment [id=" + id + ", inReplyTo=" + inReplyTo + ", textContent=" + textContent + ", edited=" + edited
-				+ ", createdOn=" + createdOn + ", lastUpdated=" + lastUpdated + ", user=" + user + ", content="
-				+ content + "]";
+		StringBuilder builder = new StringBuilder();
+		builder.append("Comment [id=").append(id).append(", commentInReplyTo=").append(commentInReplyTo)
+				.append(", textContent=").append(textContent).append(", edited=").append(edited).append(", createdOn=")
+				.append(createdOn).append(", lastUpdated=").append(lastUpdated).append(", user=").append(user)
+				.append(", content=").append(content).append("]");
+		return builder.toString();
 	}
 
-	
-
-	
-	
-	
-	
-	
 }
