@@ -9,9 +9,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class UserService {
 
-private url = environment.baseUrl + 'v1/users/'
-
-private users: User[] = [];
+  private url = environment.baseUrl + 'v1/users/'
 
   constructor(
     private http: HttpClient
@@ -23,6 +21,19 @@ private users: User[] = [];
 
   show(id: number): Observable<User> {
     return this.http.get<User>(this.url + id);
+  }
+
+  create(user: User) {
+    return this.http.post<User>(environment.baseUrl + 'register', user).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'User service create() error: ' + err
+          )
+        );
+      })
+    );
   }
 
   delete(id: number) {
