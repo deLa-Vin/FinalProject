@@ -40,7 +40,7 @@ public class UserController {
 		return user;
 	}
 
-	@PostMapping("users/{uid}")
+	@PostMapping("users")
 	public User create(HttpServletRequest req, HttpServletResponse res, @RequestBody User user) {
 
 		try {
@@ -89,6 +89,6 @@ public class UserController {
 //	  return user;
 //	}
 
-	// start
+
 
 
