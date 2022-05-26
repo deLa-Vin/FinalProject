@@ -61,7 +61,6 @@ public class Guild {
 	@JoinTable(name = "group_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "guild_id"))
 	private List<Category> categories;
 
-	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "created_by_user_id")
 	private User userCreatedBy;

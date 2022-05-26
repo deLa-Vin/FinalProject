@@ -17,6 +17,8 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Content {
 
@@ -47,42 +49,39 @@ public class Content {
 	private LocalDateTime presentationDate;
 
 	@ManyToOne
-	@JoinColumn(name = "guild_id") 
+	@JoinColumn(name = "guild_id")
 	private Guild guild;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "created_by_user_id") 	
+	@JoinColumn(name = "created_by_user_id")
 	private User userCreatedContent;
-	
+
 	@ManyToOne
-	@JoinColumn(name = "status_id") 	
+	@JoinColumn(name = "status_id")
 	private Status status;
-	
+
+	@JsonIgnore
 	@ManyToMany
-	@JoinTable (
-			name="content_resource",
-			joinColumns = @JoinColumn(name ="content_id"),
-			inverseJoinColumns = @JoinColumn(name ="resource_id")
-			)
-	private List <Resource> resources;
-	
+	@JoinTable(name = "content_resource", joinColumns = @JoinColumn(name = "content_id"), inverseJoinColumns = @JoinColumn(name = "resource_id"))
+	private List<Resource> resources;
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "content")
 	private List<Question> questions;
-	
+
+	@JsonIgnore
 	@ManyToMany
-	@JoinTable (
-			name="content_topic",
-			joinColumns = @JoinColumn(name ="content_id"),
-			inverseJoinColumns = @JoinColumn(name ="topic_id")
-			)
-	private List <Topic> topics;
-	
+	@JoinTable(name = "content_topic", joinColumns = @JoinColumn(name = "content_id"), inverseJoinColumns = @JoinColumn(name = "topic_id"))
+	private List<Topic> topics;
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "content")
 	private List<Comment> comments;
-	
+
+	@JsonIgnore
 	@OneToMany(mappedBy = "content")
 	private List<Interaction> interactions;
-	
+
 	public Guild getGuild() {
 		return guild;
 	}
@@ -90,8 +89,6 @@ public class Content {
 	public void setGuild(Guild guild) {
 		this.guild = guild;
 	}
-
-
 
 	public User getUserCreatedContent() {
 		return userCreatedContent;
@@ -140,9 +137,9 @@ public class Content {
 	public void setQuestions(List<Question> questions) {
 		this.questions = questions;
 	}
-	
-	//  Methods
-	
+
+	// Methods
+
 	public Content() {
 	}
 
