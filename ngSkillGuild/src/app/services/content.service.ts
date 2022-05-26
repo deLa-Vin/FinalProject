@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Content } from '../models/content';
 
@@ -23,5 +23,18 @@ export class ContentService {
 
   show(id: number): Observable<Content> {
     return this.http.get<Content>(this.url + id);
+  }
+
+  create(uid: number, gid: number, sid: number, content: Content) {
+    return this.http.post<Content>(environment.baseUrl + 'v1/users/' + uid + '/guilds/' + gid + '/statuses/' + sid + '/contents', content).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Content service create() error: ' + err
+          )
+        );
+      })
+    );
   }
 }

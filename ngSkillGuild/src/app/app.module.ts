@@ -13,6 +13,7 @@ import { UserService } from './services/user.service';
 import { GuildService } from './services/guild.service';
 import { ContentComponent } from './components/content/content.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
   ],
   providers: [
     UserService,
-    GuildService
+    GuildService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })
