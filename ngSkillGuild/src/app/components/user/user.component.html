@@ -1,4 +1,4 @@
-<div class="container py-4">
+<div class="container py-2">
   <div *ngIf="users && !createForm && !selected">
     <h3 class="m-2 display-6">Users</h3>
     <button (click)="showCreateForm()" class="btn btn-success btn-lg px-4 m-1">New User</button>
@@ -47,71 +47,110 @@
 
 <div *ngIf="createForm">
   <main>
-      <div class="container">
-          <header class="pb-3 mb-4 border-bottom">
-              <h1 class="display-3">Create User</h1>
-              <button *ngIf="!showAllUsers" (click)="toggleAllUsers()"
-                  class="btn btn-primary btn-lg px-4 m-1">All
-                  Users</button>
-          </header>
-          <p class="fs-5 col-md-8">Use this form to create an new content item.</p>
+    <div class="container">
+      <header class="pb-3 border-bottom">
+        <h1 class="display-3">Create User</h1>
+        <button *ngIf="!showAllUsers" (click)="toggleAllUsers()" class="btn btn-primary btn-lg px-4 m-1">All
+          Users</button>
+      </header>
+      <p class="fs-5 col-md-8">Use this form to create an new user.</p>
 
-          <form [formGroup]="createUserForm" (ngSubmit)="sendNewUser()" novalidate>
-              <input type="hidden" value=100 formControlName="id">
+      <form [formGroup]="createUserForm" (ngSubmit)="sendNewUser()" novalidate>
+        <input type="hidden" value='100' formControlName="id">
 
-              <label for="guildId" class="form-label"><strong>Username *</strong></label>
-              <input type='text' id="guildId" placeholder='1' class="form-control m-1" formControlName="guildId" />
-              <div *ngIf="createUserForm.controls['guildId'].invalid && (createUserForm.controls['guildId'].touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="createUserForm.controls['guildId'].errors">
-                      Username is required.
-                  </div>
-              </div>
+        <label for="username" class="form-label"><strong>Username *</strong></label>
+        <input type='text' id="username" placeholder='myusername' class="form-control m-1" formControlName="username" />
+        <div *ngIf="createUserForm.controls['username'].invalid && (createUserForm.controls['username'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['username'].errors">
+            Username is required.
+          </div>
+        </div>
 
-              <label for="title" class="form-label"><strong>Email *</strong></label>
-              <input type='text' id="title" placeholder='Web Development Content' class="form-control m-1"
-                  formControlName="title" />
-              <div *ngIf="createUserForm.controls['title'].invalid && (createUserForm.controls['title'].touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="createUserForm.controls['title'].errors">
-                      Password is required.
-                  </div>
-              </div>
+        <label for="email" class="form-label"><strong>Email *</strong></label>
+        <input type='text' id="email" placeholder='me@email.com' class="form-control m-1" formControlName="email" />
+        <div *ngIf="createUserForm.controls['email'].invalid && (createUserForm.controls['email'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['email'].errors">
+            Email is required.
+          </div>
+        </div>
 
-              <label for="description" class="form-label"><strong>Password *</strong></label>
-              <input type='text' formControlName='description' id="description" placeholder='About this content'
-                  class="form-control m-1" formControlName="description" />
-              <div *ngIf="createUserForm.controls['description'].invalid && (createUserForm.controls['description'].touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="createUserForm.controls['description'].errors">
-                      Email is required.
-                  </div>
-              </div>
+        <label for="password" class="form-label"><strong>Password *</strong></label>
+        <input type='text' formControlName='password' id="password" placeholder='secretpassword'
+          class="form-control m-1" formControlName="password" />
+        <div *ngIf="createUserForm.controls['password'].invalid && (createUserForm.controls['password'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['password'].errors">
+            Password is required.
+          </div>
+        </div>
 
-              <label for="statusId" class="form-label"><strong>Role *</strong></label>
-              <input type='text' formControlName='statusId' id="statusId" placeholder='1' class="form-control m-1" />
-              <div *ngIf="createUserForm.controls['statusId'].invalid && (createUserForm.controls['statusId'].touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="createUserForm.controls['statusId'].errors">
-                      Role is required.
-                  </div>
-              </div>
+        <label for="firstName" class="form-label"><strong>First Name *</strong></label>
+        <input type='text' formControlName='firstName' id="firstName" placeholder='First' class="form-control m-1"
+          formControlName="firstName" />
+        <div *ngIf="createUserForm.controls['firstName'].invalid && (createUserForm.controls['firstName'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['firstName'].errors">
+            First name is required.
+          </div>
+        </div>
 
-              <label for="enabled" class="form-label"><strong>Enabled </strong></label>
-              <input type='checkbox' formControlName='enabled' id="enabled" class="m-1" />
-              <div *ngIf="createUserForm.controls['enabled'].invalid && (createUserForm.controls['enabled'].touched)"
-                  class="alert alert-danger">
-                  <div *ngIf="createUserForm.controls['enabled'].errors">
-                      Enabled is required.
-                  </div>
-              </div>
-              <br>
+        <label for="lastName" class="form-label"><strong>Last Name *</strong></label>
+        <input type='text' formControlName='lastName' id="lastName" placeholder='Last' class="form-control m-1"
+          formControlName="lastName" />
+        <div *ngIf="createUserForm.controls['lastName'].invalid && (createUserForm.controls['lastName'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['lastName'].errors">
+            Last name is required.
+          </div>
+        </div>
 
-              <button type="submit" class="btn btn-success btn-lg px-4 m-1">Create User</button>
-          </form>
-          <footer class="pt-3 mt-4 text-muted border-top">
-              &copy; 2022 SkillGuild
-          </footer>
-      </div>
+        <label for="role" class="form-label"><strong>Role *</strong></label>
+        <input type='text' formControlName='role' id="role" placeholder='standard' class="form-control m-1" />
+        <div *ngIf="createUserForm.controls['role'].invalid && (createUserForm.controls['role'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['role'].errors">
+            Role is required.
+          </div>
+        </div>
+
+        <label for="profileImgUrl" class="form-label"><strong>Profile Image URL *</strong></label>
+        <input type='text' formControlName='profileImgUrl' id="profileImgUrl" placeholder='https://picsum.photos/200'
+          class="form-control m-1" />
+        <div
+          *ngIf="createUserForm.controls['profileImgUrl'].invalid && (createUserForm.controls['profileImgUrl'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['profileImgUrl'].errors">
+            Profile image URL is required.
+          </div>
+        </div>
+
+        <label for="aboutMe" class="form-label"><strong>About Me *</strong></label>
+        <input type='text' formControlName='aboutMe' id="aboutMe" placeholder='A little about me...'
+          class="form-control m-1" />
+        <div *ngIf="createUserForm.controls['aboutMe'].invalid && (createUserForm.controls['aboutMe'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['aboutMe'].errors">
+            About me is required.
+          </div>
+        </div>
+
+        <label for="enabled" class="form-label"><strong>Enabled </strong></label>
+        <input type='checkbox' formControlName='enabled' id="enabled" class="m-1" />
+        <div *ngIf="createUserForm.controls['enabled'].invalid && (createUserForm.controls['enabled'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="createUserForm.controls['enabled'].errors">
+            Enabled is required.
+          </div>
+        </div>
+        <br>
+
+        <button type="submit" class="btn btn-success btn-lg px-4 m-1">Create User</button>
+      </form>
+      <footer class="pt-3 mt-4 text-muted border-top">
+        &copy; 2022 SkillGuild
+      </footer>
+    </div>
   </main>
 </div>

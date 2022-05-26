@@ -23,11 +23,27 @@ public class User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 
-	private String username;
-	private String password;
-	private String email;
+	@Column(name = "about_me")
+	private String aboutMe;
+	
 	private boolean enabled;
+	
+	private String email;
+	
+	@Column(name = "first_name")
+	private String firstName;
+
+	@Column(name = "last_name")
+	private String lastName;
+	
+	private String password;
+	
+	@Column(name = "profile_img_url")
+	private String profileImgUrl;
+	
 	private String role;
+	
+	private String username;
 
 	@CreationTimestamp
 	@Column(name = "created_on")
@@ -36,19 +52,6 @@ public class User {
 	@UpdateTimestamp
 	@Column(name = "last_updated")
 	private LocalDateTime lastUpdated;
-
-	@Column(name = "first_name")
-	private String firstName;
-
-	@Column(name = "last_name")
-	private String lastName;
-
-	@Column(name = "profile_img_url")
-	private String profileImgUrl;
-
-	@Column(name = "about_me")
-	private String aboutMe;
-
 
 	@JsonIgnore
 	@OneToMany(mappedBy = "userCreatedBy")

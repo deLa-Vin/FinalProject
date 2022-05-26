@@ -19,9 +19,15 @@ public class AuthServiceImpl implements AuthService {
 	
 	@Override
 	public User register(User user) {
+		// user.setAboutMe(user.getAboutMe());
+		user.setEmail(user.getEmail());
+		user.setEnabled(user.isEnabled());
+		user.setFirstName(user.getFirstName());
+		user.setLastName(user.getLastName());
 		user.setPassword(encoder.encode(user.getPassword()));
-		user.setEnabled(true);
+		user.setProfileImgUrl(user.getProfileImgUrl());
 		user.setRole("standard");
+		user.setUsername(user.getUsername());
 		
 		userRepo.saveAndFlush(user);
 		return user;

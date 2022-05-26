@@ -95,11 +95,15 @@ export class UserComponent implements OnInit {
   createFormInit(fb: FormBuilder) {
     this.createUserForm = this.fb.group({
       id: [0],
-      username: ['', Validators.required],
-      password: ['', Validators.required],
-      email: ['2022-06-022 12:30:00'],
+      aboutMe: [''],
+      email: ['', Validators.required],
       enabled: [true],
+      firstName: [''],
+      lastName: [''],
+      password: ['', Validators.required],
+      profileImgUrl: ['https://picsum.photos/200'],
       role: ['standard'],
+      username: ['', Validators.required],
     });
     this.createUserForm.updateValueAndValidity();
     this.isEditing = true;
@@ -108,13 +112,18 @@ export class UserComponent implements OnInit {
   sendNewUser() {
     let user: User = {
       id: this.createUserForm.get('id').value,
-      username: this.createUserForm.get('username').value,
-      password: this.createUserForm.get('password').value,
+      aboutMe: this.createUserForm.get('aboutMe').value,
       email: this.createUserForm.get('email').value,
       enabled: this.createUserForm.get('enabled').value,
+      firstName: this.createUserForm.get('firstName').value,
+      lastName: this.createUserForm.get('lastName').value,
+      password: this.createUserForm.get('password').value,
+      profileImgUrl: this.createUserForm.get('profileImgUrl').value,
       role: this.createUserForm.get('role').value,
+      username: this.createUserForm.get('username').value,
     }
     this.isEditing = false;
+    console.log(user);
     this.createUser(user);
   }
 
