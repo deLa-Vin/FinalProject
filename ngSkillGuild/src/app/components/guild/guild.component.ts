@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guild } from 'src/app/models/guild';
 import { GuildService } from 'src/app/services/guild.service';
@@ -14,11 +15,24 @@ export class GuildComponent implements OnInit {
 
   selected: Guild | null = null;
 
+  showAllGuilds: boolean = true;
+
+  newGuild: Guild = new Guild();
+
+  createForm: boolean = false;
+
+  createGuildForm: any;
+
+  isEditing = false;
+
   constructor(
     private guildSvc: GuildService,
+    private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) { }
+  ) { 
+    this.createFormInit(fb);
+  }
 
   ngOnInit(): void {
     this.getAllGuilds();
@@ -43,6 +57,60 @@ export class GuildComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+
+  toggleAllGuilds = () => {
+    this.showAllGuilds = !this.showAllGuilds;
+    this.createForm = !this.createForm;
+  }
+
+  showCreateForm = () => {
+    this.createForm = !this.createForm;
+    this.showAllGuilds = !this.showAllGuilds;
+  }
+
+  createGuild(createdByUserId: number, guild: Guild): void {
+    this.guildSvc.create(createdByUserId, guild).subscribe({
+      next: guild => {
+        console.log("Created successfully: " + guild.id);
+        this.guilds.push(guild);
+        this.newGuild = new Guild();
+        this.toggleAllGuilds();
+        // this.reload();
+      },
+      error: (err) => {
+        console.error('Error creating guild: ', err);
+      }
+  })
+  }
+
+  createFormInit(fb: FormBuilder) {
+    this.createGuildForm = this.fb.group({
+      id: [0],
+      name: ['', Validators.required],
+      description: ['', Validators.required],
+      isPublic: [''],
+      createdByUserId: [''],
+      membershipCriteria: [''],
+    });
+    this.createGuildForm.updateValueAndValidity();
+    this.isEditing = true;
+  }
+
+  sendNewGuild() {
+    let guild: Guild = {
+      id: this.createGuildForm.get('id').value,
+      name: this.createGuildForm.get('name').value,
+      description: this.createGuildForm.get('description').value,
+      isPublic: this.createGuildForm.get('isPublic').value,
+      membershipCriteria: this.createGuildForm.get('membershipCriteria').value,
+      createdByUserId: this.createGuildForm.get('createdByUserId').value,
+      coverImg: '',
+      createdOn: '',
+      lastUpdated: '',
+    }
+    this.isEditing = false;
+    this.createGuild(guild.createdByUserId, guild);
   }
 
 }

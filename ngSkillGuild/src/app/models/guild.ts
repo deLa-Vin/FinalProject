@@ -6,8 +6,8 @@ export class Guild {
     coverImg: string | null;
     membershipCriteria: string;
     createdByUserId: number;
-    createdOn: string;
-    lastUpdated: string;
+    createdOn: string | null;
+    lastUpdated: string | null;
 
     constructor(
         id: number = 0,
@@ -18,7 +18,7 @@ export class Guild {
         membershipCriteria: string = '',
         createdByUserId: number = 0,
         createdOn: string = '',
-        lastUpdated: string = ''
+        lastUpdated: string | null = null
     ) {
         this.id = id;
         this.name = name;
