@@ -12,6 +12,8 @@ export class ContentComponent implements OnInit {
 
   contents: Content[] = [];
 
+  editContent: Content | null = null;
+
   selected: Content | null = null;
 
   constructor(
@@ -45,4 +47,23 @@ export class ContentComponent implements OnInit {
     )
   }
 
+  deleteContent(id: number) {
+    this.contentSvc.delete(id).subscribe(
+      (data) => this.getAllContents(),
+      (err) => console.error(err)
+    );
+  }
+
+  updateContent(content: Content) {
+    this.contentSvc.update(content).subscribe(
+      (data) => {
+        this.getAllContents();
+        this.editContent = null;
+        if (this.selected) {
+          this.selected = Object.assign({}, content);
+        }
+      },
+      (err) => console.error(err)
+    );
+  }
 }

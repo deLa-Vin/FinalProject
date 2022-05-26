@@ -46,4 +46,10 @@ export class UserComponent implements OnInit {
     )
   }
 
+  deleteUser(id: number) {
+    this.userSvc.delete(id).subscribe(
+      (data) => this.getAllUsers(),
+      (err) => console.error(err)
+    );
+  }
 }

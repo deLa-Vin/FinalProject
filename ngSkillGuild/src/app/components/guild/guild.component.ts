@@ -30,7 +30,7 @@ export class GuildComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
     this.createFormInit(fb);
   }
 
