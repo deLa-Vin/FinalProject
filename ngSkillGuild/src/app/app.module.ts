@@ -13,6 +13,7 @@ import { UserService } from './services/user.service';
 import { GuildService } from './services/guild.service';
 import { ContentComponent } from './components/content/content.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 import { FooterComponent } from './components/footer/footer.component';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
@@ -43,7 +44,8 @@ import { CommentComponent } from './components/comment/comment.component';
   ],
   providers: [
     UserService,
-    GuildService
+    GuildService,
+    DatePipe
   ],
   bootstrap: [AppComponent]
 })

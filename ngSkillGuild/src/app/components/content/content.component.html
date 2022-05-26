@@ -1,7 +1,7 @@
 <div class="container py-4">
-
-    <div *ngIf="contents && !selected">
+    <div *ngIf="contents && !createForm && !selected">
         <h3 class="m-2 display-6">Content</h3>
+        <button (click)="showCreateForm()" class="btn btn-success btn-lg px-4 m-1">New Content</button>
         <hr>
         <table class="table table-striped table-hover">
             <thead>
@@ -25,8 +25,9 @@
     <div *ngIf="selected">
         <header class="pb-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-              <a [routerLink]="['/content']"><button (click)="displayAll()" class="btn btn-primary btn-sm m-2">Back</button></a>
-              <span class="fs-4">Content</span>
+                <a [routerLink]="['/content']"><button (click)="displayAll()"
+                        class="btn btn-primary btn-sm m-2">Back</button></a>
+                <span class="fs-4">Content</span>
             </a>
         </header>
 
@@ -50,5 +51,115 @@
         <hr>
         <p>No content found</p>
     </div>
+</div>
 
+<div *ngIf="createForm">
+    <main>
+        <div class="container">
+            <header class="pb-3 mb-4 border-bottom">
+                <h1 class="display-3">Create Content</h1>
+                <button *ngIf="!showAllContents" (click)="toggleAllContents()"
+                    class="btn btn-primary btn-lg px-4 m-1">All
+                    Content</button>
+            </header>
+            <p class="fs-5 col-md-8">Use this form to create an new content item.</p>
+
+            <form [formGroup]="createContentForm" (ngSubmit)="sendNewContent()" novalidate>
+                <input type="hidden" value=100 formControlName="id">
+
+                <label for="guildId" class="form-label"><strong>Guild ID *</strong></label>
+                <input type='text' id="guildId" placeholder='1' class="form-control m-1" formControlName="guildId" />
+                <div *ngIf="createContentForm.controls['guildId'].invalid && (createContentForm.controls['guildId'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['guildId'].errors">
+                        Guild ID is required.
+                    </div>
+                </div>
+
+                <label for="title" class="form-label"><strong>Title *</strong></label>
+                <input type='text' id="title" placeholder='Web Development Content' class="form-control m-1"
+                    formControlName="title" />
+                <div *ngIf="createContentForm.controls['title'].invalid && (createContentForm.controls['title'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['title'].errors">
+                        Title is required.
+                    </div>
+                </div>
+
+                <label for="description" class="form-label"><strong>Description *</strong></label>
+                <input type='text' formControlName='description' id="description" placeholder='About this content'
+                    class="form-control m-1" formControlName="description" />
+                <div *ngIf="createContentForm.controls['description'].invalid && (createContentForm.controls['description'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['description'].errors">
+                        Description is required.
+                    </div>
+                </div>
+
+                <label for="publishDate" class="form-label"><strong>Publish Date *</strong></label>
+                <input type='text' formControlName='publishDate' id="publishDate" placeholder='2022-06-02'
+                    class="form-control m-1" formControlName="publishDate" />
+                <div *ngIf="createContentForm.controls['publishDate'].invalid && (createContentForm.controls['publishDate'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['publishDate'].errors">
+                        Publish Date is required.
+                    </div>
+                </div>
+
+                <label for="statusId" class="form-label"><strong>Status ID *</strong></label>
+                <input type='text' formControlName='statusId' id="statusId" placeholder='1' class="form-control m-1" />
+                <div *ngIf="createContentForm.controls['statusId'].invalid && (createContentForm.controls['statusId'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['statusId'].errors">
+                        Status ID is required.
+                    </div>
+                </div>
+
+                <label for="createdByUserId" class="form-label"><strong>Created By User ID *</strong></label>
+                <input type='text' formControlName='createdByUserId' id="createdByUserId" placeholder='1'
+                    class="form-control m-1" />
+                <div *ngIf="createContentForm.controls['createdByUserId'].invalid && (createContentForm.controls['createdByUserId'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['createdByUserId'].errors">
+                        Created By User ID is required.
+                    </div>
+                </div>
+
+                <label for="presentationDate" class="form-label"><strong>Presentation Date *</strong></label>
+                <input type='text' formControlName='presentationDate' id="presentationDate" placeholder='2022-06-02'
+                    class="form-control m-1" formControlName="presentationDate" />
+                <div *ngIf="createContentForm.controls['presentationDate'].invalid && (createContentForm.controls['presentationDate'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['presentationDate'].errors">
+                        Presentation Date is required.
+                    </div>
+                </div>
+
+                <label for="isPublic" class="form-label"><strong>Is Public *</strong></label>
+                <input type='checkbox' formControlName='isPublic' id="isPublic" class="m-1" />
+                <div *ngIf="createContentForm.controls['isPublic'].invalid && (createContentForm.controls['isPublic'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['isPublic'].errors">
+                        Is Public is required.
+                    </div>
+                </div>
+                <br>
+
+                <label for="isLive" class="form-label"><strong>Is Live *</strong></label>
+                <input type='checkbox' formControlName="isLive" id="isLive" class="m-1" />
+                <div *ngIf="createContentForm.controls['isLive'].invalid && (createContentForm.controls['isLive'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['isLive'].errors">
+                        Is Live is required.
+                    </div>
+                </div>
+                <br>
+
+                <button type="submit" class="btn btn-success btn-lg px-4 m-1">Create Content</button>
+            </form>
+            <footer class="pt-3 mt-4 text-muted border-top">
+                &copy; 2022 SkillGuild
+            </footer>
+        </div>
+    </main>
 </div>

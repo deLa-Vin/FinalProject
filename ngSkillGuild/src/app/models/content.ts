@@ -1,30 +1,46 @@
+import { Interaction } from "./interaction";
+import { Question } from "./question";
+import { Resource } from "./resource";
+import { Status } from "./status";
+import { Topic } from "./topic";
+
 export class Content {
     id: number;
-    guildId: number;
     title: string;
     description: string;
-    publishDate: string;
+    publishDate: Date;
     isPublic: boolean;
     isLive: boolean;
-    statusId: number;
+    statusId: Status;
     lastUpdated: string;
-    createdByUserId: number;
     lengthMinutes: number;
-    presentationDate: string;
+    presentationDate: Date;
+    guildId: number;
+    createdByUserId: number;
+    resources: Resource[] = [];
+    questions: Question[] = [];
+    topics: Topic[] = [];
+    comments: Comment[] = [];
+    interactions: Interaction[] = [];
 
     constructor(
         id: number = 0,
-        guildId: number = 0,
         title: string = '',
         description: string = '',
-        publishDate: string = '',
+        publishDate: Date = new Date(),
         isPublic: boolean = false,
         isLive: boolean = false,
-        statusId: number = 0,
+        statusId: Status = new Status(),
         lastUpdated: string = '',
-        createdByUserId: number = 0,
         lengthMinutes: number = 0,
-        presentationDate: string = ''
+        presentationDate: Date = new Date(),
+        guildId: number = 0,
+        createdByUserId: number = 0,
+        resources: Resource[] = [],
+        questions: Question[] = [],
+        topics: Topic[] = [],
+        comments: Comment[] = [],
+        interactions: Interaction[] = [],
     ) {
         this.id = id;
         this.guildId = guildId;
@@ -38,5 +54,10 @@ export class Content {
         this.createdByUserId = createdByUserId;
         this.lengthMinutes = lengthMinutes;
         this.presentationDate = presentationDate;
+        this.resources = resources;
+        this.questions = questions;
+        this.topics = topics;
+        this.comments = comments;
+        this.interactions = interactions;
     }
 }
