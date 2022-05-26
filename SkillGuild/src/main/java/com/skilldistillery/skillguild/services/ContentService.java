@@ -7,5 +7,7 @@ import com.skilldistillery.skillguild.entities.Content;
 public interface ContentService {
 
 	List<Content> index();
-	
+
+	Content show(int cid);
+
 }

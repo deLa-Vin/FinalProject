@@ -1,6 +1,7 @@
 package com.skilldistillery.skillguild.services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -17,6 +18,18 @@ public class ContentServiceImpl implements ContentService {
 	@Override
 	public List<Content> index() {
 		return contentRepo.findAll();
+	}
+
+	@Override
+	public Content show(int cid) {
+
+		Optional<Content> op = contentRepo.findById(cid);
+		if (op.isPresent()) {
+			Content result = op.get();
+			return result;
+		}
+
+		return null;
 	}
 
 }
