@@ -43,7 +43,8 @@ public class GuildController {
 	}
 
 	@PostMapping("users/{uid}/guilds")
-	public Guild create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @RequestBody Guild guild) {
+	public Guild create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,
+			@RequestBody Guild guild) {
 
 		try {
 			guildServ.create(uid, guild);

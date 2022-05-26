@@ -36,6 +36,38 @@ public class ContentServiceImpl implements ContentService {
 	}
 
 	@Override
+	public List<Content> guildContents(int gid) {
+
+		Optional<Guild> guildOp = guildRepo.findById(gid);
+		if (guildOp.isPresent()) {
+			return contentRepo.findByGuild_id(gid);
+		}
+
+		return null;
+	}
+
+	@Override
+	public Content showGuildContent(int gid, int cid) {
+
+		Optional<Guild> guildOp = guildRepo.findById(gid);
+		if (guildOp.isPresent()) {
+
+			Optional<Content> contentOp = contentRepo.findById(cid);
+			if (contentOp.isPresent()) {
+
+				List<Content> contentList = contentRepo.findByGuild_id(gid);
+
+				if (contentList.contains(contentOp.get())) {
+					return contentOp.get();
+				}
+
+			}
+		}
+
+		return null;
+	}
+
+	@Override
 	public Content show(int cid) {
 
 		Optional<Content> op = contentRepo.findById(cid);

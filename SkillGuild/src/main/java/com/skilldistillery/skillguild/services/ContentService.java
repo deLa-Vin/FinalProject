@@ -7,6 +7,8 @@ import com.skilldistillery.skillguild.entities.Content;
 public interface ContentService {
 
 	List<Content> index();
+	
+	List<Content> guildContents(int gid);
 
 	Content show(int cid);
 
@@ -15,4 +17,6 @@ public interface ContentService {
 	Content update(int cid, Content content);
 	
 	boolean delete(int cid);
+	
+	Content showGuildContent(int gid, int cid);
 }

@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.skillguild.entities.Content;
 import com.skilldistillery.skillguild.services.ContentService;
+import com.skilldistillery.skillguild.services.GuildService;
 
 @RestController
 @CrossOrigin({ "*", "http://localhost" })
@@ -26,6 +27,9 @@ public class ContentController {
 
 	@Autowired
 	ContentService contentServ;
+
+	@Autowired
+	GuildService guildServ;
 
 	@GetMapping("contents")
 	public List<Content> index() {
@@ -36,6 +40,31 @@ public class ContentController {
 	public Content show(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid) {
 
 		Content content = contentServ.show(cid);
+
+		if (content == null) {
+			res.setStatus(404);
+		}
+
+		return content;
+	}
+
+	@GetMapping("guilds/{gid}/contents")
+	public List<Content> guildContent(HttpServletRequest req, HttpServletResponse res, @PathVariable int gid) {
+
+		List<Content> contents = contentServ.guildContents(gid);
+
+		if (contents.isEmpty()) {
+			res.setStatus(404);
+		}
+
+		return contents;
+	}
+
+	@GetMapping("guilds/{gid}/contents/{cid}")
+	public Content showGuildContent(HttpServletRequest req, HttpServletResponse res, @PathVariable int gid,
+			@PathVariable int cid) {
+
+		Content content = contentServ.showGuildContent(gid, cid);
 
 		if (content == null) {
 			res.setStatus(404);
