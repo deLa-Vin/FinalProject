@@ -12,6 +12,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Resource {
 
@@ -30,9 +32,10 @@ public class Resource {
 	@JoinColumn(name = "resource_type_id")
 	private ResourceType resourceType;
 
+	@JsonIgnore
 	@ManyToMany(mappedBy = "resources")
 	private List<Content> contents;
-	
+
 	public Resource() {
 	}
 

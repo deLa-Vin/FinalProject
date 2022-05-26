@@ -113,7 +113,7 @@ public class ContentController {
 	}
 
 	@DeleteMapping("contents/{cid}")
-	public void destroy(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid) {
+	public void delete(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid) {
 
 		try {
 			if (contentServ.delete(cid)) {

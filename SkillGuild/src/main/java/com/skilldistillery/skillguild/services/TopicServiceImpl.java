@@ -6,11 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.skilldistillery.skillguild.entities.Content;
-import com.skilldistillery.skillguild.entities.Guild;
-import com.skilldistillery.skillguild.entities.Status;
 import com.skilldistillery.skillguild.entities.Topic;
-import com.skilldistillery.skillguild.entities.User;
 import com.skilldistillery.skillguild.repositories.ContentRepository;
 import com.skilldistillery.skillguild.repositories.TopicRepository;
 
