@@ -1,1 +1,23 @@
-<p>guild works!</p>
+<div class="container">
+    <div *ngIf="guilds">
+        <h3 class="m-2 display-6">Guilds</h3>
+        <hr>
+        <table class="table table-striped table-hover">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Public</th>
+                <th></th>
+            </thead>
+            <tbody>
+                <tr *ngFor="let guild of (guilds)">
+                    <td>{{guild.id}}</td>
+                    <td>{{guild.name}}</td>
+                    <td>{{guild.description}}</td>
+                    <td>{{guild.isPublic}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
