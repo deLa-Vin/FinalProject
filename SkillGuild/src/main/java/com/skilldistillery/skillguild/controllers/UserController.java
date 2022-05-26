@@ -31,7 +31,7 @@ public class UserController {
 
 	@GetMapping("users/{userId}")
 	private User getById(@PathVariable int userId, HttpServletRequest req, HttpServletResponse res) {
-		User user = userSvc.getUserById(userId);
+		User user = userSvc.show(userId);
 		if (user == null) {
 			res.setStatus(404);
 		}

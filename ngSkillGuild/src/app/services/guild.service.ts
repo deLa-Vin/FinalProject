@@ -20,4 +20,8 @@ export class GuildService {
   index(): Observable<Guild[]> {
     return this.http.get<Guild[]>(this.url);
   }
+
+  show(id: number): Observable<Guild> {
+    return this.http.get<Guild>(this.url + id);
+  }
 }
