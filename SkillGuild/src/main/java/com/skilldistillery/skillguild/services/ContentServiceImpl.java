@@ -90,4 +90,18 @@ public class ContentServiceImpl implements ContentService {
 		return null;
 	}
 
+	@Override
+	public boolean delete(int cid) {
+
+		Optional<Content> op = contentRepo.findById(cid);
+		if (op.isPresent()) {
+			Content result = op.get();
+			contentRepo.deleteById(cid);
+			op = contentRepo.findById(cid);
+			return !op.isPresent();
+
+		}
+		return false;
+	}
+
 }
