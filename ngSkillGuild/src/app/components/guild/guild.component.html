@@ -41,6 +41,7 @@
         <p>Created By: {{selected.createdByUserId}}</p>
         <p>Created On: {{selected.createdOn}}</p>
         <p>Last Updated: {{selected.lastUpdated}}</p>
+        <button (click)="deleteGuild(selected.id)" class="btn btn-danger">Delete</button>
     </div>
     <div *ngIf="!guilds">
         <h3 class="m-2 display-6">Guilds</h3>

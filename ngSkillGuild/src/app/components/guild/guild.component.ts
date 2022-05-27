@@ -84,6 +84,17 @@ export class GuildComponent implements OnInit {
     })
   }
 
+  deleteGuild(id: number) {
+    this.guildSvc.delete(id).subscribe({
+      next: (data) => {
+        console.log("Deleted successfully: " + id);
+        this.displayAll()
+        this.getAllGuilds()
+      },
+      error: (err) => console.error(err)
+    });
+  }
+
   createFormInit(fb: FormBuilder) {
     this.createGuildForm = this.fb.group({
       id: [0],
@@ -112,5 +123,7 @@ export class GuildComponent implements OnInit {
     this.isEditing = false;
     this.createGuild(guild.createdByUserId, guild);
   }
+
+
 
 }

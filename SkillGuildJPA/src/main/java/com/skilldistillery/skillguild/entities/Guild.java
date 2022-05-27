@@ -57,7 +57,7 @@ public class Guild {
 	@OneToMany(mappedBy = "guild")
 	private List<Member> members;
 
-//	@JsonIgnore
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "group_category", joinColumns = @JoinColumn(name = "category_id"), inverseJoinColumns = @JoinColumn(name = "guild_id"))
 	private List<Category> categories;
