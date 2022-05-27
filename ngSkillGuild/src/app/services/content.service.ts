@@ -23,7 +23,7 @@ export class ContentService {
     return this.http.get<Content>(this.url + id);
   }
 
-  create(uid: number, gid: number, sid: number, content: Content) {
+  create(uid: number, gid: number, sid: number, content: Content):Observable<Content> {
     return this.http.post<Content>(environment.baseUrl + 'v1/users/' + uid + '/guilds/' + gid + '/statuses/' + sid + '/contents', content).pipe(
       catchError((err: any) => {
         console.log(err);

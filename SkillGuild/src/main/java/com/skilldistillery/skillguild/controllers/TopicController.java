@@ -7,14 +7,17 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.skillguild.entities.Topic;
+import com.skilldistillery.skillguild.entities.User;
 import com.skilldistillery.skillguild.services.TopicService;
 
 @RestController
@@ -60,5 +63,34 @@ public class TopicController {
 		return topic;
 
 	}
+	@DeleteMapping("topics/{topicId}")
+	public boolean deleteTopic(@PathVariable Integer topicId, HttpServletResponse res) {
+		if (topicServ.delete(topicId)) {
+			res.setStatus(204);
+			return true;
+		} else {
+			res.setStatus(404);
+			return false;
+		}
+	}
+
+	@PutMapping("topics/{tid}")
+	public Topic updateTopic(
+			// Principal principal,
+			@PathVariable("tid") int tid, @RequestBody Topic topic, HttpServletResponse res) {
+		try {
+			topic = topicServ.update(tid, topic);
+			if (topic == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			topic = null;
+		}
+		return topic;
+	}
 
 }
+
+

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillguild.entities.Topic;
+import com.skilldistillery.skillguild.entities.User;
 import com.skilldistillery.skillguild.repositories.ContentRepository;
 import com.skilldistillery.skillguild.repositories.TopicRepository;
 
@@ -40,6 +41,29 @@ public class TopicServiceImpl implements TopicService {
 	public Topic create(Topic topic) {
 		return topicRepo.saveAndFlush(topic);
 		
+	}
+	@Override
+	public boolean delete(int topicId) {
+		Optional<Topic> topicOpt = topicRepo.findById(topicId);
+		if (topicOpt.isPresent()) {
+			Topic user = topicOpt.get();
+			topicRepo.delete(user);
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public Topic update(int tid, Topic topic) {
+		Optional<Topic> op = topicRepo.findById(tid);
+		if (op.isPresent()) {
+			Topic result = op.get();
+			result = topic;
+			result.setId(tid);
+			return topicRepo.saveAndFlush(result);
+		}
+		return null;
 	}
 
 
