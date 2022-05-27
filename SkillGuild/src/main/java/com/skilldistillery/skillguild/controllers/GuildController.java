@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.skillguild.entities.Content;
 import com.skilldistillery.skillguild.entities.Guild;
 import com.skilldistillery.skillguild.services.GuildService;
 
@@ -58,6 +60,25 @@ public class GuildController {
 		}
 
 		return guild;
+
+	}
+
+	@PutMapping("guilds/{gid}")
+	public Guild update(HttpServletRequest req, HttpServletResponse res, @PathVariable int gid,
+			@RequestBody Guild guild) {
+
+		Guild newGuild;
+		try {
+			newGuild = guildServ.update(gid, guild);
+			if (newGuild == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			res.setStatus(400);
+			newGuild = null;
+		}
+
+		return newGuild;
 
 	}
 }

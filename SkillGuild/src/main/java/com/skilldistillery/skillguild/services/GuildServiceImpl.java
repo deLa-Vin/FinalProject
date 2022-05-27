@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.skillguild.entities.Comment;
 import com.skilldistillery.skillguild.entities.Guild;
 import com.skilldistillery.skillguild.entities.User;
 import com.skilldistillery.skillguild.repositories.GuildRepository;
@@ -49,6 +50,20 @@ public class GuildServiceImpl implements GuildService {
 
 		return null;
 
+	}
+	
+	@Override
+	public Guild update(int gid, Guild guild) {
+
+		Optional<Guild> op = guildRepo.findById(gid);
+		if (op.isPresent()) {
+			Guild result = op.get();
+			guild.setId(gid);
+			guild.setUserCreatedBy(result.getUserCreatedBy());
+			return guildRepo.saveAndFlush(guild);
+		}
+
+		return null;
 	}
 
 }
