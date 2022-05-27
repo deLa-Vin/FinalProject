@@ -22,6 +22,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { AuthService } from './services/auth.service';
 import { TopicComponent } from './components/topic/topic.component';
 import { RegistrationModalComponent } from './components/registration-modal/registration-modal.component';
+import { LoginModalComponent } from './login-modal/login-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { RegistrationModalComponent } from './components/registration-modal/regi
     NotFoundComponent,
     CommentComponent,
     TopicComponent,
-    RegistrationModalComponent
+    RegistrationModalComponent,
+    LoginModalComponent
   ],
   imports: [
     BrowserModule,
