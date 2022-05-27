@@ -64,6 +64,14 @@ export class ContentComponent implements OnInit {
     )
   }
 
+  setEditContent = () => {
+    this.editContent = Object.assign({}, this.selected);
+  }
+
+  cancelEdit = () => {
+    this.editContent = null;
+  }
+
   toggleAllContents = () => {
     this.showAllContents = !this.showAllContents;
     this.createForm = !this.createForm;

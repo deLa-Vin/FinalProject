@@ -67,6 +67,7 @@ public class CommentController {
 	public Comment update(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid,
 			@RequestBody Comment comment) {
 
+		System.out.println("*** Comment: " + comment);
 		Comment newComment;
 		try {
 			newComment = commentServ.update(cid, comment);
