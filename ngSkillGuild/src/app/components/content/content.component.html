@@ -44,6 +44,7 @@
         <p>Created By: {{selected.createdByUserId}}</p>
         <p>Length (minutes): {{selected.lengthMinutes}}</p>
         <p>Presentation Date: {{selected.presentationDate}}</p>
+        <button (click)="deleteContent(selected.id)" class="btn btn-danger m-1">Delete</button>
     </div>
 
     <div *ngIf="!contents">
@@ -68,7 +69,7 @@
                 <input type="hidden" value=100 formControlName="id">
 
                 <label for="guildId" class="form-label"><strong>Guild ID *</strong></label>
-                <input type='text' id="guildId" placeholder='1' class="form-control m-1" formControlName="guildId" />
+                <input type='number' id="guildId" placeholder='1' class="form-control m-1" formControlName="guildId" />
                 <div *ngIf="createContentForm.controls['guildId'].invalid && (createContentForm.controls['guildId'].touched)"
                     class="alert alert-danger">
                     <div *ngIf="createContentForm.controls['guildId'].errors">
@@ -133,9 +134,20 @@
                     <div *ngIf="createContentForm.controls['presentationDate'].errors">
                         Presentation Date is required.
                     </div>
+
+                </div>
+                <label for="lengthMinutes" class="form-label"><strong>Length (Minutes) *</strong></label>
+                <input type='number' formControlName='lengthMinutes' id="lengthMinutes" placeholder='60'
+                    class="form-control m-1" formControlName="lengthMinutes" />
+                <div *ngIf="createContentForm.controls['lengthMinutes'].invalid && (createContentForm.controls['lengthMinutes'].touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="createContentForm.controls['lengthMinutes'].errors">
+                        Length is required.
+                    </div>
                 </div>
 
-                <label for="isPublic" class="form-label"><strong>Is Public *</strong></label>
+
+                 <label for="isPublic" class="form-label"><strong>Is Public *</strong></label>
                 <input type='checkbox' formControlName='isPublic' id="isPublic" class="m-1" />
                 <div *ngIf="createContentForm.controls['isPublic'].invalid && (createContentForm.controls['isPublic'].touched)"
                     class="alert alert-danger">
