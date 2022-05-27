@@ -100,7 +100,7 @@ export class UserComponent implements OnInit {
       enabled: [true],
       firstName: [''],
       lastName: [''],
-      password: ['', Validators.required],
+      password: [''],
       profileImgUrl: ['https://picsum.photos/200'],
       role: ['standard'],
       username: ['', Validators.required],

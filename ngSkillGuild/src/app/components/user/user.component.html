@@ -77,7 +77,7 @@
         </div>
 
         <label for="password" class="form-label"><strong>Password *</strong></label>
-        <input type='text' formControlName='password' id="password" placeholder='secretpassword'
+        <input type='password' formControlName='password' id="password" value='' placeholder='secretpassword'
           class="form-control m-1" formControlName="password" />
         <div *ngIf="createUserForm.controls['password'].invalid && (createUserForm.controls['password'].touched)"
           class="alert alert-danger">
