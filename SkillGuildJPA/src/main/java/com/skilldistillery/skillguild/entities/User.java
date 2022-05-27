@@ -36,7 +36,7 @@ public class User {
 	@Column(name = "last_name")
 	private String lastName;
 
-	@JsonIgnore
+//	@JsonIgnore
 	private String password;
 
 	@Column(name = "profile_img_url")
