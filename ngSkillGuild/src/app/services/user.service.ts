@@ -36,7 +36,7 @@ export class UserService {
   }
 
   create(user: User) {
-    return this.http.post<User>(this.url, user, this.getHttpOptions()).pipe(
+    return this.http.post<User>(this.url, user).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

@@ -13,7 +13,7 @@
             </thead>
             <tbody>
                 <tr *ngFor="let guild of (guilds)" (click)="selected = this.guild">
-                    <td>{{guild.id}}</td>
+                   <td>{{guild.id}}</td>
                     <td>{{guild.name}}</td>
                     <td>{{guild.description}}</td>
                     <td>{{guild.isPublic}}</td>
@@ -34,9 +34,9 @@
         <h3 class="m-2 display-6">{{selected.name}}</h3>
         <hr>
         <p><span class="badge bg-primary">{{selected.id}}</span></p>
+        <img [src]="selected.coverImg"width="300" height="300">
         <p>Description: {{selected.description}}</p>
         <p>Is Public: {{selected.isPublic}}</p>
-        <p>Cover Image: {{selected.coverImg}}</p>
         <p>Membership Criteria: {{selected.membershipCriteria}}</p>
         <p>Created By: {{selected.createdByUserId}}</p>
         <p>Created On: {{selected.createdOn}}</p>
