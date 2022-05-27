@@ -9,9 +9,7 @@ import { environment } from 'src/environments/environment';
 })
 export class CommentService {
 
-  private url = environment.baseUrl + 'v1/guilds/';
-
-private comments: Comment[] = [];
+  private url = environment.baseUrl + 'v1/comments/';
 
   constructor(
     private http: HttpClient
@@ -39,28 +37,28 @@ private comments: Comment[] = [];
   }
 
   update(updateComment: Comment) {
-    return this.http.put<Comment>(this.url + '/' + updateComment.id, updateComment).pipe(
+    return this.http.put<Comment>(this.url + updateComment.id, updateComment).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
           () => new Error(
             'Comment service update() error: ' + err
-            )
-            );
-          })
-          );
-        }
+          )
+        );
+      })
+    );
+  }
 
-        delete(id: number) {
-          return this.http.delete<boolean>(this.url + id).pipe(
-            catchError((err: any) => {
-              console.log(err);
-              return throwError(
-                () => new Error(
-                  'Comment service delete() error: ' + err
-                )
-              );
-            })
-          );
-        }
-      }
+  delete(id: number) {
+    return this.http.delete<boolean>(this.url + id).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Comment service delete() error: ' + err
+          )
+        );
+      })
+    );
+  }
+}
