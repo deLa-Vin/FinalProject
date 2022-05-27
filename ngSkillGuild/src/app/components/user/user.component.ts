@@ -26,6 +26,8 @@ export class UserComponent implements OnInit {
 
   isEditing = false;
 
+  editUser: User | null = null;
+
   constructor(
     private userSvc: UserService,
     private fb: FormBuilder,
@@ -44,6 +46,29 @@ export class UserComponent implements OnInit {
       this.users = users;
     });
   }
+
+  setEditUser = () => {
+    this.editUser = Object.assign({}, this.selected);
+  }
+
+  cancelEdit = () => {
+    this.editUser = null;
+  }
+
+  updateUser = (user: User) => {
+  this.userSvc.update(user).subscribe(
+    { 
+    next: () => {
+      console.log("Updated user successfully: " + user.id);
+      this.selected = null;
+      this.editUser = null;
+      this.displayAll();
+      this.getAllUsers();
+    },
+    error: (err: any) => console.error('Error updating user: ', err)
+  }
+  );
+}
 
   displayAll(): void {
     this.selected = null;

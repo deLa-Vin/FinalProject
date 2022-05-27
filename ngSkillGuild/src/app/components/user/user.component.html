@@ -21,7 +21,7 @@
     </table>
   </div>
 
-  <div *ngIf="selected">
+  <div *ngIf="selected && !editUser">
     <header class="pb-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
         <a [routerLink]="['/user']"><button (click)="displayAll()" class="btn btn-primary btn-sm m-2">Back</button></a>
@@ -32,11 +32,17 @@
     <h3 class="m-2 display-6">{{selected.username}}</h3>
     <hr>
     <p><span class="badge bg-primary">{{selected.id}}</span></p>
+    <p>First Name: {{selected.firstName}}</p>
+    <p>Last Name: {{selected.lastName}}</p>
     <p>Password: {{selected.password}}</p>
     <p>Email: {{selected.email}}</p>
     <p>Account is Active: {{selected.enabled}}</p>
-    <p>Users Role: {{selected.role}}</p>
-    <button (click)="deleteUser(selected.id)" class="btn btn-danger">Delete</button>
+    <p>Role: {{selected.role}}</p>
+    <p>About: {{selected.aboutMe}}</p>
+    <p>Profile Image URL: <a href="{{selected.profileImgUrl}}" target="_blank">{{selected.profileImgUrl}}</a></p>
+    <button (click)="displayAll()" class="btn btn-secondary m-1">Back</button>
+    <button (click)="setEditUser()" class="btn btn-info m-1">Edit</button>
+    <button (click)="deleteUser(selected.id)" class="btn btn-danger m-1">Delete</button>
   </div>
 
   <div *ngIf="!users">
@@ -44,6 +50,39 @@
     <hr>
     <p>No users found</p>
   </div>
+</div>
+
+<div *ngIf="editUser">
+  <p><span class="badge bg-primary">{{editUser.id}}</span></p>
+  <form>
+      <label>Username </label>
+      <input type="text" name="username" [(ngModel)]="editUser.username" class="form-control" /><br>
+      <label>First Name </label>
+      <input type="text" name="firstName" [(ngModel)]="editUser.firstName" class="form-control" /><br>
+      <label>Last Name </label>
+      <input type="input" name="lastName" [(ngModel)]="editUser.lastName" class="form-control" /><br>
+
+      <label>Password </label>
+      <input type="password" name="password" [(ngModel)]="editUser.password" class="form-control" /><br>
+
+      <label>Email </label>
+      <input type="text" name="email" [(ngModel)]="editUser.email" class="form-control" /><br>
+
+      <label>Role </label>
+      <input type="text" name="role" [(ngModel)]="editUser.role" class="form-control" /><br>
+
+      <label>About </label>
+      <input type="text" name="about" [(ngModel)]="editUser.aboutMe" class="form-control" /><br>
+
+      <label>Profile Image URL </label>
+      <input type="text" name="profileImgUrl" [(ngModel)]="editUser.profileImgUrl" class="form-control" /><br>
+
+      <label>Enabled </label>
+      <input type="checkbox" name="enabled" [(ngModel)]="editUser.enabled" class="m-2" /><br>
+
+      <button type="button" (click)="cancelEdit()" class="btn btn-danger m-2">Cancel</button>
+      <button (click)="updateUser(editUser)" class="btn btn-success">Save</button>
+  </form>
 </div>
 
 <div *ngIf="createForm">

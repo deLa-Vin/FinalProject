@@ -7,11 +7,13 @@ import com.skilldistillery.skillguild.entities.User;
 public interface UserService {
 
 	List<User> index();
-	
-	User show (int uid);
+
+	User show(int uid);
 
 	User create(User user);
 
 	boolean deleteUser(int userId);
+
+	User update(int uid, User user);
 
 }

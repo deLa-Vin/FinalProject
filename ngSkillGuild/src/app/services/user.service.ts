@@ -56,4 +56,17 @@ export class UserService {
       })
     );
   }
+
+  update(user: User) {
+    return this.http.put(this.url + `${user.id}`, user).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'User service update() error: ' + err
+          )
+        );
+      })
+    )
+  };
 }

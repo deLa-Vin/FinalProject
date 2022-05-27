@@ -19,7 +19,7 @@ public class UserServiceImpl implements UserService {
 	public List<User> index() {
 		return userRepo.findAll();
 	}
-	
+
 	@Override
 	public User show(int userId) {
 		Optional<User> userOpt = userRepo.findById(userId);
@@ -33,8 +33,7 @@ public class UserServiceImpl implements UserService {
 	public User create(User newUser) {
 		return userRepo.saveAndFlush(newUser);
 	}
-	
-	
+
 	@Override
 	public boolean deleteUser(int userId) {
 		Optional<User> userOpt = userRepo.findById(userId);
@@ -47,12 +46,16 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-
-
+	@Override
+	public User update(int uid, User user) {
+		Optional<User> op = userRepo.findById(uid);
+		if (op.isPresent()) {
+			User result = op.get();
+			result = user;
+			result.setId(uid);
+			return userRepo.saveAndFlush(result);
+		}
+		return null;
 	}
 
-	
-	
-	
-
-
+}
