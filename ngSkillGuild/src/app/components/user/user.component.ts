@@ -31,7 +31,7 @@ export class UserComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
     this.createFormInit(fb);
   }
 
@@ -61,10 +61,14 @@ export class UserComponent implements OnInit {
   }
 
   deleteUser(id: number) {
-    this.userSvc.delete(id).subscribe(
-      (data) => this.getAllUsers(),
-      (err) => console.error(err)
-    );
+    this.userSvc.delete(id).subscribe({
+      next: (data) => {
+        console.log("Deleted successfully: " + id);
+        this.displayAll()
+        this.getAllUsers()
+      },
+      error: (err) => console.error(err)
+    });
   }
 
   toggleAllUsers = () => {

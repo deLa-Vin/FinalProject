@@ -36,6 +36,7 @@
     <p>Email: {{selected.email}}</p>
     <p>Account is Active: {{selected.enabled}}</p>
     <p>Users Role: {{selected.role}}</p>
+    <button (click)="deleteUser(selected.id)" class="btn btn-danger">Delete</button>
   </div>
 
   <div *ngIf="!users">
