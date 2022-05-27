@@ -25,24 +25,25 @@ public class User {
 
 	@Column(name = "about_me")
 	private String aboutMe;
-	
+
 	private boolean enabled;
-	
+
 	private String email;
-	
+
 	@Column(name = "first_name")
 	private String firstName;
 
 	@Column(name = "last_name")
 	private String lastName;
-	
+
+	@JsonIgnore
 	private String password;
-	
+
 	@Column(name = "profile_img_url")
 	private String profileImgUrl;
-	
+
 	private String role;
-	
+
 	private String username;
 
 	@CreationTimestamp
@@ -56,7 +57,7 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "userCreatedBy")
 	private List<Guild> guildsCreated;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "userCreatedContent")
 	private List<Content> contents;
@@ -64,19 +65,19 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Interaction> interactions;
-	
+
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Member> members;
-	
-	//methods
+
+	// methods
 	public User() {
 	}
-	
+
 	public List<Content> getContents() {
 		return contents;
 	}
-	
+
 	public void setContents(List<Content> contents) {
 		this.contents = contents;
 	}

@@ -20,6 +20,7 @@ import { LogoutComponent } from './components/logout/logout.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { AuthService } from './services/auth.service';
+import { TopicComponent } from './components/topic/topic.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AuthService } from './services/auth.service';
     LoginComponent,
     LogoutComponent,
     NotFoundComponent,
-    CommentComponent
+    CommentComponent,
+    TopicComponent
   ],
   imports: [
     BrowserModule,
