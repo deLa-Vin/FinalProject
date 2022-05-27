@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,8 +13,19 @@ export class UserService {
   private url = environment.baseUrl + 'v1/users/'
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthService
   ) { }
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
 
   index(): Observable<User[]> {
     return this.http.get<User[]>(this.url);
@@ -24,7 +36,7 @@ export class UserService {
   }
 
   create(user: User) {
-    return this.http.post<User>(environment.baseUrl + 'register', user).pipe(
+    return this.http.post<User>(environment.baseUrl + 'v1/users', user, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
