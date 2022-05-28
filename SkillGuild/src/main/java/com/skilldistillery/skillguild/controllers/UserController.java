@@ -41,19 +41,19 @@ public class UserController {
 		return user;
 	}
 
-	@PostMapping("users")
-	public User create(HttpServletRequest req, HttpServletResponse res, @RequestBody User user) {
-		try {
-			userSvc.create(user);
-			res.setStatus(201);
-			StringBuffer url = req.getRequestURL();
-			res.setHeader("Location", url.toString());
-		} catch (Exception e) {
-			e.printStackTrace();
-			res.setStatus(400);
-		}
-		return user;
-	}
+//	@PostMapping("users")
+//	public User create(HttpServletRequest req, HttpServletResponse res, @RequestBody User user) {
+//		try {
+//			userSvc.create(user);
+//			res.setStatus(201);
+//			StringBuffer url = req.getRequestURL();
+//			res.setHeader("Location", url.toString());
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//			res.setStatus(400);
+//		}
+//		return user;
+//	}
 
 	@DeleteMapping("users/{userId}")
 	public boolean deleteUser(@PathVariable Integer userId, HttpServletResponse res) {

@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillguild.entities.User;
@@ -14,6 +15,9 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private PasswordEncoder encoder;
 
 	@Override
 	public List<User> index() {
@@ -29,10 +33,11 @@ public class UserServiceImpl implements UserService {
 		return null;
 	}
 
-	@Override
-	public User create(User newUser) {
-		return userRepo.saveAndFlush(newUser);
-	}
+//	@Override
+//	public User create(User newUser) {
+//		newUser.setPassword(encoder.encode(newUser.getPassword()));
+//		return userRepo.saveAndFlush(newUser);
+//	}
 
 	@Override
 	public boolean deleteUser(int userId) {

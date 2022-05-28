@@ -57,7 +57,7 @@ export class UserComponent implements OnInit {
 
   updateUser = (user: User) => {
   this.userSvc.update(user).subscribe(
-    { 
+    {
     next: () => {
       console.log("Updated user successfully: " + user.id);
       this.selected = null;
@@ -106,8 +106,8 @@ export class UserComponent implements OnInit {
     this.showAllUsers = !this.showAllUsers;
   }
 
-  createUser(user: User): void {
-    this.userSvc.create(user).subscribe({
+  registerUser(user: User): void {
+    this.userSvc.register(user).subscribe({
       next: user => {
         console.log("Created successfully: " + user.id);
         this.users.push(user);
@@ -153,7 +153,7 @@ export class UserComponent implements OnInit {
     }
     this.isEditing = false;
     console.log(user);
-    this.createUser(user);
+    this.registerUser(user);
   }
 
 }

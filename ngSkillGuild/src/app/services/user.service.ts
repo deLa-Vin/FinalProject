@@ -35,8 +35,8 @@ export class UserService {
     return this.http.get<User>(this.url + id);
   }
 
-  create(user: User) {
-    return this.http.post<User>(this.url, user).pipe(
+  register(user: User) {
+    return this.http.post<User>(environment.baseUrl + "register", user).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
