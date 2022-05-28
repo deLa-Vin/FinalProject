@@ -13,7 +13,7 @@ export class TopicComponent implements OnInit {
 
   topics: Topic[] = [];
 
-  newTopic: Topic = new Topic();
+  newTopic: Topic = new Topic(0, "", "", true);
 
   selected: Topic | null = null;
 
@@ -47,15 +47,15 @@ export class TopicComponent implements OnInit {
 
   createTopic(topic: Topic): void {
     this.topicSvc.create(topic).subscribe({
-      next: content => {
+      next: topic => {
         console.log("Created successfully: " + topic.id);
         this.topics.push(topic);
-        this.newTopic = new Topic();
+        this.newTopic = new Topic(0, "", "", true);
         this.toggleAllTopics();
         this.getAllTopics();
       },
       error: (err) => {
-        console.error('Error creating content: ', err);
+        console.error('Error creating topic: ', err);
       }
     })
   }

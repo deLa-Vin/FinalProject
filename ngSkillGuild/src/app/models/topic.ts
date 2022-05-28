@@ -8,7 +8,7 @@ export class Topic {
     id: number = 0,
     name: string = "",
     description: string = "",
-    isTech: boolean = false
+    isTech: boolean
   ) {
     this.id = id;
     this.name = name;

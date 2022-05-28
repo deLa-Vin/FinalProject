@@ -18,6 +18,7 @@ import javax.persistence.OneToMany;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Content {
@@ -32,6 +33,7 @@ public class Content {
 	@Column(name = "publish_date")
 	private LocalDateTime publishDate;
 
+	@JsonProperty(value="isPublic") 
 	@Column(name = "is_public")
 	private boolean isPublic;
 

@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 @Entity
 public class Comment {
 
@@ -29,6 +31,7 @@ public class Comment {
 	@Column(name = "text_content")
 	private String textContent;
 
+	@JsonProperty(value="hasBeenEdited") 
 	@Column(name = "has_been_edited")
 	private boolean edited;
 

@@ -21,6 +21,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Guild {
@@ -32,6 +33,7 @@ public class Guild {
 	private String name;
 	private String description;
 
+	@JsonProperty(value="isPublic") 
 	@Column(name = "is_public")
 	private boolean isPublic;
 

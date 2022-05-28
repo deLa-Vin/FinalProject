@@ -11,6 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Topic {
@@ -23,6 +24,7 @@ public class Topic {
 
 	private String description;
 
+	@JsonProperty(value="isTech")    
 	@Column(name = "is_tech")
 	private boolean isTech;
 

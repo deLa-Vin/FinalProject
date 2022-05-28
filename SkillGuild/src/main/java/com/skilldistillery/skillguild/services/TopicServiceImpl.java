@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillguild.entities.Topic;
-import com.skilldistillery.skillguild.entities.User;
 import com.skilldistillery.skillguild.repositories.ContentRepository;
 import com.skilldistillery.skillguild.repositories.TopicRepository;
 
@@ -45,8 +44,8 @@ public class TopicServiceImpl implements TopicService {
 	public boolean delete(int topicId) {
 		Optional<Topic> topicOpt = topicRepo.findById(topicId);
 		if (topicOpt.isPresent()) {
-			Topic user = topicOpt.get();
-			topicRepo.delete(user);
+			Topic topic = topicOpt.get();
+			topicRepo.delete(topic);
 			return true;
 		} else {
 			return false;
