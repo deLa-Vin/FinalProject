@@ -16,10 +16,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.skillguild.entities.Content;
 import com.skilldistillery.skillguild.entities.Interaction;
 import com.skilldistillery.skillguild.services.ContentService;
-import com.skilldistillery.skillguild.services.GuildService;
 import com.skilldistillery.skillguild.services.InteractionService;
 import com.skilldistillery.skillguild.services.UserService;
 
@@ -30,10 +28,9 @@ public class InteractionController {
 
 	@Autowired
 	InteractionService intServ;
-
 	@Autowired
 	ContentService conServ;
-	
+
 	@Autowired
 	UserService userServ;
 	
