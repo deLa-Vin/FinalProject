@@ -37,17 +37,14 @@ public class TopicController {
 	public Topic show(HttpServletRequest req, HttpServletResponse res, @PathVariable int tid) {
 
 		Topic topic = topicServ.show(tid);
-
 		if (topic == null) {
 			res.setStatus(404);
 		}
-
 		return topic;
 	}
 
 	@PostMapping("topics")
-	public Topic create(HttpServletRequest req, HttpServletResponse res, 
-			@RequestBody Topic topic) {
+	public Topic create(HttpServletRequest req, HttpServletResponse res, @RequestBody Topic topic) {
 
 		try {
 			topicServ.create(topic);
@@ -59,10 +56,9 @@ public class TopicController {
 			res.setStatus(400);
 
 		}
-
 		return topic;
-
 	}
+
 	@DeleteMapping("topics/{topicId}")
 	public boolean deleteTopic(@PathVariable Integer topicId, HttpServletResponse res) {
 		if (topicServ.delete(topicId)) {
@@ -92,5 +88,3 @@ public class TopicController {
 	}
 
 }
-
-

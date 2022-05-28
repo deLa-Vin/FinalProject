@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';  
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -22,6 +23,8 @@ import { CommentComponent } from './components/comment/comment.component';
 import { AuthService } from './services/auth.service';
 import { TopicComponent } from './components/topic/topic.component';
 import { LoginRegistrationModalComponent } from './components/login-registration-modal/login-registration-modal.component';
+import { RouterModule } from '@angular/router';
+import { StatusesComponent } from './components/statuses/statuses.component';
 
 @NgModule({
   declarations: [
@@ -37,15 +40,18 @@ import { LoginRegistrationModalComponent } from './components/login-registration
     NotFoundComponent,
     CommentComponent,
     TopicComponent,
-    LoginRegistrationModalComponent
+    LoginRegistrationModalComponent,
+    StatusesComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
-    NgbModule
+    NgbModule,
+    RouterModule
   ],
   providers: [
     AuthService,

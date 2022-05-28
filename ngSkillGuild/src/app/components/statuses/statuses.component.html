@@ -19,11 +19,10 @@
 
     <div *ngIf="selected && !editStatus">
         <header class="pb-3 mb-4 border-bottom">
-            <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-                <a [routerLink]="['/statuses']"><button (click)="displayAll()"
+            <a href="/" class="d-flex align-items-center text-dark text-decoration-none"
+                [routerLink]="['/statuses']"><button (click)="displayAll()"
                         class="btn btn-primary btn-sm m-2">Back</button></a>
                 <span class="fs-4">Status</span>
-            </a>
         </header>
 
         <h3 class="m-2 display-6">{{selected.name}}</h3>
@@ -63,7 +62,6 @@
                     Statuses</button>
             </header>
             <p class="fs-5 col-md-8">Use this form to create an new status.</p>
-
             <form [formGroup]="createStatusForm" (ngSubmit)="sendNewStatus()" novalidate>
                 <input type="hidden" value='100' formControlName="id">
 
@@ -74,7 +72,7 @@
                     <div *ngIf="createStatusForm.controls['name'].errors">
                         Name is required.
                     </div>
-
+                </div>
                     <button type="submit" class="btn btn-success btn-lg px-4 m-1">Create Status</button>
             </form>
             <footer class="pt-3 mt-4 text-muted border-top">

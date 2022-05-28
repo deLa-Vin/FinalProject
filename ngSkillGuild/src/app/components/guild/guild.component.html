@@ -34,7 +34,7 @@
         <h3 class="m-2 display-6">{{selected.name}}</h3>
         <hr>
         <p><span class="badge bg-primary">{{selected.id}}</span></p>
-        <img [src]="selected.coverImg"width="300" height="300">
+        <img *ngIf="selected.coverImg" [src]="selected.coverImg" width="300" height="300">
         <p>Description: {{selected.description}}</p>
         <p>Is Public: {{selected.isPublic}}</p>
         <p>Membership Criteria: {{selected.membershipCriteria}}</p>

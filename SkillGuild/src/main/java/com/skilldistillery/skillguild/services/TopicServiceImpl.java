@@ -33,15 +33,14 @@ public class TopicServiceImpl implements TopicService {
 			Topic result = op.get();
 			return result;
 		}
-
 		return null;
 	}
 
 	@Override
 	public Topic create(Topic topic) {
 		return topicRepo.saveAndFlush(topic);
-		
 	}
+
 	@Override
 	public boolean delete(int topicId) {
 		Optional<Topic> topicOpt = topicRepo.findById(topicId);
@@ -65,6 +64,5 @@ public class TopicServiceImpl implements TopicService {
 		}
 		return null;
 	}
-
 
 }

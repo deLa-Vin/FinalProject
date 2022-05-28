@@ -9,7 +9,7 @@ import { StatusService } from 'src/app/services/status.service';
   templateUrl: './statuses.component.html',
   styleUrls: ['./statuses.component.css']
 })
-export class StatusComponent implements OnInit {
+export class StatusesComponent implements OnInit {
 
   statuses: Status[] = [];
 
