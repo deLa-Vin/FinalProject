@@ -15,8 +15,10 @@
         </ul>
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item" *ngIf="!loggedIn()">
-            <!-- <a class="nav-link" [routerLink]="['/login']">Register</a> -->
-            <app-registration-modal></app-registration-modal>
+            <app-login-registration-modal></app-login-registration-modal>
+          </li>
+          <li class="nav-item" *ngIf="loggedIn()">
+            <app-logout></app-logout>
           </li>
         </ul>
       </div>

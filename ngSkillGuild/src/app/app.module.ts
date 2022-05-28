@@ -21,7 +21,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { AuthService } from './services/auth.service';
 import { TopicComponent } from './components/topic/topic.component';
-import { RegistrationModalComponent } from './components/registration-modal/registration-modal.component';
+import { LoginRegistrationModalComponent } from './components/login-registration-modal/login-registration-modal.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,7 @@ import { RegistrationModalComponent } from './components/registration-modal/regi
     NotFoundComponent,
     CommentComponent,
     TopicComponent,
-    RegistrationModalComponent
+    LoginRegistrationModalComponent
   ],
   imports: [
     BrowserModule,
