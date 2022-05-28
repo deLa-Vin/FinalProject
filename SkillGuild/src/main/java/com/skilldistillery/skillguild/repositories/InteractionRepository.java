@@ -8,8 +8,8 @@ import com.skilldistillery.skillguild.entities.Interaction;
 
 public interface InteractionRepository extends JpaRepository<Interaction, Integer>{
 
-	List<Interaction> findByUserId(int uid);
+//	List<Interaction> findByUserId(int uid);
 
-	List<Interaction> findbyContentId(int cid);
+//	List<Interaction> findbyContentId(int cid);
 
 }

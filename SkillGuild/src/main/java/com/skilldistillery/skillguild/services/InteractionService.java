@@ -11,7 +11,7 @@ public interface InteractionService {
 	Interaction create(int uid, int contentId, Interaction interaction);
 	Interaction update(int iid, Interaction interaction);
 	boolean delete(int iid);
-	List<Interaction> showUserInteractions(int uid);
-	List<Interaction> showContentInteractions(int cid);
+//	List<Interaction> showUserInteractions(int uid);
+//	List<Interaction> showContentInteractions(int cid);
 
 }

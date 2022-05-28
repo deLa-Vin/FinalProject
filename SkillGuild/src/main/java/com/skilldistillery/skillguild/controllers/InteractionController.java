@@ -41,26 +41,26 @@ public class InteractionController {
 	}
 
 
-	@GetMapping("contents/{cid}/interactions")
-	public List<Interaction> showContentInteractions (HttpServletRequest req, HttpServletResponse res, @PathVariable int cid) {
-
-		List<Interaction> interactions = intServ.showContentInteractions(cid);
-
-		if (interactions.isEmpty()) {
-			res.setStatus(404);
-		}
-
-		return interactions;
-	}
-
-	@GetMapping("users/{uid}/interactions")
-	public List<Interaction> showUserInteractions (HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
-		List<Interaction> interactions = intServ.showUserInteractions(uid);
-		if (interactions == null) {
-			res.setStatus(404);
-		}
-		return interactions;
-	}
+//	@GetMapping("contents/{cid}/interactions")
+//	public List<Interaction> showContentInteractions (HttpServletRequest req, HttpServletResponse res, @PathVariable int cid) {
+//
+//		List<Interaction> interactions = intServ.showContentInteractions(cid);
+//
+//		if (interactions.isEmpty()) {
+//			res.setStatus(404);
+//		}
+//
+//		return interactions;
+//	}
+//
+//	@GetMapping("users/{uid}/interactions")
+//	public List<Interaction> showUserInteractions (HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
+//		List<Interaction> interactions = intServ.showUserInteractions(uid);
+//		if (interactions == null) {
+//			res.setStatus(404);
+//		}
+//		return interactions;
+//	}
 
 	@PostMapping("users/{uid}/content/{cid}/interactions")
 	public Interaction create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int cid,

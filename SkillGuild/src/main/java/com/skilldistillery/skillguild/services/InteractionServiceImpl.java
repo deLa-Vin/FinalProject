@@ -90,14 +90,14 @@ public class InteractionServiceImpl implements InteractionService {
 		return false;
 	}
 
-	@Override
-	public List<Interaction> showUserInteractions(int uid) {
-		return intRepo.findByUserId(uid);
-	}
-
-	@Override
-	public List<Interaction> showContentInteractions(int cid) {
-		return intRepo.findbyContentId(cid);
-	}
+//	@Override
+//	public List<Interaction> showUserInteractions(int uid) {
+//		return intRepo.findByUserId(uid);
+//	}
+//
+//	@Override
+//	public List<Interaction> showContentInteractions(int cid) {
+//		return intRepo.findbyContentId(cid);
+//	}
 
 }
