@@ -1,3 +1,4 @@
+import { ResourceTypeComponent } from './components/resource-type/resource-type.component';
 import { ResourceComponent } from './components/resource/resource.component';
 import { TopicComponent } from './components/topic/topic.component';
 import { NgModule } from '@angular/core';
@@ -34,6 +35,7 @@ const routes: Routes = [
   { path: 'category', component: CategoryComponent },
   { path: 'question', component: QuestionComponent },
   { path: 'resource', component: ResourceComponent },
+  { path: 'resource-type', component: ResourceTypeComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

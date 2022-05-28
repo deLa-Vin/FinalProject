@@ -29,6 +29,7 @@ import { CategoryService } from './services/category.service';
 import { CategoryComponent } from './components/category/category.component';
 import { QuestionComponent } from './components/question/question.component';
 import { ResourceComponent } from './components/resource/resource.component';
+import { ResourceTypeComponent } from './components/resource-type/resource-type.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { ResourceComponent } from './components/resource/resource.component';
     StatusesComponent,
     CategoryComponent,
     QuestionComponent,
-    ResourceComponent
+    ResourceComponent,
+    ResourceTypeComponent
   ],
   imports: [
     CommonModule,
