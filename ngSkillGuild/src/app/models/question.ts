@@ -10,7 +10,7 @@ export class Question {
     id: number = 0,
     question: string = "",
     correctAnswer: string = "",
-    contentId: number = 1
+    contentId: number = 0
   ) {
     this.id = id;
     this.question = question;

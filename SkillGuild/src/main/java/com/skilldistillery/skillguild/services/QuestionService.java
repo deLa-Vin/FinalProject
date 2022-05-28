@@ -11,7 +11,7 @@ public interface QuestionService {
 
 	Question show(int qid);
 
-	Question create(Question question);
+	Question create(int cid, Question question);
 
 	Question update(int qid, Question question);
 

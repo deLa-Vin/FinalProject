@@ -46,11 +46,11 @@ export class QuestionComponent implements OnInit {
     });
   }
 
-  createQuestion(question: Question): void {
-    this.questionSvc.create(question).subscribe({
-      next: question => {
-        console.log("Created successfully: " + question.id);
-        this.questions.push(question);
+  createQuestion(cid: number, question: Question): void {
+    this.questionSvc.create(cid, question).subscribe({
+      next: data => {
+        console.log("Created new question successfully");
+        this.questions.push(data);
         this.newQuestion = new Question();
         this.toggleAllQuestions();
         this.getAllQuestions();
@@ -122,7 +122,7 @@ export class QuestionComponent implements OnInit {
 
   createFormInit(fb: FormBuilder) {
     this.createQuestionForm = this.fb.group({
-      id: [0],
+      id: [100],
       question: [''],
       correctAnswer: [''],
       contentId: [''],
@@ -132,14 +132,13 @@ export class QuestionComponent implements OnInit {
   }
 
   sendNewQuestion() {
-    let questionSkill: Question = {
+    let question: Question = {
       id: this.createQuestionForm.get('id').value,
       question: this.createQuestionForm.get('question').value,
       correctAnswer: this.createQuestionForm.get('correctAnswer').value,
       contentId: this.createQuestionForm.get('contentId').value
     }
     this.isEditing = false;
-    console.log(questionSkill);
-    this.createQuestion(questionSkill);
+    this.createQuestion(question.contentId, question);
   }
 }

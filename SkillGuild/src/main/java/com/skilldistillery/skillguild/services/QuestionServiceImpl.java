@@ -6,7 +6,9 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.skillguild.entities.Content;
 import com.skilldistillery.skillguild.entities.Question;
+import com.skilldistillery.skillguild.repositories.ContentRepository;
 import com.skilldistillery.skillguild.repositories.QuestionRepository;
 
 @Service
@@ -14,6 +16,9 @@ public class QuestionServiceImpl implements QuestionService {
 
 	@Autowired
 	QuestionRepository questionRepo;
+
+	@Autowired
+	ContentRepository contentRepo;
 
 	@Override
 	public List<Question> index() {
@@ -31,8 +36,28 @@ public class QuestionServiceImpl implements QuestionService {
 	}
 
 	@Override
-	public Question create(Question question) {
-		return questionRepo.saveAndFlush(question);
+	public Question create(int cid, Question question) {
+
+		Question newQuestion = new Question();
+		
+		try {
+			Optional<Content> op = contentRepo.findById(cid);
+			if (op.isPresent()) {
+				Content result = op.get();
+				newQuestion.setContent(result);
+			}
+		} catch (Error err) {
+			System.out.println(err);
+		}
+
+		try {
+			newQuestion.setQuestion(question.getQuestion());
+			newQuestion.setCorrectAnswer(question.getCorrectAnswer());
+			return questionRepo.saveAndFlush(newQuestion);
+		} catch (Error err) {
+			System.out.print(err);
+		}
+		return null;
 	}
 
 	@Override

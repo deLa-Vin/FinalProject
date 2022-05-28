@@ -46,11 +46,11 @@ public class QuestionController {
 		return question;
 	}
 
-	@PostMapping("questions")
-	public Question create(HttpServletRequest req, HttpServletResponse res, @RequestBody Question question) {
-
+	@PostMapping("questions/{cid}")
+	public Question create(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid,
+			@RequestBody Question newQuestion) {
 		try {
-			questionServ.create(question);
+			questionServ.create(cid, newQuestion);
 			res.setStatus(201);
 			StringBuffer url = req.getRequestURL();
 			res.setHeader("Location", url.toString());
@@ -58,7 +58,7 @@ public class QuestionController {
 			e.printStackTrace();
 			res.setStatus(400);
 		}
-		return question;
+		return newQuestion;
 	}
 
 	@DeleteMapping("questions/{qid}")

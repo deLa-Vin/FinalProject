@@ -35,8 +35,8 @@ export class QuestionService {
     return this.http.get<Question>(this.url + id);
   }
 
-  create(question: Question) {
-    return this.http.post<Question>(this.url, question).pipe(
+  create(cid: number, newQuestion: Question) {
+    return this.http.post<Question>(this.url + cid, newQuestion).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
