@@ -1,3 +1,4 @@
+import { TopicComponent } from './components/topic/topic.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CommentComponent } from './components/comment/comment.component';
@@ -24,6 +25,7 @@ const routes: Routes = [
   { path: 'logout', component: LogoutComponent },
   { path: 'navigation', component: NavigationComponent },
   { path: 'content', component: ContentComponent },
+  { path: 'topic', component: TopicComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
