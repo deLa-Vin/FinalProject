@@ -25,6 +25,9 @@ import { TopicComponent } from './components/topic/topic.component';
 import { LoginRegistrationModalComponent } from './components/login-registration-modal/login-registration-modal.component';
 import { RouterModule } from '@angular/router';
 import { StatusesComponent } from './components/statuses/statuses.component';
+import { CategoryService } from './services/category.service';
+import { CategoryComponent } from './components/category/category.component';
+import { QuestionComponent } from './components/question/question.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +44,9 @@ import { StatusesComponent } from './components/statuses/statuses.component';
     CommentComponent,
     TopicComponent,
     LoginRegistrationModalComponent,
-    StatusesComponent
+    StatusesComponent,
+    CategoryComponent,
+    QuestionComponent
   ],
   imports: [
     CommonModule,
@@ -57,6 +62,7 @@ import { StatusesComponent } from './components/statuses/statuses.component';
     AuthService,
     UserService,
     GuildService,
+    CategoryService,
     DatePipe
   ],
   bootstrap: [AppComponent]

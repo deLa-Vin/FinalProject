@@ -13,6 +13,7 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { StatusesComponent } from './components/statuses/statuses.component';
+import { CategoryComponent } from './components/category/category.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -28,6 +29,7 @@ const routes: Routes = [
   { path: 'content', component: ContentComponent },
   { path: 'topic', component: TopicComponent },
   { path: 'statuses', component: StatusesComponent },
+  { path: 'category', component: CategoryComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
