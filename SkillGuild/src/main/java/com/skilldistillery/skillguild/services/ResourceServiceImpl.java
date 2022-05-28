@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillguild.entities.Resource;
 import com.skilldistillery.skillguild.entities.ResourceType;
+import com.skilldistillery.skillguild.entities.Resource;
 import com.skilldistillery.skillguild.repositories.ContentRepository;
 import com.skilldistillery.skillguild.repositories.ResourceRepository;
 import com.skilldistillery.skillguild.repositories.ResourceTypeRepository;
@@ -65,6 +66,18 @@ public class ResourceServiceImpl implements ResourceService {
 
 		}
 		return false;
+	}
+	
+	@Override
+	public Resource update(int tid, Resource Resource) {
+		Optional<Resource> op = resourceRepo.findById(tid);
+		if (op.isPresent()) {
+			Resource result = op.get();
+			result = Resource;
+			result.setId(tid);
+			return resourceRepo.saveAndFlush(result);
+		}
+		return null;
 	}
 
 }

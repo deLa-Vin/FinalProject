@@ -71,7 +71,7 @@ public class TopicController {
 	}
 
 	@PutMapping("topics/{tid}")
-	public Topic updateTopic(
+	public Topic updateTopicd(
 			// Principal principal,
 			@PathVariable("tid") int tid, @RequestBody Topic topic, HttpServletResponse res) {
 		try {

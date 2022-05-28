@@ -16,26 +16,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.skillguild.entities.Resource;
-import com.skilldistillery.skillguild.services.ResourceService;
+import com.skilldistillery.skillguild.entities.ResourceType;
+import com.skilldistillery.skillguild.services.ResourceTypeService;
 
 @RestController
 @CrossOrigin({ "*", "http://localhost" })
 @RequestMapping("v1")
-public class ResourceController {
+public class ResourceTypeController {
 
 	@Autowired
-	ResourceService resourceServ;
+	ResourceTypeService resourceTypeServ;
 
-	@GetMapping("resources")
-	public List<Resource> index() {
-		return resourceServ.index();
+	@GetMapping("resourcetypes")
+	public List<ResourceType> index() {
+		return resourceTypeServ.index();
 	}
 
-	@GetMapping("resources/{rid}")
-	public Resource show(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid) {
+	@GetMapping("resourcetypes/{rid}")
+	public ResourceType show(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid) {
 
-		Resource resource = resourceServ.show(rid);
+		ResourceType resource = resourceTypeServ.show(rid);
 
 		if (resource == null) {
 			res.setStatus(404);
@@ -44,34 +44,28 @@ public class ResourceController {
 		return resource;
 	}
 
-	@PostMapping("resourcetype/{rtid}/resources")
-	public Resource create(HttpServletRequest req, HttpServletResponse res, @PathVariable int rtid,
-			@RequestBody Resource resource) {
+	@PostMapping("resourcetypes")
+	public ResourceType create(HttpServletRequest req, HttpServletResponse res,
+			@RequestBody ResourceType resourceType) {
 
 		try {
-
-			if (resourceServ.create(rtid, resource) == null) {
-				res.setStatus(400);
-			} else {
-				res.setStatus(201);
-				StringBuffer url = req.getRequestURL().append("/").append(resource.getId());
-				res.setHeader("Location", url.toString());
-			}
+			resourceTypeServ.create(resourceType);
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			res.setHeader("Location", url.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-
 		}
-
-		return resource;
+		return resourceType;
 
 	}
 
-	@DeleteMapping("resources/{rid}")
+	@DeleteMapping("resourcetypes/{rid}")
 	public void delete(HttpServletRequest req, HttpServletResponse res, @PathVariable int rid) {
 
 		try {
-			if (resourceServ.delete(rid)) {
+			if (resourceTypeServ.delete(rid)) {
 
 				res.setStatus(204);
 
@@ -87,20 +81,20 @@ public class ResourceController {
 
 	}
 
-	@PutMapping("resources/{rid}")
-	public Resource updateResource(
+	@PutMapping("resourcetypes/{rid}")
+	public ResourceType updateResource(
 			// Principal principal,
-			@PathVariable("rid") int rid, @RequestBody Resource resource, HttpServletResponse res) {
+			@PathVariable("rid") int rid, @RequestBody ResourceType resourceType, HttpServletResponse res) {
 		try {
-			resource = resourceServ.update(rid, resource);
-			if (resource == null) {
+			resourceType = resourceTypeServ.update(rid, resourceType);
+			if (resourceType == null) {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-			resource = null;
+			resourceType = null;
 		}
-		return resource;
+		return resourceType;
 	}
 }

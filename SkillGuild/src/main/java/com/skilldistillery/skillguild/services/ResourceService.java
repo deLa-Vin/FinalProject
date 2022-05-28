@@ -3,6 +3,7 @@ package com.skilldistillery.skillguild.services;
 import java.util.List;
 
 import com.skilldistillery.skillguild.entities.Resource;
+import com.skilldistillery.skillguild.entities.Topic;
 
 public interface ResourceService {
 
@@ -13,5 +14,7 @@ public interface ResourceService {
 	Resource create(int rtid, Resource resource);
 	
 	boolean delete(int rid);
+	
+	Resource update(int rid, Resource resource);
 
 }
