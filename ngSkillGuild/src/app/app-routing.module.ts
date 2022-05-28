@@ -14,6 +14,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
 import { StatusesComponent } from './components/statuses/statuses.component';
 import { CategoryComponent } from './components/category/category.component';
+import { QuestionComponent } from './components/question/question.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'topic', component: TopicComponent },
   { path: 'statuses', component: StatusesComponent },
   { path: 'category', component: CategoryComponent },
+  { path: 'question', component: QuestionComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

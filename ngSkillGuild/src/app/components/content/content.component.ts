@@ -141,6 +141,7 @@ export class ContentComponent implements OnInit {
       comments: [], // this.createContentForm.get('comments').value
       interactions: [], // this.createContentForm.get('interactions').value
     }
+    console.log(content);
     this.isEditing = false;
     this.createContent(content.createdByUserId, content.guildId, content.statusId.id, content);
   }
