@@ -1,3 +1,4 @@
+import { ResourceComponent } from './components/resource/resource.component';
 import { TopicComponent } from './components/topic/topic.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'statuses', component: StatusesComponent },
   { path: 'category', component: CategoryComponent },
   { path: 'question', component: QuestionComponent },
+  { path: 'resource', component: ResourceComponent },
   { path: '**', component: NotFoundComponent }
 ];
 

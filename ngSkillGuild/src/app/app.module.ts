@@ -28,6 +28,7 @@ import { StatusesComponent } from './components/statuses/statuses.component';
 import { CategoryService } from './services/category.service';
 import { CategoryComponent } from './components/category/category.component';
 import { QuestionComponent } from './components/question/question.component';
+import { ResourceComponent } from './components/resource/resource.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { QuestionComponent } from './components/question/question.component';
     LoginRegistrationModalComponent,
     StatusesComponent,
     CategoryComponent,
-    QuestionComponent
+    QuestionComponent,
+    ResourceComponent
   ],
   imports: [
     CommonModule,
