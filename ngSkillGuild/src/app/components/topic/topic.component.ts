@@ -11,11 +11,11 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class TopicComponent implements OnInit {
 
-topics: Topic[] = [];
+  topics: Topic[] = [];
 
-newTopic: Topic = new Topic();
+  newTopic: Topic = new Topic();
 
-selected: Topic | null = null;
+  selected: Topic | null = null;
 
   showAllTopics: boolean = true;
 
@@ -45,7 +45,7 @@ selected: Topic | null = null;
     });
   }
 
-   createTopic(topic: Topic): void {
+  createTopic(topic: Topic): void {
     this.topicSvc.create(topic).subscribe({
       next: content => {
         console.log("Created successfully: " + topic.id);
@@ -69,19 +69,19 @@ selected: Topic | null = null;
   }
 
   updateTopic = (topic: Topic) => {
-  this.topicSvc.update(topic).subscribe(
-    {
-    next: () => {
-      console.log("Updated topic successfully: " + topic.id);
-      this.selected = null;
-      this.editTopic = null;
-      this.displayAll();
-      this.getAllTopics();
-    },
-    error: (err: any) => console.error('Error updating topic: ', err)
+    this.topicSvc.update(topic).subscribe(
+      {
+        next: () => {
+          console.log("Updated topic successfully: " + topic.id);
+          this.selected = null;
+          this.editTopic = null;
+          this.displayAll();
+          this.getAllTopics();
+        },
+        error: (err: any) => console.error('Error updating topic: ', err)
+      }
+    );
   }
-  );
-}
 
   displayAll(): void {
     this.selected = null;

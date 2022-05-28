@@ -12,6 +12,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UserComponent } from './components/user/user.component';
+import { StatusComponent } from './components/status/statuses.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'navigation', component: NavigationComponent },
   { path: 'content', component: ContentComponent },
   { path: 'topic', component: TopicComponent },
+  { path: 'statuses', component: StatusComponent },
   { path: '**', component: NotFoundComponent }
 ];
 
