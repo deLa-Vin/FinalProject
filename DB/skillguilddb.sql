@@ -22,17 +22,17 @@ DROP TABLE IF EXISTS `user` ;
 
 CREATE TABLE IF NOT EXISTS `user` (
   `id` INT NOT NULL AUTO_INCREMENT,
-  `username` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(200) NOT NULL,
-  `email` VARCHAR(100) NULL,
+  `username` VARCHAR(255) CHARACTER SET 'utf8' NOT NULL,
+  `password` VARCHAR(255) CHARACTER SET 'utf8' NOT NULL,
+  `email` VARCHAR(255) CHARACTER SET 'utf8' NULL,
   `enabled` TINYINT NOT NULL DEFAULT 1,
-  `role` VARCHAR(45) NULL,
+  `role` VARCHAR(20) NULL,
   `created_on` DATETIME NULL,
   `last_updated` DATETIME NULL,
   `first_name` VARCHAR(45) NULL,
   `last_name` VARCHAR(45) NULL,
   `profile_img_url` VARCHAR(1000) NULL,
-  `about_me` TEXT NULL,
+  `about_me` TEXT CHARACTER SET 'utf8' NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `username_UNIQUE` (`username` ASC))
 ENGINE = InnoDB;
@@ -393,11 +393,11 @@ SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (1, 'admin', 'admin', 'admin@admin.com', 1, 'data_admin', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Admin', 'Admin', 'https://picsum.photos/200', 'Admininistrator');
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (2, 'akerman', 'BY4Z8Gmf', 'akerman@gmail.com', 1, 'user', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Justin', 'Akerman', 'https://picsum.photos/200', 'Web developer who likes frontend development');
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (3, 'bates', 'v8dTLmB4', 'bates@gmail.com', 1, 'user', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Kyle', 'Base', 'https://picsum.photos/201', 'Web developer who likes backend development.');
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (4, 'jarvis', 'xaHJy9BU', 'jarvis@gmail.org', 1, 'user', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Steve', 'Jarvis', 'https://picsum.photos/202', 'Product manager who wants to learn web development.');
-INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (5, 'milo', 'hWunj8Us', 'milo@yahoo.com', 1, 'user', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Michelle', 'Milo', 'https://picsum.photos/203', 'Data engineer who likes tech and the outdoors.');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (1, 'admin', 'YWRtaW4=', 'admin@admin.com', 1, 'data_admin', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'John', 'Admin', 'https://picsum.photos/200', 'Admininistrator');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (2, 'joie', 'dXNlcg==', 'akerman@gmail.com', 1, 'user', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Joie', 'Akerman', 'https://picsum.photos/200', 'Web developer who likes frontend development');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (3, 'bates', 'dXNlcg==', 'bates@gmail.com', 1, 'user', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Kyle', 'Base', 'https://picsum.photos/201', 'Web developer who likes backend development.');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (4, 'jarvis', 'dXNlcg==', 'jarvis@gmail.org', 1, 'user', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Steve', 'Jarvis', 'https://picsum.photos/202', 'Product manager who wants to learn web development.');
+INSERT INTO `user` (`id`, `username`, `password`, `email`, `enabled`, `role`, `created_on`, `last_updated`, `first_name`, `last_name`, `profile_img_url`, `about_me`) VALUES (5, 'milo', 'dXNlcg==', 'milo@yahoo.com', 1, 'user', '2022-03-25 12:30:00', '2022-03-25 12:30:00', 'Michelle', 'Milo', 'https://picsum.photos/203', 'Data engineer who likes tech and the outdoors.');
 
 COMMIT;
 
