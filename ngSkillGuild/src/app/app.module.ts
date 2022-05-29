@@ -30,6 +30,10 @@ import { CategoryComponent } from './components/category/category.component';
 import { QuestionComponent } from './components/question/question.component';
 import { ResourceComponent } from './components/resource/resource.component';
 import { ResourceTypeComponent } from './components/resource-type/resource-type.component';
+import { HubComponent } from './hub/hub.component';
+import { HubService } from './services/hub.service';
+import { ResourceService } from './services/resource.service';
+import { ResourceTypeService } from './services/resource-type.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +54,8 @@ import { ResourceTypeComponent } from './components/resource-type/resource-type.
     CategoryComponent,
     QuestionComponent,
     ResourceComponent,
-    ResourceTypeComponent
+    ResourceTypeComponent,
+    HubComponent
   ],
   imports: [
     CommonModule,
@@ -67,6 +72,9 @@ import { ResourceTypeComponent } from './components/resource-type/resource-type.
     UserService,
     GuildService,
     CategoryService,
+    HubService,
+    ResourceService,
+    ResourceTypeService,
     DatePipe
   ],
   bootstrap: [AppComponent]

@@ -17,10 +17,12 @@ import { UserComponent } from './components/user/user.component';
 import { StatusesComponent } from './components/statuses/statuses.component';
 import { CategoryComponent } from './components/category/category.component';
 import { QuestionComponent } from './components/question/question.component';
+import { HubComponent } from './hub/hub.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
+  { path: 'hub', component: HubComponent },
   { path: 'user', component: UserComponent },
   { path: 'guild', component: GuildComponent },
   { path: 'register', component: RegisterComponent },
