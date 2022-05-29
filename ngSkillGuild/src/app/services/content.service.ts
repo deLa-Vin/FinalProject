@@ -10,6 +10,7 @@ import { Content } from '../models/content';
 export class ContentService {
 
   private url = environment.baseUrl + 'v1/contents/';
+  private guildContentUrl = environment.baseUrl + 'v1/guilds/';
 
   constructor(
     private http: HttpClient
@@ -61,4 +62,9 @@ export class ContentService {
       })
     );
   }
+
+  showContentByGuild(gid: number): Observable<Content> {
+    return this.http.get<Content>(this.guildContentUrl + gid + '/contents');
+  }
+
 }

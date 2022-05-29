@@ -60,10 +60,10 @@
                 </div>
             </div>
         </section>
-        <div class="album py-2 bg-light" *ngIf="selectedGuild && contents">
+        <div class="album py-2 bg-light" *ngIf="selectedGuild">
             <div class="container">
                 <button (click)="displayAllGuilds()" class="btn btn-primary btn-sm mb-1">Back</button>
-                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div *ngIf="contents" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div *ngFor="let content of contents">
                         <div class="col">
                             <div class="card shadow-sm">
@@ -87,6 +87,10 @@
                             </div>
                         </div>
                     </div>
+                </div>
+                <div *ngIf="contents.length == 0">
+                    <br>
+                    <p>No content found for {{selectedGuild.name}}.</p>
                 </div>
             </div>
         </div>
