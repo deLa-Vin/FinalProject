@@ -1,49 +1,93 @@
 <main>
 
-    <section class="py-5 text-center container" style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-light">Find your guild</h1>
-                <p class="lead text-muted">Guilds are groups with common interests.<br>
-                    Browse guilds below - or create your own!</p>
-                <p>
-                    <a [routerLink]="['/guild']" class="btn btn-primary my-2">Create a guild</a>
-                </p>
-            </div>
-        </div>
-    </section>
-
     <!-- Guilds -->
-    <div class="album py-5 bg-light" *ngIf="guilds">
-        <div class="container">
+    <div *ngIf="guilds && !selectedGuild">
+        <section class="py-5 text-center container"
+            style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Find your guild</h1>
+                    <p class="lead text-muted">Guilds are groups with common interests.<br>
+                        Browse guilds below - or create your own!</p>
+                    <p>
+                        <a [routerLink]="['/guild']" class="btn btn-primary my-2">Create a guild</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="album py-2 bg-light">
+            <div class="container">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div *ngFor="let guild of (guilds)">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>{{guild.name}}</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">{{guild.name}}</text>
+                                </svg>
 
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-
-                <div *ngFor="let guild of (guilds)" (click)="selected = this.guild">
-                    <div class="col">
-                        <div class="card shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                preserveAspectRatio="xMidYMid slice" focusable="false">
-                                <title>{{guild.name}}</title>
-                                <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                    dy=".3em">{{guild.name}}</text>
-                            </svg>
-    
-                            <div class="card-body">
-                                <p class="card-text">{{guild.description}}</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">Join</button>
+                                <div class="card-body">
+                                    <p class="card-text">{{guild.description}}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" (click)="selectGuild(this.guild)" class="btn btn-sm btn-outline-primary">View Guild</button>
+                                        </div>
+                                        <small class="text-muted">4 members</small>
                                     </div>
-                                    <small class="text-muted">9 mins</small>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                
+            </div>
+        </div>
+    </div>
+
+    <!-- Guild -->
+    <div *ngIf="selectedGuild">
+        <section class="py-5 text-center container"
+            style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
+            <div class="row py-lg-5">
+                <div class="col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">{{selectedGuild.name}}</h1>
+                    <p class="lead text-muted">{{selectedGuild.description}}</p>
+                    <p>
+                        <a [routerLink]="['/guild']" class="btn btn-primary my-2">Join</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+        <div class="album py-2 bg-light" *ngIf="selectedGuild && contents">
+            <div class="container">
+                <button (click)="displayAllGuilds()" class="btn btn-primary btn-sm mb-1">Back</button>
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                    <div *ngFor="let content of contents">
+                        <div class="col">
+                            <div class="card shadow-sm">
+                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                                    preserveAspectRatio="xMidYMid slice" focusable="false">
+                                    <title>{{content.title}}</title>
+                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                        fill="#eceeef" dy=".3em">{{content.title}}</text>
+                                </svg>
+
+                                <div class="card-body">
+                                    <p class="card-text">{{content.description}}</p>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-sm btn-outline-primary">View Details</button>
+                                        </div>
+                                        <small class="text-muted">4 attendees</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
