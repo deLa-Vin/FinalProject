@@ -41,6 +41,11 @@ public class CommentServiceImpl implements CommentService {
 
 		return null;
 	}
+	
+	@Override
+	public List<Comment> showContentComments(int contentId) {
+		return commentRepo.findByContent_id(contentId);
+	}
 
 	@Override
 	public Comment create(int uid, int contentId, Comment comment) {

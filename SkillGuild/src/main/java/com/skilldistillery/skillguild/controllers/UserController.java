@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -32,27 +33,13 @@ public class UserController {
 	}
 
 	@GetMapping("users/{userId}")
-	private User getById(@PathVariable int userId, HttpServletRequest req, HttpServletResponse res) {
-		User user = userSvc.show(userId);
+	private User getById(Principal principal, @PathVariable int userId, HttpServletRequest req, HttpServletResponse res) {
+		User user = userSvc.show(userId, principal.getName());
 		if (user == null) {
 			res.setStatus(404);
 		}
 		return user;
 	}
-
-//	@PostMapping("users")
-//	public User create(HttpServletRequest req, HttpServletResponse res, @RequestBody User user) {
-//		try {
-//			userSvc.create(user);
-//			res.setStatus(201);
-//			StringBuffer url = req.getRequestURL();
-//			res.setHeader("Location", url.toString());
-//		} catch (Exception e) {
-//			e.printStackTrace();
-//			res.setStatus(400);
-//		}
-//		return user;
-//	}
 
 	@DeleteMapping("users/{userId}")
 	public boolean deleteUser(@PathVariable Integer userId, HttpServletResponse res) {

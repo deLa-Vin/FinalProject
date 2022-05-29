@@ -7,6 +7,7 @@ import com.skilldistillery.skillguild.entities.Comment;
 public interface CommentService {
 	
 	List<Comment> index();
+	List<Comment> showContentComments(int contentId);
 	Comment show(int cid);
 	Comment create(int uid, int contentId, Comment comment);
 	Comment update(int cid, Comment comment);

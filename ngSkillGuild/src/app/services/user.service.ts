@@ -28,11 +28,13 @@ export class UserService {
   }
 
   index(): Observable<User[]> {
-    return this.http.get<User[]>(this.url);
+    return this.http.get<User[]>(this.url); //INSECURE
+    // return this.http.get<User[]>(this.url, this.getHttpOptions()); //SECURE
   }
 
   show(id: number): Observable<User> {
-    return this.http.get<User>(this.url + id);
+    // return this.http.get<User>(this.url + id); //INSECURE
+    return this.http.get<User>(this.url + id, this.getHttpOptions()); //SECURE
   }
 
   register(user: User) {

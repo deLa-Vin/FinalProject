@@ -4,7 +4,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillguild.entities.User;
@@ -15,9 +14,6 @@ public class UserServiceImpl implements UserService {
 
 	@Autowired
 	private UserRepository userRepo;
-	
-	@Autowired
-	private PasswordEncoder encoder;
 
 	@Override
 	public List<User> index() {
@@ -25,19 +21,29 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User show(int userId) {
+	public User show(int userId, String username) {
+		
 		Optional<User> userOpt = userRepo.findById(userId);
-		if (userOpt.isPresent()) {
-			return userOpt.get();
-		}
-		return null;
-	}
+		
+		boolean isAdmin = userRepo.findByUsername(username).getRole().equals("data_admin");
+		
+		System.err.println(userOpt.isPresent());
 
-//	@Override
-//	public User create(User newUser) {
-//		newUser.setPassword(encoder.encode(newUser.getPassword()));
-//		return userRepo.saveAndFlush(newUser);
-//	}
+		if (userOpt.isPresent()) {
+
+			User user = userOpt.get();
+			
+			if (user.getUsername().equals(username) || isAdmin) {
+
+				return user;
+
+			}
+
+		}
+
+		return null;
+
+	}
 
 	@Override
 	public boolean deleteUser(int userId) {

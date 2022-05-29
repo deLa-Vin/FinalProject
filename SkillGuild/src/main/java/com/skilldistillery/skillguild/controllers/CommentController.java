@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +43,19 @@ public class CommentController {
 		}
 
 		return comment;
+	}
+	
+	@GetMapping("contents/{contentId}/comments")
+	public List<Comment> showContentComments(Principal principal, HttpServletRequest req, HttpServletResponse res,
+			@PathVariable int contentId) {
+		
+		List<Comment> comments = commentServ.showContentComments(contentId);
+		
+		if (comments.isEmpty()) {
+			res.setStatus(404);
+		}
+		
+		return comments;
 	}
 
 	@PostMapping("users/{uid}/contents/{contentId}/comments")
