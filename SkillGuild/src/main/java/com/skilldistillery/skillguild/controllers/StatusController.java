@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.skillguild.entities.Status;
-import com.skilldistillery.skillguild.entities.Topic;
 import com.skilldistillery.skillguild.services.StatusService;
 
 @RestController

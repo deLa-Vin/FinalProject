@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillguild.entities.Resource;
 import com.skilldistillery.skillguild.entities.ResourceType;
-import com.skilldistillery.skillguild.entities.Resource;
 import com.skilldistillery.skillguild.repositories.ContentRepository;
 import com.skilldistillery.skillguild.repositories.ResourceRepository;
 import com.skilldistillery.skillguild.repositories.ResourceTypeRepository;

@@ -3,7 +3,6 @@ package com.skilldistillery.skillguild.services;
 import java.util.List;
 
 import com.skilldistillery.skillguild.entities.Resource;
-import com.skilldistillery.skillguild.entities.Topic;
 
 public interface ResourceService {
 

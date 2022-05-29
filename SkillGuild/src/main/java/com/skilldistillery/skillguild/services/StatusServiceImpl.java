@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillguild.entities.Status;
-import com.skilldistillery.skillguild.entities.Topic;
 import com.skilldistillery.skillguild.repositories.StatusRepository;
 
 @Service

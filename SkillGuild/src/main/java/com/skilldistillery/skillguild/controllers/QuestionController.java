@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.skilldistillery.skillguild.entities.Category;
 import com.skilldistillery.skillguild.entities.Question;
-import com.skilldistillery.skillguild.entities.Status;
 import com.skilldistillery.skillguild.services.QuestionService;
 
 @RestController
