@@ -56,6 +56,7 @@ public class Content {
 
 	@ManyToOne
 	@JoinColumn(name = "created_by_user_id")
+	@JsonProperty(value="createdByUser") 
 	private User userCreatedContent;
 
 	@ManyToOne

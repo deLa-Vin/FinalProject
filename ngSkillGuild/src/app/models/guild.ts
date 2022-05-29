@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export class Guild {
     id: number;
     name: string;
@@ -5,7 +7,7 @@ export class Guild {
     isPublic: boolean;
     coverImg: string | null;
     membershipCriteria: string;
-    createdByUserId: number;
+    createdByUser: User;
     createdOn: string | null;
     lastUpdated: string | null;
 
@@ -16,7 +18,7 @@ export class Guild {
         isPublic: boolean = false,
         coverImg: string | null = null,
         membershipCriteria: string = '',
-        createdByUserId: number = 0,
+        createdByUser: User = new User(),
         createdOn: string = '',
         lastUpdated: string | null = null
     ) {
@@ -26,7 +28,7 @@ export class Guild {
         this.isPublic = isPublic;
         this.coverImg = coverImg;
         this.membershipCriteria = membershipCriteria;
-        this.createdByUserId = createdByUserId;
+        this.createdByUser = createdByUser;
         this.createdOn = createdOn;
         this.lastUpdated = lastUpdated;
     }

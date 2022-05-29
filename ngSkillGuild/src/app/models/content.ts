@@ -1,8 +1,10 @@
+import { Guild } from "./guild";
 import { Interaction } from "./interaction";
 import { Question } from "./question";
 import { Resource } from "./resource";
 import { Status } from "./status";
 import { Topic } from "./topic";
+import { User } from "./user";
 
 export class Content {
     id: number;
@@ -15,8 +17,8 @@ export class Content {
     lastUpdated: string;
     lengthMinutes: number;
     presentationDate: Date;
-    guildId: number;
-    createdByUserId: number;
+    guild: Guild;
+    createdByUser: User;
     resources: Resource[] = [];
     questions: Question[] = [];
     topics: Topic[] = [];
@@ -34,8 +36,8 @@ export class Content {
         lastUpdated: string = '',
         lengthMinutes: number = 0,
         presentationDate: Date = new Date(),
-        guildId: number = 0,
-        createdByUserId: number = 0,
+        guild: Guild = new Guild(),
+        createdByUser: User = new User(),
         resources: Resource[] = [],
         questions: Question[] = [],
         topics: Topic[] = [],
@@ -43,7 +45,7 @@ export class Content {
         interactions: Interaction[] = [],
     ) {
         this.id = id;
-        this.guildId = guildId;
+        this.guild = guild;
         this.title = title;
         this.description = description;
         this.publishDate = publishDate;
@@ -51,7 +53,7 @@ export class Content {
         this.isLive = isLive;
         this.statusId = statusId;
         this.lastUpdated = lastUpdated;
-        this.createdByUserId = createdByUserId;
+        this.createdByUser = createdByUser;
         this.lengthMinutes = lengthMinutes;
         this.presentationDate = presentationDate;
         this.resources = resources;

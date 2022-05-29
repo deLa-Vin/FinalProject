@@ -33,7 +33,7 @@
     <hr>
     <p><span class="badge bg-primary">{{selected.id}}</span></p>
     <p>Description: {{selected.description}}</p>
-    <p>Is Tech?: {{selected.isTech}}</p>
+    <p>Is Tech: {{selected.isTech}}</p>
     <button (click)="displayAll()" class="btn btn-secondary m-1">Back</button>
     <button (click)="setEditTopic()" class="btn btn-info m-1">Edit</button>
     <button (click)="deleteTopic(selected.id)" class="btn btn-danger m-1">Delete</button>
@@ -53,7 +53,7 @@
       <input type="text" name="name" [(ngModel)]="editTopic.name" class="form-control" /><br>
       <label>Description </label>
       <input type="text" name="description" [(ngModel)]="editTopic.description" class="form-control" /><br>
-      <label>Is Tech? </label>
+      <label>Is Tech </label>
       <input type="checkbox" name="isTech" [(ngModel)]="editTopic.isTech" class="m-2" /><br>
 
       <button type="button" (click)="cancelEdit()" class="btn btn-danger m-2">Cancel</button>

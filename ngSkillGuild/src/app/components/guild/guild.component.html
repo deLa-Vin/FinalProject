@@ -38,7 +38,7 @@
         <p>Description: {{selected.description}}</p>
         <p>Is Public: {{selected.isPublic}}</p>
         <p>Membership Criteria: {{selected.membershipCriteria}}</p>
-        <p>Created By: {{selected.createdByUserId}}</p>
+        <p>Created By: {{selected.createdByUser.id}}</p>
         <p>Created On: {{selected.createdOn}}</p>
         <p>Last Updated: {{selected.lastUpdated}}</p>
         <button (click)="deleteGuild(selected.id)" class="btn btn-danger">Delete</button>

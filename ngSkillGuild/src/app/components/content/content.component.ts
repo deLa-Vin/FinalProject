@@ -110,7 +110,7 @@ export class ContentComponent implements OnInit {
       lengthMinutes: [''],
       presentationDate: ['2022-06-022 12:30:00'],
       guildId: [''],
-      createdByUserId: [''],
+      createdByUser: [''],
       resources: [''],
       questions: [''],
       topics: [''],
@@ -133,8 +133,8 @@ export class ContentComponent implements OnInit {
       lastUpdated: '', // this.createContentForm.get('lastUpdated').value,
       lengthMinutes: 0, // this.createContentForm.get('lengthMinutes').value,
       presentationDate: new Date(this.createContentForm.get('presentationDate').value),
-      guildId: this.createContentForm.get('guildId').value,
-      createdByUserId: this.createContentForm.get('createdByUserId').value,
+      guild: this.createContentForm.get('guild').value,
+      createdByUser: this.createContentForm.get('createdByUser').value,
       resources: [], // this.createContentForm.get('resources').value,
       questions: [], // this.createContentForm.get('questions').value,
       topics: [], // this.createContentForm.get('topics').value,
@@ -143,7 +143,7 @@ export class ContentComponent implements OnInit {
     }
     console.log(content);
     this.isEditing = false;
-    this.createContent(content.createdByUserId, content.guildId, content.statusId.id, content);
+    this.createContent(content.createdByUser.id, content.guild.id, content.statusId.id, content);
   }
 
   deleteContent(id: number) {

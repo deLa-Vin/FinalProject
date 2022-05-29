@@ -39,18 +39,18 @@ export class HubComponent implements OnInit {
 
   displayAllGuilds(): void {
     this.selectedGuild = null;
-    this.contents = [];
   }
 
   selectGuild(guild: Guild) {
-    this.getGuildContents(guild.id); // Modify for individual guild
+    this.contents = [];
+    this.getGuildContents(guild.id);
     this.selectedGuild = guild;
   }
 
   // Content 
   getGuildContents(gid: number) {
     this.contentSvc.showContentByGuild(gid).subscribe(contents => {
-      this.contents.push(contents);
+      this.contents = contents;
     });
   }
 

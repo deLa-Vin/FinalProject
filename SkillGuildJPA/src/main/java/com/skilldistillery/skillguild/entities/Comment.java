@@ -45,6 +45,7 @@ public class Comment {
 
 	@ManyToOne
 	@JoinColumn(name = "user_id")
+	@JsonProperty(value="createdByUser")
 	private User user;
 
 	@ManyToOne

@@ -63,8 +63,8 @@ export class ContentService {
     );
   }
 
-  showContentByGuild(gid: number): Observable<Content> {
-    return this.http.get<Content>(this.guildContentUrl + gid + '/contents');
+  showContentByGuild(gid: number): Observable<Content[]> {
+    return this.http.get<Content[]>(this.guildContentUrl + gid + '/contents');
   }
 
 }

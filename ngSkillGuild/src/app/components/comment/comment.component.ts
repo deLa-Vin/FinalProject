@@ -122,7 +122,7 @@ export class CommentComponent implements OnInit {
       inReplyTo: [''],
       hasBeenEdited: [false],
       createdOn: ['2022-06-022 12:30:00'],
-      usedId: [''],
+      createdByUser: [''],
       contentId: ['']
     });
     this.createCommentForm.updateValueAndValidity();
@@ -136,7 +136,7 @@ export class CommentComponent implements OnInit {
       inReplyTo: this.createCommentForm.get('inReplyTo').value,
       hasBeenEdited: this.createCommentForm.get('hasBeenEdited').value,
       createdOn: new Date(this.createCommentForm.get('createdOn').value),
-      userId: this.createCommentForm.get('userId').value,
+      createdByUser: this.createCommentForm.get('createdByUser').value,
       contentId: this.createCommentForm.get('contentId').value
     }
     this.isEditing = false;

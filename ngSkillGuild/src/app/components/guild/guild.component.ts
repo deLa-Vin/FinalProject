@@ -115,13 +115,13 @@ export class GuildComponent implements OnInit {
       description: this.createGuildForm.get('description').value,
       isPublic: this.createGuildForm.get('isPublic').value,
       membershipCriteria: this.createGuildForm.get('membershipCriteria').value,
-      createdByUserId: this.createGuildForm.get('createdByUserId').value,
+      createdByUser: this.createGuildForm.get('createdByUser').value,
       coverImg: '',
       createdOn: '',
       lastUpdated: '',
     }
     this.isEditing = false;
-    this.createGuild(guild.createdByUserId, guild);
+    this.createGuild(guild.createdByUser.id, guild);
   }
 
 

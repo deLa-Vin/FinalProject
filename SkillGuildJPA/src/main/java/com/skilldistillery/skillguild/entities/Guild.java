@@ -66,6 +66,7 @@ public class Guild {
 
 	@ManyToOne
 	@JoinColumn(name = "created_by_user_id")
+	@JsonProperty(value="createdByUser") 
 	private User userCreatedBy;
 
 	// Methods
