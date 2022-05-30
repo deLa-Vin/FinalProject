@@ -6,10 +6,9 @@ import { NgbCollapse } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-profile-accordian',
   templateUrl: './profile-accordian.component.html',
-  styleUrls: ['./profile-accordian.component.css']
+  styleUrls: ['./profile-accordian.component.css'],
 })
 export class ProfileAccordianComponent implements OnInit {
-
   myGuilds: Guild[] = [];
   paginationGuilds: Guild[] = [];
 
@@ -17,26 +16,26 @@ export class ProfileAccordianComponent implements OnInit {
   page: number = 1;
   pageSize: number = 5;
 
-  constructor(
-    private guildSvc: GuildService
-  ) { }
+  constructor(private guildSvc: GuildService) {}
 
   ngOnInit(): void {
     this.memberOfGuilds();
-    this.refreshGuilds();
   }
 
   memberOfGuilds() {
-    this.guildSvc.memberOfGuilds().subscribe(guilds => {
-      console.log(guilds);
+    this.guildSvc.memberOfGuilds().subscribe((guilds) => {
       this.myGuilds = guilds;
+      this.refreshGuilds();
     });
   }
 
   refreshGuilds() {
+    console.log(this.paginationGuilds);
     this.paginationGuilds = this.myGuilds
-      .map((guild, i) => ({key: i + 1, ...guild}))
-      .slice((this.page - 1) * this.pageSize, (this.page - 1) * this.pageSize + this.pageSize);
+      .map((guild, i) => ({ key: i + 1, ...guild }))
+      .slice(
+        (this.page - 1) * this.pageSize,
+        (this.page - 1) * this.pageSize + this.pageSize
+      );
   }
-
 }
