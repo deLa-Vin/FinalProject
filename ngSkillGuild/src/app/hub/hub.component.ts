@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Content } from '../models/content';
 import { Guild } from '../models/guild';
+import { User } from '../models/user';
 import { ContentService } from '../services/content.service';
 import { GuildService } from '../services/guild.service';
 
@@ -17,6 +18,8 @@ export class HubComponent implements OnInit {
 
   contents: Content[] = [];
   selectedContent: Content | null = null;
+
+  attendees: User[] = [];
 
   constructor(
     private guildSvc: GuildService,
@@ -47,6 +50,10 @@ export class HubComponent implements OnInit {
     this.selectedGuild = guild;
   }
 
+  displayGuild() {
+    this.selectedContent = null;
+  }
+
   // Content 
   getGuildContents(gid: number) {
     this.contentSvc.showContentByGuild(gid).subscribe(contents => {
@@ -69,6 +76,20 @@ export class HubComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+
+  selectContent(cid: number) {
+    this.contentSvc.show(cid).subscribe(content => {
+      this.selectedContent = content;
+    });
+  }
+
+  // Attendees
+  attendContent(cid: number) {
+    console.log("User wants to attend: " + cid);
+    // this.contentSvc.show(cid).subscribe(content => {
+    //   this.selectedContent = content;
+    // });
   }
 
 }
