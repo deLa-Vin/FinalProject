@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -42,6 +43,18 @@ public class GuildController {
 		}
 
 		return guild;
+	}
+
+	@GetMapping("guilds/myguilds")
+	public List<Guild> memberOfGuild(HttpServletRequest req, HttpServletResponse res, Principal principal) {
+
+		List<Guild> guilds = guildServ.memberOfGuild(principal.getName());
+
+		if (guilds == null) {
+			res.setStatus(404);
+		}
+
+		return guilds;
 	}
 
 	@PostMapping("users/{uid}/guilds")

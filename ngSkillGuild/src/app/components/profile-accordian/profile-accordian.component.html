@@ -1,0 +1,32 @@
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel><ng-template [ngbPanelTitle]><h3>My Guilds&nbsp;&nbsp;</h3><h5><span class="badge bg-success">{{myGuilds.length}}</span></h5></ng-template>
+    <ng-template ngbPanelContent>
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Public</th>
+            <th></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let guild of (myGuilds)">
+               <td>{{guild.id}}</td>
+                <td>{{guild.name}}</td>
+                <td>{{guild.description}}</td>
+                <td>{{guild.isPublic}}</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [collectionSize]="myGuilds.length" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshGuilds()">
+      </ngb-pagination>
+
+      <select class="form-select form-select-sm" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshGuilds()">
+        <option [ngValue]="5">5 items per page</option>
+        <option [ngValue]="10">10 items per page</option>
+      </select>
+    </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>

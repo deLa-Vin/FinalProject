@@ -36,6 +36,10 @@ export class GuildService {
     return this.http.get<Guild>(this.url + id);
   }
 
+  memberOfGuilds(): Observable<Guild[]> {
+    return this.http.get<Guild[]>(this.url + 'myguilds', this.getHttpOptions());
+  }
+
   create(uid: number, guild: Guild): Observable<Guild> {
     return this.http.post<Guild>(environment.baseUrl + 'v1/users/' + uid + '/guilds', guild).pipe(
       catchError((err: any) => {

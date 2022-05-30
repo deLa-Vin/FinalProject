@@ -35,6 +35,7 @@ import { HubComponent } from './hub/hub.component';
 import { HubService } from './services/hub.service';
 import { ResourceService } from './services/resource.service';
 import { ResourceTypeService } from './services/resource-type.service';
+import { ProfileAccordianComponent } from './components/profile-accordian/profile-accordian.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { ResourceTypeService } from './services/resource-type.service';
     ResourceComponent,
     ResourceTypeComponent,
     HubComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProfileAccordianComponent
   ],
   imports: [
     CommonModule,

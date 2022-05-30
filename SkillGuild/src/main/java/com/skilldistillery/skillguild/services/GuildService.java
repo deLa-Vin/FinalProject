@@ -7,6 +7,7 @@ import com.skilldistillery.skillguild.entities.Guild;
 public interface GuildService {
 	
 	List<Guild> index();
+	List<Guild> memberOfGuild(String username);
 	Guild show(int gid);
 	Guild create(int uid, Guild guild);
 	Guild update(int gid, Guild guild);

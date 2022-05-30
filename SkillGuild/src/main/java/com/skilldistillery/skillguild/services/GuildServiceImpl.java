@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.skilldistillery.skillguild.entities.Guild;
+import com.skilldistillery.skillguild.entities.Member;
+import com.skilldistillery.skillguild.entities.MemberId;
 import com.skilldistillery.skillguild.entities.User;
 import com.skilldistillery.skillguild.repositories.GuildRepository;
+import com.skilldistillery.skillguild.repositories.MemberRepository;
 import com.skilldistillery.skillguild.repositories.UserRepository;
 
 @Service
@@ -19,6 +22,9 @@ public class GuildServiceImpl implements GuildService {
 
 	@Autowired
 	private UserRepository userRepo;
+	
+	@Autowired
+	private MemberRepository memberRepo;
 
 	@Override
 	public List<Guild> index() {
@@ -38,13 +44,43 @@ public class GuildServiceImpl implements GuildService {
 	}
 
 	@Override
-	public Guild create(int uid, Guild guild) {
+	public List<Guild> memberOfGuild(String username) {
 
+		User user = userRepo.findByUsername(username);
+
+		if (user != null) {
+
+			List<Guild> guildList = guildRepo.findByMembers_User(user);
+			if (guildList != null) {
+				return guildList;
+			}
+		}
+
+		return null;
+	}
+
+	@Override
+	public Guild create(int uid, Guild guild) {
+		
 		Optional<User> op = userRepo.findById(uid);
 		if (op.isPresent()) {
 			User user = op.get();
 			guild.setUserCreatedBy(user);
-			return guildRepo.saveAndFlush(guild);
+			
+			guildRepo.saveAndFlush(guild);
+			
+			MemberId memberId = new MemberId(guild.getId(), uid);
+			
+			Member member = new Member();
+			member.setId(memberId);
+			member.setGuild(guild);
+			member.setUser(user);
+			member.setApprovedBy(uid);
+			member.setModerator(true);
+			
+			memberRepo.save(member);
+			
+			return guild;
 		}
 
 		return null;
