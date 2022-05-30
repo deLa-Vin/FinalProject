@@ -5,12 +5,14 @@
   </div>
   <div class="modal-body">
     <form class="form-control">
+        <div class="form-group form-floating mb-3">
+          <input ngbAutofocus type="username" class="form-control" placeholder="Enter a username" name="username"
+            [(ngModel)]="loginUser.username">
+            <label>Username</label>
+        </div>
       <div class="form-group form-floating mb-3">
-        <input ngbAutofocus type="username" class="form-control" placeholder="Enter a username" name="username" [(ngModel)]="loginUser.username">
-        <label>Username</label>
-      </div>
-      <div class="form-group form-floating mb-3">
-        <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="loginUser.password">
+        <input type="password" class="form-control" placeholder="Password" name="password"
+          [(ngModel)]="loginUser.password">
         <label>Password</label>
       </div>
       <div class="form-group form-check mb-3">
@@ -25,19 +27,22 @@
     </form>
   </div>
   <div class="modal-footer">
-    <a class="mx-auto" (click)="loginModal.dismiss('cross-click')" (click)="openRegistration(registrationContent)">Need an account? Register here.</a>
+    <a class="mx-auto" (click)="loginModal.dismiss('cross-click')" (click)="openRegistration(registrationContent)">Need
+      an account? Register here.</a>
   </div>
 </ng-template>
 
 <ng-template #registrationContent let-registrationModal>
   <div class="modal-header">
     <h2 class="modal-title text-primary mb-auto" id="modal-basic-title">Register Now</h2>
-    <button type="button" class="btn-close" aria-label="Close" (click)="registrationModal.dismiss('Cross click')"></button>
+    <button type="button" class="btn-close" aria-label="Close"
+      (click)="registrationModal.dismiss('Cross click')"></button>
   </div>
   <div class="modal-body">
     <form class="form-control">
       <div class="form-group form-floating mb-3">
-        <input ngbAutofocus type="username" class="form-control" placeholder="Enter a username" name="username" [(ngModel)]="newUser.username">
+        <input ngbAutofocus type="username" class="form-control" placeholder="Enter a username" name="username"
+          [(ngModel)]="newUser.username">
         <label>Username</label>
         <span class="hint alert-success">Enter a username</span>
       </div>
@@ -47,7 +52,8 @@
         <span class="hint alert-success">Enter a valid email</span>
       </div>
       <div class="form-group form-floating mb-3">
-        <input type="password" class="form-control" placeholder="Password" name="password" [(ngModel)]="newUser.password">
+        <input type="password" class="form-control" placeholder="Password" name="password"
+          [(ngModel)]="newUser.password">
         <label>Password</label>
         <span class="hint alert-success">Password should be 8 or more characters </span>
       </div>
@@ -63,12 +69,11 @@
     </form>
   </div>
   <div class="modal-footer">
-    <a class="mx-auto" (click)="registrationModal.dismiss('cross-click')" (click)="openLogin(loginContent)">Already have an account? Sign-in here.</a>
+    <a class="mx-auto" (click)="registrationModal.dismiss('cross-click')" (click)="openLogin(loginContent)">Already have
+      an account? Sign-in here.</a>
   </div>
 </ng-template>
 
 <button #someVar class="btn btn-md btn-outline-primary" (click)="openLogin(loginContent)">&nbsp; Login &nbsp;</button>
 &nbsp;
 <button class="btn btn-md btn-outline-primary" (click)="openRegistration(registrationContent)">Register</button>
-
-

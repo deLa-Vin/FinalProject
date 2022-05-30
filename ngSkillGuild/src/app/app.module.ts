@@ -1,5 +1,6 @@
+import { ProfileComponent } from './components/profile/profile.component';
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';  
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -55,7 +56,8 @@ import { ResourceTypeService } from './services/resource-type.service';
     QuestionComponent,
     ResourceComponent,
     ResourceTypeComponent,
-    HubComponent
+    HubComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

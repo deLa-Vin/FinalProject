@@ -9,6 +9,8 @@ public interface UserService {
 	List<User> index();
 
 	User show(int uid, String username);
+	
+	User showProfile(String username);
 
 	boolean deleteUser(int userId);
 

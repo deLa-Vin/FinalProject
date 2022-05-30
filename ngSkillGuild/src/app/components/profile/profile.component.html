@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-4" style="max-width: 430px;">
+    <div class="card mx-auto">
+      <div class="card-body">
+
+        <div class="text-center"><img *ngIf="user.profileImgUrl; else elseBlock" class="rounded-circle" height="200px"
+            width="200px" src="{{user.profileImgUrl}}" alt=""></div>
+        <ng-template #elseBlock class="text-center">
+          <img class="rounded-circle" height="200px" width="200px" src="/assets/images/default_profile_picture.png"
+            alt="">
+        </ng-template>
+        <br>
+        <h5 class="card-title text-center">{{user.username}}</h5>
+        <hr>
+        <table>
+          <body>
+            <tr>
+              <td class="card-text"><strong>Name: </strong></td>
+              <td class=" card-text text-center">{{user.firstName}} {{user.lastName}}</td>
+            </tr>
+            <tr>
+              <td><strong>Email:</strong></td>
+              <td class=" card-text text-center">{{user.email}}</td>
+            </tr>
+            <tr>
+              <td style="width: 90px;"><strong>About Me:</strong></td>
+              <td class=" card-text text-center">{{user.aboutMe}}</td>
+            </tr>
+          </body>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="col" style="padding-left: 0px;">
+    <div class="card mx-auto">
+      <div class="card-body">
+        <app-guild></app-guild>
+
+      </div>
+    </div>
+  </div>
+</div>

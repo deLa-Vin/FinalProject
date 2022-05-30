@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import LoginRegistrationModalComponent from './login-registration-modal.component';
+import { LoginRegistrationModalComponent } from './login-registration-modal.component';
 
 describe('LoginRegistrationModalComponent', () => {
   let component: LoginRegistrationModalComponent;

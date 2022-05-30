@@ -68,7 +68,7 @@ export class LoginRegistrationModalComponent implements OnInit {
   login(user: User) {
     this.auth.login(user.username, user.password).subscribe({
       next: (loggedInUser) => {
-        this.router.navigateByUrl('/');
+        this.router.navigateByUrl('/profile');
       },
       error: (fail) => {
         console.error('LoginComponent.login(); login failed');

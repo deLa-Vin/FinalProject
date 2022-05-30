@@ -40,6 +40,15 @@ public class UserController {
 		}
 		return user;
 	}
+	
+	@GetMapping("users/profile")
+	private User getByCredentials(Principal principal, HttpServletRequest req, HttpServletResponse res) {
+		User user = userSvc.showProfile(principal.getName());
+		if (user == null) {
+			res.setStatus(404);
+		}
+		return user;
+	}
 
 	@DeleteMapping("users/{userId}")
 	public boolean deleteUser(@PathVariable Integer userId, HttpServletResponse res) {

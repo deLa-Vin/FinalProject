@@ -37,6 +37,11 @@ export class UserService {
     return this.http.get<User>(this.url + id, this.getHttpOptions()); //SECURE
   }
 
+  getProfile(): Observable<User> {
+    // return this.http.get<User>(this.url + id); //INSECURE
+    return this.http.get<User>(this.url + "profile", this.getHttpOptions()); //SECURE
+  }
+
   register(user: User) {
     return this.http.post<User>(environment.baseUrl + "register", user).pipe(
       catchError((err: any) => {

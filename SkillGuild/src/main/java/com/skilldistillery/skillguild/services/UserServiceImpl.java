@@ -22,22 +22,37 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public User show(int userId, String username) {
-		
+
 		Optional<User> userOpt = userRepo.findById(userId);
-		
+
 		boolean isAdmin = userRepo.findByUsername(username).getRole().equals("data_admin");
-		
+
 		System.err.println(userOpt.isPresent());
 
 		if (userOpt.isPresent()) {
 
 			User user = userOpt.get();
-			
+
 			if (user.getUsername().equals(username) || isAdmin) {
 
 				return user;
 
 			}
+
+		}
+
+		return null;
+
+	}
+
+	@Override
+	public User showProfile(String username) {
+
+		User user = userRepo.findByUsername(username);
+
+		if (user != null) {
+
+			return user;
 
 		}
 
