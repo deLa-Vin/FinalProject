@@ -28,6 +28,7 @@ public class Resource {
 	@Column(name = "resource_url")
 	private String resourceUrl;
 
+	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "resource_type_id")
 	private ResourceType resourceType;

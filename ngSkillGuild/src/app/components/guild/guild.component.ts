@@ -25,6 +25,8 @@ export class GuildComponent implements OnInit {
 
   isEditing = false;
 
+  editGuild: Guild | null = null;
+
   constructor(
     private guildSvc: GuildService,
     private fb: FormBuilder,
@@ -123,6 +125,28 @@ export class GuildComponent implements OnInit {
     this.createGuild(guild.createdByUser.id, guild);
   }
 
+  setEditGuild = () => {
+    this.editGuild = Object.assign({}, this.selected);
+  }
+
+  cancelEdit = () => {
+    this.editGuild = null;
+  }
+
+  updateResource = (guild: Guild) => {
+    this.guildSvc.update(guild).subscribe(
+      {
+        next: () => {
+          console.log("Updated guild successfully: " + guild.id);
+          this.selected = null;
+          this.editGuild = null;
+          this.displayAll();
+          this.getAllGuilds();
+        },
+        error: (err: any) => console.error('Error updating guild: ', err)
+      }
+    );
+  }
 
 
 }

@@ -1,7 +1,7 @@
 import { ResourceService } from './../../services/resource.service';
 import { Resource } from './../../models/resource';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -46,8 +46,8 @@ export class ResourceComponent implements OnInit {
     });
   }
 
-  createResource(resource: Resource): void {
-    this.resourceSvc.create(resource).subscribe({
+  createResource(rid: number, resource: Resource): void {
+    this.resourceSvc.create(rid, resource).subscribe({
       next: resource => {
         console.log("Created successfully: " + resource.id);
         this.resources.push(resource);
@@ -122,11 +122,11 @@ export class ResourceComponent implements OnInit {
 
   createFormInit(fb: FormBuilder) {
     this.createResourceForm = this.fb.group({
-      id: [0],
+      id: [100],
       title: [''],
       description: [''],
       resourceUrl: [''],
-      resourceTypeId: [0]
+      resourceTypeId: ['']
     });
     this.createResourceForm.updateValueAndValidity();
     this.isEditing = true;
@@ -142,8 +142,7 @@ export class ResourceComponent implements OnInit {
     }
     this.isEditing = false;
     console.log(resource);
-    this.createResource(resource);
-    console.log(resource)
+    this.createResource(resource.resourceTypeId, resource);
   }
 
 }

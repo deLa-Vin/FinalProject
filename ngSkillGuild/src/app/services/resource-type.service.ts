@@ -10,7 +10,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class ResourceTypeService {
 
-  private url = environment.baseUrl + 'v1/categories/';
+  private url = environment.baseUrl + 'v1/resourcetypes/';
 
   constructor(
     private http: HttpClient,

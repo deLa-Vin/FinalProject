@@ -26,6 +26,7 @@ export class ResourceService {
     };
     return options;
   }
+
   index(): Observable<Resource[]> {
     return this.http.get<Resource[]>(this.url);
   }
@@ -33,8 +34,10 @@ export class ResourceService {
   show(id: number): Observable<Resource> {
     return this.http.get<Resource>(this.url + id);
   }
-  create(resource: Resource) {
-    return this.http.post<Resource>(this.url, resource).pipe(
+
+  create(rid: number, newResource: Resource) {
+    console.log(newResource)
+    return this.http.post<Resource>(this.url + rid, newResource).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
@@ -60,7 +63,7 @@ export class ResourceService {
         console.log(err);
         return throwError(
           () => new Error(
-            'Category service update() error: ' + err
+            'Resource service update() error: ' + err
           )
         );
       })
