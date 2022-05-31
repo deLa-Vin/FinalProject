@@ -21,15 +21,9 @@
                     <div *ngFor="let guild of (guilds)">
                         <div class="col">
                             <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>{{guild.name}}</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">{{guild.name}}</text>
-                                </svg>
-
+                                <img src="{{guild.coverImg || this.defaultImage}}">
                                 <div class="card-body">
+                                    <h5 class="card-title">{{guild.name}}</h5>
                                     <p class="card-text">{{guild.description}}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
@@ -68,19 +62,15 @@
                     <div *ngFor="let content of (contents)">
                         <div class="col">
                             <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>{{ content.title }}</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">{{content.title}}</text>
-                                </svg>
+                                <img src="{{selectedGuild.coverImg || this.defaultImage}}">
                                 <div class="card-body">
+                                    <h5 class="card-title">{{content.title}}</h5>
                                     <p class="card-text">{{content.publishDate | date}}</p>
                                     <p class="card-text">{{content.description}}</p>
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <button (click)="selectContent(content.id)" type="button" class="btn btn-sm btn-outline-primary">View
+                                            <button (click)="selectContent(content.id)" type="button"
+                                                class="btn btn-sm btn-outline-primary">View
                                                 Details</button>
                                         </div>
                                         <small class="text-muted">4 attendees</small>
@@ -115,7 +105,7 @@
         <div class="album py-2 bg-light">
             <div class="container">
                 <button (click)="displayGuild()" class="btn btn-primary btn-sm mb-1">Back</button>
-                
+
                 <div *ngIf="attendees" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div *ngFor="let attendee of (attendees)">
                         <div class="col">
