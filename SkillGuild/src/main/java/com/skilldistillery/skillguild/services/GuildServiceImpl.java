@@ -139,7 +139,7 @@ public class GuildServiceImpl implements GuildService {
 	
 	@Override
 	public List<Member> getGuildMembers(int gid) {
-		return memberRepo.findByGuild_id();
+		return memberRepo.findByGuild_id(gid);
 	}
 
 }
