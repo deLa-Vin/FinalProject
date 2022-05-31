@@ -13,6 +13,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 public class Resource {
@@ -28,7 +29,7 @@ public class Resource {
 	@Column(name = "resource_url")
 	private String resourceUrl;
 
-	@JsonIgnore
+	@JsonProperty(value="resourceType") 
 	@ManyToOne
 	@JoinColumn(name = "resource_type_id")
 	private ResourceType resourceType;
