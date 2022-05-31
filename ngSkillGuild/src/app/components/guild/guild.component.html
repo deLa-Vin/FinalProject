@@ -9,7 +9,8 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Description</th>
-                <th>Public</th>
+                <!-- <th>Public</th> -->
+                <th>Public<i class="bi bi-unlock"></i>/&nbsp;&nbsp;&nbsp;Private<i class="bi bi-lock-fill"></i></th>
                 <th></th>
             </thead>
             <tbody>
@@ -17,7 +18,9 @@
                    <td>{{guild.id}}</td>
                     <td>{{guild.name}}</td>
                     <td>{{guild.description}}</td>
-                    <td>{{guild.isPublic}}</td>
+                    <!-- <td>{{guild.isPublic}}</td> -->
+                    <td *ngIf="guild.isPublic; else unlockIcon" class="text-center"><i class="bi bi-lock-fill" id="locks"></i></td>
+                    <ng-template #unlockIcon><td class="text-center"><i class="bi bi-unlock" id="locks"></i></td></ng-template>
                 </tr>
             </tbody>
         </table>
