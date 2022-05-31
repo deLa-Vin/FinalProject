@@ -60,22 +60,23 @@ public class GuildServiceImpl implements GuildService {
 	}
 
 	@Override
-	public Guild create(int uid, Guild guild) {
+	public Guild create(Guild guild, String username) {
 
-		Optional<User> op = userRepo.findById(uid);
-		if (op.isPresent()) {
-			User user = op.get();
+		User user = userRepo.findByUsername(username);
+		
+		if (user != null) {
+			
 			guild.setUserCreatedBy(user);
 
 			guildRepo.saveAndFlush(guild);
 
-			MemberId memberId = new MemberId(guild.getId(), uid);
+			MemberId memberId = new MemberId(guild.getId(), user.getId());
 
 			Member member = new Member();
 			member.setId(memberId);
 			member.setGuild(guild);
 			member.setUser(user);
-			member.setApprovedBy(uid);
+			member.setApprovedBy(user.getId());
 			member.setModerator(true);
 
 			memberRepo.save(member);

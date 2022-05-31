@@ -37,6 +37,7 @@ import { ResourceService } from './services/resource.service';
 import { ResourceTypeService } from './services/resource-type.service';
 import { ProfileAccordianComponent } from './components/profile-accordian/profile-accordian.component';
 import { EditProfileModalComponent } from './components/edit-profile-modal/edit-profile-modal.component';
+import { CreateGuildModalComponent } from './components/create-guild-modal/create-guild-modal.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +62,8 @@ import { EditProfileModalComponent } from './components/edit-profile-modal/edit-
     HubComponent,
     ProfileComponent,
     ProfileAccordianComponent,
-    EditProfileModalComponent
+    EditProfileModalComponent,
+    CreateGuildModalComponent
   ],
   imports: [
     CommonModule,

@@ -1,7 +1,8 @@
 <div class="container py-4">
     <div *ngIf="guilds && !createForm && !selected">
         <h3 class="m-2 display-6">Guilds</h3>
-        <button (click)="showCreateForm()" class="btn btn-success btn-lg px-4 m-1">New Guild</button>
+        <!-- <button (click)="showCreateForm()" class="btn btn-success btn-lg px-4 m-1">New Guild</button> -->
+        <app-create-guild-modal></app-create-guild-modal>
         <hr>
         <table class="table table-striped table-hover">
             <thead>

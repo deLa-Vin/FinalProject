@@ -53,6 +53,19 @@ export class GuildService {
     );
   }
 
+  createNewGuild(guild: Guild): Observable<Guild> {
+    return this.http.post<Guild>(this.url, guild, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Guild service create() error: ' + err
+          )
+        );
+      })
+    );
+  }
+
   delete(id: number) {
     return this.http.delete<boolean>(this.url + id).pipe(
       catchError((err: any) => {

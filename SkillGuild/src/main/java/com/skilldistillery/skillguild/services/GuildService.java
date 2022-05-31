@@ -9,7 +9,7 @@ public interface GuildService {
 	List<Guild> index();
 	List<Guild> memberOfGuild(String username);
 	Guild show(int gid);
-	Guild create(int uid, Guild guild);
+	Guild create(Guild guild, String username);
 	Guild update(int gid, Guild guild);
 	boolean delete(int gid);
 	boolean join(int gid, int uid);

@@ -1,0 +1,43 @@
+<ng-template #guildContent let-guildModal>
+  <div class="modal-header">
+    <h2 class="modal-title text-primary mb-auto" id="modal-basic-title">Create a new Guild</h2>
+    <button type="button" class="btn-close" aria-label="Close" (click)="guildModal.dismiss('Cross click')"></button>
+  </div>
+  <div class="modal-body">
+    <form class="form-control">
+      <div class="form-group form-floating mb-3">
+        <input ngbAutofocus type="text" class="form-control" placeholder="Guild Name" name="guildName"
+          [(ngModel)]="guild.name">
+        <label>Guild Name</label>
+      </div>
+      <div class="form-group form-floating mb-3">
+        <input type="text" class="form-control" placeholder="Description" name="description"
+          [(ngModel)]="guild.description">
+        <label>Description</label>
+      </div>
+      <div *ngIf="guild.isPublic; else isPrivate" class="form-group form-check form-switch mb-3">
+        <input type="checkbox" class="form-check-input" [value]="guild.isPublic" (click)="toggleIsPublic()">
+        <label class="form-check-label"><i class="bi bi-unlock"></i> Public</label>
+      </div>
+      <ng-template #isPrivate>
+        <div class="form-group form-check form-switch mb-3">
+          <input type="checkbox" class="form-check-input" role="switch" checked (click)="toggleIsPublic()">
+          <label class="form-check-label"><i class="bi bi-lock-fill"></i> Private</label>
+        </div>
+      </ng-template>
+      <div class="form-group form-floating mb-3">
+        <textarea class="form-control" placeholder="Membership Criteria" name="membershipCriteria" rows="4"
+          style="height: 100%;" [(ngModel)]="guild.membershipCriteria"></textarea>
+        <label>Membership Criteria</label>
+      </div>
+      <br>
+      <div class="d-grid">
+        <button type="button" class="btn btn-outline-primary col-4 mx-auto"
+          (click)="guildModal.close('Save click')">Submit</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<button class="btn btn-primary my-2" (click)="openCreateGuild(guildContent)">Create a guild <i
+    class="bi bi-plus-circle"></i></button>
