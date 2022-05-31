@@ -19,6 +19,7 @@ export class NavigationComponent implements OnInit {
   }
 
   isAdmin(): boolean {
+    console.log(this.auth.checkIsAdmin());
     return this.auth.checkIsAdmin();
   }
 }
