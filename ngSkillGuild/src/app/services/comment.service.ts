@@ -61,4 +61,9 @@ export class CommentService {
       })
     );
   }
+
+  showByContentId(cid: number): Observable<Comment[]> {
+    return this.http.get<Comment[]>(environment.baseUrl + 'v1/contents/' + cid + '/comments');
+  }
+
 }
