@@ -19,6 +19,8 @@ import { StatusesComponent } from './components/statuses/statuses.component';
 import { CategoryComponent } from './components/category/category.component';
 import { QuestionComponent } from './components/question/question.component';
 import { HubComponent } from './hub/hub.component';
+import { InteractionComponent } from './components/interaction/interaction.component';
+import { InteractionTypeComponent } from './components/interaction-type/interaction-type.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
@@ -27,6 +29,9 @@ const routes: Routes = [
   { path: 'user', component: UserComponent },
   { path: 'guild', component: GuildComponent },
   { path: 'guild/:id', component: HubComponent },
+  { path: 'interaction', component: InteractionComponent },
+  { path: 'interaction-type', component: InteractionTypeComponent },
+
   { path: 'register', component: RegisterComponent },
   { path: 'comment', component: CommentComponent },
   { path: 'footer', component: FooterComponent },

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
-import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { Content } from '../models/content';
+import { Comment } from '../models/comment';
 import { Guild } from '../models/guild';
 import { User } from '../models/user';
+import { CommentService } from '../services/comment.service';
 import { ContentService } from '../services/content.service';
 import { GuildService } from '../services/guild.service';
 import { UserService } from '../services/user.service';
@@ -30,10 +31,13 @@ export class HubComponent implements OnInit {
   myGuilds: Guild[] = [];
   memberOfGuild = false;
 
+  comments: Comment[] = [];
+
   constructor(
     private guildSvc: GuildService,
     private contentSvc: ContentService,
     private userSvc: UserService,
+    private commentSvc: CommentService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -156,6 +160,7 @@ export class HubComponent implements OnInit {
   selectContent(cid: number) {
     this.contentSvc.show(cid).subscribe(content => {
       this.selectedContent = content;
+      this.getContentComments(this.selectedContent.id);
     });
   }
 
@@ -177,6 +182,13 @@ export class HubComponent implements OnInit {
     // this.contentSvc.show(cid).subscribe(content => {
     //   this.selectedContent = content;
     // });
+  }
+
+  // Comments
+  getContentComments(cid: number) {
+    this.commentSvc.showByContentId(cid).subscribe(comments => {
+      this.comments = comments;
+    });
   }
 
 }
