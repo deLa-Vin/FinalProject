@@ -19,7 +19,7 @@
                     <td>{{guild.name}}</td>
                     <td>{{guild.description}}</td>
                     <!-- <td>{{guild.isPublic}}</td> -->
-                    <td *ngIf="guild.isPublic; else unlockIcon" class="text-center"><i class="bi bi-lock-fill" id="locks"></i></td>
+                    <td *ngIf="!guild.isPublic; else unlockIcon" class="text-center"><i class="bi bi-lock-fill" id="locks"></i></td>
                     <ng-template #unlockIcon><td class="text-center"><i class="bi bi-unlock" id="locks"></i></td></ng-template>
                 </tr>
             </tbody>

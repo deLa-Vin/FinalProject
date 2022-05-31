@@ -53,7 +53,7 @@ public class Guild {
 	private LocalDateTime lastUpdated;
 
 	@JsonIgnoreProperties({"guild"})
-	@OneToMany(mappedBy = "guild")
+	@OneToMany(mappedBy = "guild", cascade = { CascadeType.ALL })
 	private List<Content> contents;
 
 	@JsonIgnore

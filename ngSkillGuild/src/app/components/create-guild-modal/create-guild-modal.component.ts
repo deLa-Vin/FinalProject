@@ -10,6 +10,7 @@ import { Guild } from 'src/app/models/guild';
   styleUrls: ['./create-guild-modal.component.css'],
 })
 export class CreateGuildModalComponent implements OnInit {
+
   guild: Guild = new Guild();
 
   closeResult = '';
@@ -59,6 +60,7 @@ export class CreateGuildModalComponent implements OnInit {
   }
 
   createNewGuild = (guild: Guild) => {
+    console.log(guild);
     this.guildSvc.createNewGuild(guild).subscribe({
       next: () => {
         console.log('Created Guild successfully: ' + guild.id);

@@ -16,7 +16,7 @@
         <label>Description</label>
       </div>
       <div *ngIf="guild.isPublic; else isPrivate" class="form-group form-check form-switch mb-3">
-        <input type="checkbox" class="form-check-input" [value]="guild.isPublic" (click)="toggleIsPublic()">
+        <input type="checkbox" class="form-check-input" (click)="toggleIsPublic()">
         <label class="form-check-label"><i class="bi bi-unlock"></i> Public</label>
       </div>
       <ng-template #isPrivate>
