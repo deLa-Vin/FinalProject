@@ -65,7 +65,7 @@ export class UserService {
   }
 
   update(user: User) {
-    return this.http.put(this.url + `${user.id}`, user).pipe(
+    return this.http.put(this.url + `${user.id}`, user, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
