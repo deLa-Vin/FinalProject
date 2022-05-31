@@ -1,4 +1,4 @@
-<div class="p-5 mb-4 bg-light rounded-3"
+<!-- <div class="p-5 mb-4 bg-light rounded-3"
 style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
   <div class="container-fluid py-5">
     <h1 class="display-5 fw-bold contrastText">SkillGuild</h1>
@@ -7,16 +7,32 @@ style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg')
       <a [routerLink]="['/hub']" ><button class="btn btn-primary btn-lg my-2"
         type="button"><i class="bi bi-search"></i> Find a Guild</button></a>
   </div>
+</div> -->
+<div class="overlay container-fluid py-5">
+  <h1 class="hometext display-5 fw-bold contrastText">SkillGuild</h1>
+  <p class="hometext col-md-8 fs-4 contrastText">Create and join groups around areas of interest,<br>
+    sharpen and explore skills, and learn by teaching!</p>
+    <a [routerLink]="['/hub']" ><button class="btn btn-primary btn-lg my-2"
+      type="button"><i class="bi bi-search"></i> Find a Guild</button></a>
 </div>
+
+<ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+  <ng-template ngbSlide *ngFor="let image of images">
+    <div class="picsum-img-wrapper">
+      <img [src]="image" alt="Random slide" >
+    </div>
+  </ng-template>
+</ngb-carousel>
 
 <footer class="text-muted py-5">
   <div class="container">
-      <p class="float-end mb-1">
-          <!-- <a [routerLink]="['/guild']" class="btn btn-primary my-2">Create a guild</a> -->
-          <app-create-guild-modal></app-create-guild-modal>
-      </p>
-      <p class="mb-1">SkillGuild</p>
-      <p class="mb-0">Create and join groups around areas of interest,
+    <p class="float-end mb-1">
+      <!-- <a [routerLink]="['/guild']" class="btn btn-primary my-2">Create a guild</a> -->
+      <app-create-guild-modal></app-create-guild-modal>
+    </p>
+    <p class="mb-1">SkillGuild</p>
+    <p class="mb-0">Create and join groups around areas of interest,
           sharpen and explore skills, and learn by teaching!</p>
-  </div>
-</footer>
+        </div>
+      </footer>
+

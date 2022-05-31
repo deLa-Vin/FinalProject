@@ -1,0 +1,16 @@
+img {
+  max-height: 400px !important;
+  min-width: 100%;
+  max-width: 50%;
+  object-fit: cover;
+  object-position: center;
+}
+.overlay {
+  position:absolute;
+  z-index:12;
+  top:8%;
+  left:10%;
+  width:100%;
+
+}
+
