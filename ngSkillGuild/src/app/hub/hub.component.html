@@ -51,15 +51,14 @@
                     <p class="lead text-muted">{{selectedGuild.description}}</p>
                     <p>
                         <span *ngIf="user && this.memberOfGuild">
-                            <button
-                                class="btn btn-primary my-2">Welcome back!</button>
+                            <button class="btn btn-primary my-2">Welcome back!</button>
                         </span>
                         <span *ngIf="user && !this.memberOfGuild">
                             <button (click)="joinGuild(this.selectedGuild.id, this.user.id)"
                                 class="btn btn-primary my-2">Join</button>
                         </span>
                         <span *ngIf="!user">
-                            <a  [routerLink]="['/home']" class="btn btn-primary my-2">Register to join</a>
+                            <a [routerLink]="['/home']" class="btn btn-primary my-2">Register to join</a>
                         </span>
                     </p>
                 </div>
@@ -105,46 +104,99 @@
             <div class="row py-lg-5">
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">{{selectedContent.title}}</h1>
-                    <p class="lead text-muted">{{selectedContent.description}}</p>
-                    <p>
-                        <button (click)="attendContent(selectedContent.id)" class="btn btn-primary my-2">Attend</button>
-                    </p>
+                    <p class="lead">{{selectedContent.description}}</p>
+                    <p><button (click)="attendContent(selectedContent.id)" class="btn btn-primary my-2">Attend</button></p>
+                    <p class="lead text-muted">Presented by {{selectedContent.createdByUser.username}}</p>
                 </div>
             </div>
         </section>
         <div class="album py-2 bg-light">
             <div class="container">
-                <button (click)="displayGuild()" class="btn btn-primary btn-sm mb-1">Back</button>
+                <div class="row">
+                    <div class="col-1">
+                        <button (click)="displayGuild()" class="btn btn-primary btn-sm mb-1">Back</button>
+                    </div>
+                </div>
 
-                <div *ngIf="attendees" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                    <div *ngFor="let attendee of (attendees)">
-                        <div class="col">
-                            <div class="card shadow-sm">
-                                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                    xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
-                                    preserveAspectRatio="xMidYMid slice" focusable="false">
-                                    <title>{{ attendee.username }}</title>
-                                    <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                        fill="#eceeef" dy=".3em">{{attendee.username}}</text>
-                                </svg>
-
-                                <div class="card-body">
-                                    <p class="card-text">{{attendee.username}}</p>
-                                    <div class="d-flex justify-content-between align-items-center">
-                                        <div class="btn-group">
-                                            <button type="button" class="btn btn-sm btn-outline-primary">View</button>
+                <div class="row">
+                    <!-- Attendees -->
+                    <div class="col-8">
+                        <div *ngIf="attendees" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                            <div *ngFor="let attendee of attendees">
+                                <div class="col">
+                                    <div class="card shadow-sm">
+                                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                                            xmlns="http://www.w3.org/2000/svg" role="img"
+                                            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
+                                            focusable="false">
+                                            <title>{{ attendee.username }}</title>
+                                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
+                                                fill="#eceeef" dy=".3em">{{attendee.username}}</text>
+                                        </svg>
+    
+                                        <div class="card-body">
+                                            <p class="card-text">{{attendee.username}}</p>
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <div class="btn-group">
+                                                    <button type="button"
+                                                        class="btn btn-sm btn-outline-primary">View</button>
+                                                </div>
+                                                <small class="text-muted"></small>
+                                            </div>
                                         </div>
-                                        <small class="text-muted"></small>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <div *ngIf="attendees.length == 0">
+                            <br>
+                            <p>No attendees found for {{selectedContent.title}}.</p>
+                        </div>
+                    </div>
+                    <!-- Content Details-->
+                    <div class="col-4 align-self-end">
+                        <div class="list-group w-auto">
+                            <span class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                aria-current="true">
+                                <div class="d-flex gap-2 w-100 justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">Date and time</h6>
+                                        <p class="mb-0 opacity-75">{{selectedContent.presentationDate | date}}</p>
+                                    </div>
+                                    <small class="opacity-75 text-nowrap"><i class="bi bi-calendar-event-fill"></i></small>
+                                </div>
+                            </span>
+                            <span class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                aria-current="true">
+                                <div *ngIf="selectedContent.isPublic == true" class="d-flex gap-2 w-100 justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">Public</h6>
+                                        <p class="mb-0 opacity-75">Anyone can view this presentation.</p>
+                                    </div>
+                                    <small class="opacity-75 text-nowrap"><i class="bi bi-unlock-fill"></i></small>
+                                </div>
+                                <div *ngIf="selectedContent.isPublic == false" class="d-flex gap-2 w-100 justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">Private</h6>
+                                        <p class="mb-0 opacity-75">Only guild members can view this presentation.</p>
+                                    </div>
+                                    <small class="opacity-75 text-nowrap"><i class="bi bi-lock-fill"></i></small>
+                                </div>
+                            </span>
+                            <span class="list-group-item list-group-item-action d-flex gap-3 py-3"
+                                aria-current="true">
+                                <div class="d-flex gap-2 w-100 justify-content-between">
+                                    <div>
+                                        <h6 class="mb-0">About {{selectedGuild?.name}}</h6>
+                                        <p class="mb-0 opacity-75">{{selectedGuild?.description}}</p>
+                                    </div>
+                                    <small class="opacity-75 text-nowrap"><i class="bi bi-shield-fill"></i></small>
+                                </div>
+                            </span>
+                        </div>
                     </div>
                 </div>
-                <div *ngIf="attendees.length == 0">
-                    <br>
-                    <p>No attendees found for {{selectedContent.title}}.</p>
-                </div>
+
             </div>
         </div>
     </div>
