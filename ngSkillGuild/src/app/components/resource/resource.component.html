@@ -101,12 +101,12 @@
         </div>
         <br>
 
-        <label for="resourceTypeId" class="form-label"><strong>Resource-Type ID *</strong></label>
-        <input type='text' name="resourceTypeId" id="resourceTypeId" placeholder='1' class="form-control m-1" formControlQuestion="resourceTypeId" />
-        <div *ngIf="createResourceForm.controls['resourceTypeId'].invalid && (createResourceForm.controls['resourceTypeId'].touched)"
+        <label for="resourceType" class="form-label"><strong>Resource-Type ID *</strong></label>
+        <input type='text' name="resourceType" id="resourceType" placeholder='' class="form-control m-1" formControlQuestion="resourceType" />
+        <div *ngIf="createResourceForm.controls['resourceType'].invalid && (createResourceForm.controls['resourceType'].touched)"
           class="alert alert-danger">
-          <div *ngIf="createResourceForm.controls['resourceTypeId'].errors">
-              Content ID is required.
+          <div *ngIf="createResourceForm.controls['resourceType'].errors">
+              Resource Type is required.
           </div>
         </div>
 

@@ -126,7 +126,7 @@ export class ResourceComponent implements OnInit {
       title: [''],
       description: [''],
       resourceUrl: [''],
-      resourceTypeId: [0]
+      resourceType: ['']
     });
     this.createResourceForm.updateValueAndValidity();
     this.isEditing = true;
@@ -138,7 +138,7 @@ export class ResourceComponent implements OnInit {
       title: this.createResourceForm.get('title').value,
       description: this.createResourceForm.get('description').value,
       resourceUrl: this.createResourceForm.get('resourceUrl').value,
-      resourceTypeId: this.createResourceForm.get('resourceTypeId').value
+      resourceType: this.createResourceForm.get('resourceType').value
     }
     this.isEditing = false;
     console.log(resource);
