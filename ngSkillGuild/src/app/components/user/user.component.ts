@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from './../../services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/user';
@@ -32,7 +33,8 @@ export class UserComponent implements OnInit {
     private userSvc: UserService,
     private fb: FormBuilder,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {
     this.createFormInit(fb);
   }
@@ -107,7 +109,7 @@ export class UserComponent implements OnInit {
   }
 
   registerUser(user: User): void {
-    this.userSvc.register(user).subscribe({
+    this.auth.register(user).subscribe({
       next: user => {
         console.log("Created successfully: " + user.id);
         this.users.push(user);

@@ -49,13 +49,14 @@ export class AuthService {
     );
   }
 
-  register(user: User): Observable<User>  {
-    // Create POST request to register a new account
-    return this.http.post<User>(this.url + 'register', user).pipe(
+  register(user: User) {
+    return this.http.post<User>(environment.baseUrl + "register", user).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
-          () => new Error('AuthService.register(): error registering user.')
+          () => new Error(
+            'User service create() error: ' + err
+          )
         );
       })
     );

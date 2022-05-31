@@ -91,14 +91,12 @@ public class UserServiceImpl implements UserService {
 					result = user;
 					result.setId(uid);
 					
-					System.out.println("USER: " + user);
-
 					if (user.getPassword() == null || user.getPassword().equals("")) {
 
 						result.setPassword(userRepo.findById(uid).get().getPassword());
 
 					} else {
-
+						
 						result.setPassword(encoder.encode(user.getPassword()));
 
 					}

@@ -81,9 +81,18 @@ export class LoginRegistrationModalComponent implements OnInit {
 
   registerUser(newUser: User): void {
     console.log(newUser);
-    this.userSvc.register(newUser).subscribe({
-      next: (newUser) => {
+    this.auth.register(newUser).subscribe({
+      next: (registeredUser) => {
         console.log('Created successfully: ' + newUser.id);
+        this.auth.login(newUser.username, newUser.password).subscribe({
+          next: (loggedInUser) => {
+            this.router.navigateByUrl('/profile');
+          },
+          error: (fail) => {
+            console.error('LoginComponent.login(); login failed');
+            console.error(fail);
+          },
+        });
       },
       error: (err) => {
         console.error('Error creating content: ', err);
