@@ -21,6 +21,8 @@ export class HubComponent implements OnInit {
 
   attendees: User[] = [];
 
+  defaultImage: string = 'https://images.unsplash.com/3/doctype-hi-res.jpg';
+
   constructor(
     private guildSvc: GuildService,
     private contentSvc: ContentService,
