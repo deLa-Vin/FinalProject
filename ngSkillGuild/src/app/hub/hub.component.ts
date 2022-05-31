@@ -25,6 +25,8 @@ export class HubComponent implements OnInit {
   defaultImage: string = 'https://images.unsplash.com/3/doctype-hi-res.jpg';
 
   user: User = new User();
+  myGuilds: Guild[] = [];
+  memberOfGuild = false;
 
   constructor(
     private guildSvc: GuildService,
@@ -37,6 +39,7 @@ export class HubComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllGuilds();
+    this.getMyGuilds();
   }
 
   // Guilds
@@ -46,15 +49,23 @@ export class HubComponent implements OnInit {
     });
   }
 
+  getMyGuilds() {
+    this.guildSvc.memberOfGuilds().subscribe((data) => {
+      this.myGuilds = data;
+    });
+  }
+
   displayAllGuilds(): void {
     this.selectedGuild = null;
   }
 
   selectGuild(guild: Guild) {
+    this.memberOfGuild = false;
     this.contents = [];
     this.getGuildContents(guild.id);
     this.selectedGuild = guild;
     this.getUserProfile();
+    this.checkMembership(guild);
   }
 
   displayGuild() {
@@ -73,6 +84,18 @@ export class HubComponent implements OnInit {
         }
       })
     }
+  }
+
+  checkMembership(guild: Guild) {
+    this.myGuilds.map(current => {
+      if (current.id === guild.id) {
+        console.log("Member: " + true);
+        this.memberOfGuild = true;
+        return true;
+      }
+      console.log("Member: " + false);
+      return false;
+    });
   }
 
   // Content 

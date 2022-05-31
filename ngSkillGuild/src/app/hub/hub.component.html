@@ -50,7 +50,11 @@
                     <h1 class="fw-light">{{selectedGuild.name}}</h1>
                     <p class="lead text-muted">{{selectedGuild.description}}</p>
                     <p>
-                        <span *ngIf="user">
+                        <span *ngIf="user && this.memberOfGuild">
+                            <button
+                                class="btn btn-primary my-2">Welome back!</button>
+                        </span>
+                        <span *ngIf="user && !this.memberOfGuild">
                             <button (click)="joinGuild(this.selectedGuild.id, this.user.id)"
                                 class="btn btn-primary my-2">Join</button>
                         </span>
