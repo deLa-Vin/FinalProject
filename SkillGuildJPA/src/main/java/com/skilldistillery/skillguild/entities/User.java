@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -71,6 +72,10 @@ public class User {
 	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Member> members;
+
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = {CascadeType.ALL})
+	private List<Comment> comments;
 
 	// methods
 	public User() {
@@ -202,6 +207,14 @@ public class User {
 
 	public void setGuildsCreated(List<Guild> guildsCreated) {
 		this.guildsCreated = guildsCreated;
+	}
+
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public void setComments(List<Comment> comments) {
+		this.comments = comments;
 	}
 
 	@Override
