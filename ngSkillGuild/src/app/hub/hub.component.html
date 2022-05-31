@@ -50,7 +50,13 @@
                     <h1 class="fw-light">{{selectedGuild.name}}</h1>
                     <p class="lead text-muted">{{selectedGuild.description}}</p>
                     <p>
-                        <a [routerLink]="['/guild']" class="btn btn-primary my-2">Join</a>
+                        <span *ngIf="user">
+                            <button (click)="joinGuild(this.selectedGuild.id, this.user.id)"
+                                class="btn btn-primary my-2">Join</button>
+                        </span>
+                        <span *ngIf="!user">
+                            <a  [routerLink]="['/home']" class="btn btn-primary my-2">Register to join</a>
+                        </span>
                     </p>
                 </div>
             </div>

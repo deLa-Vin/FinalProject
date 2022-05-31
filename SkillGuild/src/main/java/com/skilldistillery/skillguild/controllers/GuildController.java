@@ -60,7 +60,6 @@ public class GuildController {
 	@PostMapping("users/{uid}/guilds")
 	public Guild create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,
 			@RequestBody Guild guild) {
-
 		try {
 			guildServ.create(uid, guild);
 			res.setStatus(201);
@@ -71,9 +70,7 @@ public class GuildController {
 			res.setStatus(400);
 
 		}
-
 		return guild;
-
 	}
 
 	@PutMapping("guilds/{gid}")
@@ -112,6 +109,22 @@ public class GuildController {
 			e.printStackTrace();
 			res.setStatus(400);
 		}
-
 	}
+
+	@PostMapping("guilds/{gid}/{uid}")
+	public boolean joinGuild(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,
+			@PathVariable int gid) {
+		try {
+			guildServ.join(uid, gid);
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL().append("/").append(gid);
+			res.setHeader("Location", url.toString());
+			return true;
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+		}
+		return false;
+	}
+
 }

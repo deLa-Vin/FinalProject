@@ -62,6 +62,19 @@ export class GuildService {
     );
   }
 
+  join(gid: number, uid: number) {
+    return this.http.post<Guild>(this.url + gid + '/' + uid, null).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Guild service join() error: ' + err
+          )
+        );
+      })
+    );
+  }
+
 }
 
 
