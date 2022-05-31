@@ -175,7 +175,9 @@
                             <button class="btn btn-sm btn-outline-primary me-2"
                                 (click)="acc.toggle('toggle-2')" *ngIf="selectedContent.resources[0].resourceType?.id == 2">Video</button>
                             <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-2')" *ngIf="selectedContent.resources[0].resourceType?.id == 3">Blog</button>
+                                (click)="acc.toggle('toggle-3')" *ngIf="selectedContent.resources[0].resourceType?.id == 3">Blog</button>
+                            <button class="btn btn-sm btn-outline-primary me-2"
+                                (click)="acc.toggle('toggle-4')" *ngIf="selectedContent.resources[0].resourceType?.id == 4">Code</button>
                         </div>
                         <ngb-accordion #acc="ngbAccordion" class="my-2">
                             <ngb-panel id="toggle-1" title="Slides" *ngIf="selectedContent.resources[0].resourceType?.id == 1">
@@ -195,6 +197,14 @@
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel id="toggle-3" title="Blog" *ngIf="selectedContent.resources[0].resourceType?.id == 3">
+                                <ng-template ngbPanelContent>
+                                    <div>
+                                        <a href="{{ selectedContent.resources[0].resourceUrl }}"
+                                            target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
+                                    </div> 
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel id="toggle-4" title="Code" *ngIf="selectedContent.resources[0].resourceType?.id == 4">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
