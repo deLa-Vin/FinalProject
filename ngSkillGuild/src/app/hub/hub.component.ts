@@ -118,7 +118,6 @@ export class HubComponent implements OnInit {
         }
       })
     }
-
   }
 
   checkMembership(guild: Guild) {
@@ -174,6 +173,13 @@ export class HubComponent implements OnInit {
         console.log(err);
       }
     )
+  }
+
+  checkLogin(): boolean {
+    if (localStorage.getItem('credentials')) {
+      return true;
+    }
+    return false;
   }
 
   // Attendees
