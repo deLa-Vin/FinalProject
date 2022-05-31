@@ -22,7 +22,7 @@ public class GuildServiceImpl implements GuildService {
 
 	@Autowired
 	private UserRepository userRepo;
-	
+
 	@Autowired
 	private MemberRepository memberRepo;
 
@@ -61,25 +61,25 @@ public class GuildServiceImpl implements GuildService {
 
 	@Override
 	public Guild create(int uid, Guild guild) {
-		
+
 		Optional<User> op = userRepo.findById(uid);
 		if (op.isPresent()) {
 			User user = op.get();
 			guild.setUserCreatedBy(user);
-			
+
 			guildRepo.saveAndFlush(guild);
-			
+
 			MemberId memberId = new MemberId(guild.getId(), uid);
-			
+
 			Member member = new Member();
 			member.setId(memberId);
 			member.setGuild(guild);
 			member.setUser(user);
 			member.setApprovedBy(uid);
 			member.setModerator(true);
-			
+
 			memberRepo.save(member);
-			
+
 			return guild;
 		}
 
@@ -110,6 +110,28 @@ public class GuildServiceImpl implements GuildService {
 			op = guildRepo.findById(gid);
 			return !op.isPresent();
 
+		}
+		return false;
+	}
+
+	@Override
+	public boolean join(int gid, int uid) {
+		Optional<User> op = userRepo.findById(uid);
+		if (op.isPresent()) {
+			User user = op.get();
+			Optional<Guild> guildOp = guildRepo.findById(gid);
+			if (guildOp.isPresent()) {
+				Guild guild = guildOp.get();
+				MemberId memberId = new MemberId(guild.getId(), user.getId());
+				Member member = new Member();
+				member.setId(memberId);
+				member.setGuild(guild);
+				member.setUser(user);
+				member.setApprovedBy(uid);
+				member.setModerator(false);
+				memberRepo.save(member);
+				return true;
+			}
 		}
 		return false;
 	}

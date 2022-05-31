@@ -12,5 +12,6 @@ public interface GuildService {
 	Guild create(int uid, Guild guild);
 	Guild update(int gid, Guild guild);
 	boolean delete(int gid);
+	boolean join(int gid, int uid);
 
 }
