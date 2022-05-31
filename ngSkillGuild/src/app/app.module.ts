@@ -1,3 +1,5 @@
+import { InteractionTypeService } from './services/interaction-type.service';
+import { InteractionService } from './services/interaction.service';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -37,6 +39,8 @@ import { ResourceService } from './services/resource.service';
 import { ResourceTypeService } from './services/resource-type.service';
 import { ProfileAccordianComponent } from './components/profile-accordian/profile-accordian.component';
 import { EditProfileModalComponent } from './components/edit-profile-modal/edit-profile-modal.component';
+import { InteractionTypeComponent } from './components/interaction-type/interaction-type.component';
+import { InteractionComponent } from './components/interaction/interaction.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +65,9 @@ import { EditProfileModalComponent } from './components/edit-profile-modal/edit-
     HubComponent,
     ProfileComponent,
     ProfileAccordianComponent,
-    EditProfileModalComponent
+    EditProfileModalComponent,
+    InteractionTypeComponent,
+    InteractionComponent
   ],
   imports: [
     CommonModule,
@@ -81,6 +87,8 @@ import { EditProfileModalComponent } from './components/edit-profile-modal/edit-
     HubService,
     ResourceService,
     ResourceTypeService,
+    InteractionService,
+    InteractionTypeService,
     DatePipe
   ],
   bootstrap: [AppComponent]
