@@ -136,5 +136,10 @@ public class GuildServiceImpl implements GuildService {
 		}
 		return false;
 	}
+	
+	@Override
+	public List<Member> getGuildMembers(int gid) {
+		return memberRepo.findByGuild_id();
+	}
 
 }

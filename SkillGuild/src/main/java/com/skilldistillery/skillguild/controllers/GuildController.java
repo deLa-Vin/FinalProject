@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.skilldistillery.skillguild.entities.Guild;
+import com.skilldistillery.skillguild.entities.Member;
 import com.skilldistillery.skillguild.services.GuildService;
 
 @RestController
@@ -55,6 +56,18 @@ public class GuildController {
 		}
 
 		return guilds;
+	}
+	
+	@GetMapping("guilds/{gid}/members")
+	public List<Member> getGuildMembers(Principal principal, @PathVariable int gid, HttpServletRequest req, HttpServletResponse res) {
+		
+		List<Member> members = guildServ.getGuildMembers(gid);
+
+		if (members == null) {
+			res.setStatus(404);
+		}
+
+		return members;
 	}
 
 //	@PostMapping("users/{uid}/guilds")
