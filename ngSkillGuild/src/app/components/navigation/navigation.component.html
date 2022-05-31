@@ -41,13 +41,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/hub']"><i class="bi bi-grid-3x3-gap-fill"></i> Guilds </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/profile']"> <i class="bi bi-person-fill"></i> My Profile </a></li>
+          <li class="nav-item mx-3"><a class="nav-link" [routerLink]="['/guild']"><i class="bi bi-grid-3x3-gap-fill"></i> Find a Guild</a></li>
         </ul>
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
           <li class="nav-item" *ngIf="!loggedIn()">
             <app-login-registration-modal></app-login-registration-modal>
           </li>
+          <li class="nav-item mx-3" *ngIf="loggedIn()"><a class="nav-link" [routerLink]="['/profile']"> <i class="bi bi-person-fill"></i>My Profile </a></li>
           <li class="nav-item" *ngIf="loggedIn()">
             <app-logout></app-logout>
           </li>
