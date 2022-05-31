@@ -73,13 +73,43 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public User update(int uid, User user) {
-		Optional<User> op = userRepo.findById(uid);
-		if (op.isPresent()) {
+	public User updateAsAdmin(int uid, User user, String username) {
+
+		User requestingUser = userRepo.findByUsername(username);
+		
+		if (requestingUser != null) {
+
+			if (requestingUser.getRole().equals("data_admin")) {
+
+			Optional<User> op = userRepo.findById(uid);
 			User result = op.get();
-			result = user;
-			result.setId(uid);
-			return userRepo.saveAndFlush(result);
+			if (op.isPresent()) {
+				result = user;
+				result.setId(uid);
+			}
+				return userRepo.saveAndFlush(result);
+			}
+		}
+		return null;
+	}
+	
+	@Override
+	public User updateAsUser(User user, String username) {
+		
+		User requestingUser = userRepo.findByUsername(username);
+		
+		if (requestingUser != null) {
+			
+			if (requestingUser.getUsername().equals(username)) {
+				
+					requestingUser.setFirstName(user.getFirstName());
+					requestingUser.setLastName(user.getLastName());
+					requestingUser.setEmail(user.getEmail());
+					requestingUser.setProfileImgUrl(user.getProfileImgUrl());
+					requestingUser.setAboutMe(user.getAboutMe());
+					
+				return userRepo.saveAndFlush(requestingUser);
+			}
 		}
 		return null;
 	}
