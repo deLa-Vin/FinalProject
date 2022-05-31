@@ -74,8 +74,6 @@ export class AuthService {
   }
 
   checkIsAdmin() {
-    console.log(localStorage.getItem('role'));
-    console.log(this.generateBasicAuthCredentials('stillBetterThanStraightPlainText', 'data_admin'));
     if (localStorage.getItem('role') === this.generateBasicAuthCredentials('stillBetterThanStraightPlainText', 'data_admin')) {
       return true;
     }
