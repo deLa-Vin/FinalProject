@@ -76,7 +76,6 @@ export class GuildComponent implements OnInit {
         this.guilds.push(guild);
         this.newGuild = new Guild();
         this.toggleAllGuilds();
-        // this.reload();
       },
       error: (err) => {
         console.error('Error creating guild: ', err);

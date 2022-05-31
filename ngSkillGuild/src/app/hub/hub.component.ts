@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { ColdObservable } from 'rxjs/internal/testing/ColdObservable';
 import { Content } from '../models/content';
 import { Guild } from '../models/guild';
 import { User } from '../models/user';
@@ -16,6 +17,7 @@ export class HubComponent implements OnInit {
 
   guilds: Guild[] = [];
   selectedGuild: Guild | null = null;
+  guildId: number = 0;
 
   contents: Content[] = [];
   selectedContent: Content | null = null;
@@ -40,6 +42,26 @@ export class HubComponent implements OnInit {
   ngOnInit(): void {
     this.getAllGuilds();
     this.getMyGuilds();
+    this.checkRouteParams();
+  }
+
+  checkRouteParams() {
+    this.route.queryParams.subscribe(params => {
+      if (this.route.snapshot.paramMap.get('id')) {
+        this.guildId = Number(this.route.snapshot.paramMap.get('id'));
+        console.log("GUILD ID: " + this.guildId);
+      }
+    });
+
+    if (this.guildId) {
+      this.getGuildById(this.guildId);
+      console.log(this.selectedGuild);
+      this.getGuildContents(this.guildId);
+      this.getUserProfile();
+      // this.checkMembership(this.selectedGuild);
+      console.log(this.selectedGuild);
+      console.log("END");
+    }
   }
 
   // Guilds
@@ -47,6 +69,14 @@ export class HubComponent implements OnInit {
     this.guildSvc.index().subscribe(guilds => {
       this.guilds = guilds;
     });
+  }
+
+  getGuildById(id: number) {
+    this.guildSvc.show(id).subscribe(
+      guild => {
+        this.selectedGuild = guild;
+      }
+    )
   }
 
   getMyGuilds() {
@@ -84,6 +114,7 @@ export class HubComponent implements OnInit {
         }
       })
     }
+
   }
 
   checkMembership(guild: Guild) {

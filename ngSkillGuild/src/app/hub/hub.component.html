@@ -52,7 +52,7 @@
                     <p>
                         <span *ngIf="user && this.memberOfGuild">
                             <button
-                                class="btn btn-primary my-2">Welome back!</button>
+                                class="btn btn-primary my-2">Welcome back!</button>
                         </span>
                         <span *ngIf="user && !this.memberOfGuild">
                             <button (click)="joinGuild(this.selectedGuild.id, this.user.id)"

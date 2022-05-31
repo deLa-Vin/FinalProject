@@ -26,6 +26,7 @@ const routes: Routes = [
   { path: 'hub', component: HubComponent },
   { path: 'user', component: UserComponent },
   { path: 'guild', component: GuildComponent },
+  { path: 'guild/:id', component: HubComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'comment', component: CommentComponent },
   { path: 'footer', component: FooterComponent },
