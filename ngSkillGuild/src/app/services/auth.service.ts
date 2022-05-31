@@ -10,8 +10,6 @@ import { User } from '../models/user';
 })
 export class AuthService {
 
-  isAdmin: boolean = false;
-
   // Set port number to server's port
   // private baseUrl = 'http://localhost:8085/';
   // private url = this.baseUrl;
@@ -38,7 +36,8 @@ export class AuthService {
         // While credentials are stored in browser localStorage, we consider
         // ourselves logged in.
         localStorage.setItem('credentials', credentials);
-        this.isAdmin = (newUser.role === 'data_admin')
+        localStorage.setItem('role', this.generateBasicAuthCredentials('stillBetterThanStraightPlainText', newUser.role));
+        // this.isAdmin = (newUser.role === 'data_admin')
         return newUser;
       }),
       catchError((err: any) => {
@@ -63,8 +62,8 @@ export class AuthService {
   }
 
   logout(): void {
-    this.isAdmin = false;
     localStorage.removeItem('credentials');
+    localStorage.removeItem('role');
   }
 
   checkLogin(): boolean {
@@ -75,7 +74,10 @@ export class AuthService {
   }
 
   checkIsAdmin() {
-    return this.isAdmin;
+    if (localStorage.getItem('role') === this.generateBasicAuthCredentials('stillBetterThanStraightPlainText', 'data_admin')) {
+      return true;
+    }
+    return false;
   }
 
   generateBasicAuthCredentials(username: string, password: string): string {
