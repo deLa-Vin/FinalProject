@@ -10,7 +10,7 @@ import { AuthService } from './auth.service';
 })
 export class InteractionService {
 
-  private url = environment.baseUrl + 'v1/categories/';
+  private url = environment.baseUrl + 'v1/interactions/';
 
   constructor(
 
