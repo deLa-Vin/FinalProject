@@ -51,14 +51,14 @@
                     <p class="lead text-muted contrastText">{{selectedGuild.description}}</p>
                     <p>
                         <span *ngIf="user && this.memberOfGuild">
-                            <button class="btn btn-primary my-2">Welcome back!</button>
+                            <a [routerLink]="['/content']" class="btn btn-primary my-2">Create content</a>
                         </span>
-                        <span *ngIf="user && !this.memberOfGuild">
+                        <span *ngIf="!this.checkLogin()">
+                            <app-login-registration-modal></app-login-registration-modal>
+                        </span>
+                        <span *ngIf="this.checkLogin() && !this.memberOfGuild">
                             <button (click)="joinGuild(this.selectedGuild.id, this.user.id)"
                                 class="btn btn-primary my-2">Join</button>
-                        </span>
-                        <span *ngIf="!user">
-                            <a [routerLink]="['/home']" class="btn btn-primary my-2">Register to join</a>
                         </span>
                     </p>
                 </div>
@@ -74,7 +74,7 @@
                 <div class="row">
                     <!-- Content List -->
                     <div class="col-8">
-                        <h5 class="my-2">Content</h5>
+                        <h5 class="my-2">Available Content</h5>
                         <div *ngIf="contents" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                             <div *ngFor="let content of (contents)">
                                 <div class="col" (click)="selectContent(content.id)">
@@ -112,6 +112,8 @@
                                     <div>
                                         <h6 class="mb-0">Membership Criteria</h6>
                                         <p class="mb-0 opacity-75">{{ selectedGuild.membershipCriteria }}</p>
+                                        <p *ngIf="this.memberOfGuild" class="fw-semibold m-1 p-2 border border-success"><small><i class="bi bi-patch-check-fill"></i> You are a member</small></p>
+                                        <p *ngIf="!this.memberOfGuild" class="fw-semibold m-1 p-2 border border-danger"><small><i class="bi bi-patch-check"></i> Register to join</small></p>
                                     </div>
                                     <small class="opacity-75 text-nowrap"><i class="bi bi-person-bounding-box"></i></small>
                                 </div>
@@ -151,8 +153,7 @@
                 <div class="col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light contrastText">{{selectedContent.title}}</h1>
                     <p class="lead contrastText">{{selectedContent.description}}</p>
-                    <p><button (click)="attendContent(selectedContent.id)" class="btn btn-primary my-2">Attend</button>
-                    </p>
+                    <!-- <p><button (click)="attendContent(selectedContent.id)" class="btn btn-primary my-2">Attend</button></p> -->
                     <p class="lead text-muted contrastText">Presented by {{selectedContent.createdByUser.username}}</p>
                 </div>
             </div>
