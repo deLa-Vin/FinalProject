@@ -46,8 +46,8 @@ export class ResourceComponent implements OnInit {
     });
   }
 
-  createResource(rid: number, resource: Resource): void {
-    this.resourceSvc.create(rid, resource).subscribe({
+  createResource(resource: Resource): void {
+    this.resourceSvc.create(resource).subscribe({
       next: resource => {
         console.log("Created successfully: " + resource.id);
         this.resources.push(resource);
@@ -126,7 +126,7 @@ export class ResourceComponent implements OnInit {
       title: [''],
       description: [''],
       resourceUrl: [''],
-      resourceTypeId: ['']
+      resourceType: ['']
     });
     this.createResourceForm.updateValueAndValidity();
     this.isEditing = true;
@@ -138,11 +138,11 @@ export class ResourceComponent implements OnInit {
       title: this.createResourceForm.get('title').value,
       description: this.createResourceForm.get('description').value,
       resourceUrl: this.createResourceForm.get('resourceUrl').value,
-      resourceTypeId: this.createResourceForm.get('resourceTypeId').value
+      resourceType: this.createResourceForm.get('resourceType').value
     }
     this.isEditing = false;
     console.log(resource);
-    this.createResource(resource.resourceTypeId, resource);
+    this.createResource(resource);
   }
 
 }

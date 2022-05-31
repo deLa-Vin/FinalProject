@@ -35,9 +35,9 @@ export class ResourceService {
     return this.http.get<Resource>(this.url + id);
   }
 
-  create(rid: number, newResource: Resource) {
+  create(newResource: Resource) {
     console.log(newResource)
-    return this.http.post<Resource>(this.url + rid, newResource).pipe(
+    return this.http.post<Resource>(this.url, newResource).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(

@@ -67,6 +67,7 @@ export class EditProfileModalComponent implements OnInit {
     this.userSvc.editProfile(user).subscribe(
       {
       next: () => {
+        window.location.reload();
         console.log("Updated user successfully: " + user.id);
       },
       error: (err: any) => console.error('Error updating user: ', err)
