@@ -76,4 +76,17 @@ export class UserService {
       })
     )
   };
+
+  editProfile(user: User) {
+    return this.http.put(this.url + 'editprofile', user, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'User service update() error: ' + err
+          )
+        );
+      })
+    )
+  };
 }

@@ -62,11 +62,29 @@ public class UserController {
 	}
 
 	@PutMapping("users/{uid}")
-	public User updateTodo(
-			// Principal principal,
+	public User updateAsAdmin(
+			 Principal principal,
 			@PathVariable("uid") int uid, @RequestBody User user, HttpServletResponse res) {
 		try {
-			user = userSvc.update(uid, user);
+			
+			user = userSvc.updateAsAdmin(uid, user, principal.getName());
+			if (user == null) {
+				res.setStatus(404);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			user = null;
+		}
+		return user;
+	}
+	
+	@PutMapping("users/editprofile")
+	public User updateAsUser(Principal principal, @RequestBody User user, HttpServletResponse res) {
+		
+		try {
+			
+			user = userSvc.updateAsUser(user, principal.getName());
 			if (user == null) {
 				res.setStatus(404);
 			}

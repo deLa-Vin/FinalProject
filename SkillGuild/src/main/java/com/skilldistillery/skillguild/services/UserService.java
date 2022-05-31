@@ -14,6 +14,8 @@ public interface UserService {
 
 	boolean deleteUser(int userId);
 
-	User update(int uid, User user);
+	User updateAsAdmin(int uid, User user, String username);
+	
+	User updateAsUser(User user, String username);
 
 }
