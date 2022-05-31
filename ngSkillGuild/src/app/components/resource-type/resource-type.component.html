@@ -10,10 +10,10 @@
         <th>Description</th>
       </thead>
       <tbody>
-        <tr *ngFor="let category of (resourceTypes)" (click)="selected = this.category">
-          <td>{{category.id}}</td>
-          <td>{{category.name}}</td>
-          <td>{{category.description}}</td>
+        <tr *ngFor="let resourceType of (resourceTypes)" (click)="selected = this.resourceType">
+          <td>{{resourceType.id}}</td>
+          <td>{{resourceType.name}}</td>
+          <td>{{resourceType.description}}</td>
         </tr>
       </tbody>
     </table>
@@ -22,7 +22,7 @@
   <div *ngIf="selected && !editResourceType">
     <header class="pb-3 mb-4 border-bottom">
       <a href="/" class="d-flex align-items-center text-dark text-decoration-none"
-        [routerLink]="['/category']"><button (click)="displayAll()" class="btn btn-primary btn-sm m-2">Back</button></a>
+        [routerLink]="['/resourceType']"><button (click)="displayAll()" class="btn btn-primary btn-sm m-2">Back</button></a>
         <span class="fs-4">ResourceType</span>
     </header>
 
@@ -63,7 +63,7 @@
         <button *ngIf="!showAllResourceTypes" (click)="toggleAllResourceTypes()" class="btn btn-primary btn-lg px-4 m-1">All
           ResourceTypes</button>
       </header>
-      <p class="fs-5 col-md-8">Use this form to create an new category.</p>
+      <p class="fs-5 col-md-8">Use this form to create an new resourceType.</p>
 
       <form [formGroup]="createResourceTypeForm" (ngSubmit)="sendNewResourceType()" novalidate>
         <input type="hidden" value='100' formControlName="id">

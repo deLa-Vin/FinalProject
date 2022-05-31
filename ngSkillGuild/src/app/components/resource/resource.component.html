@@ -49,11 +49,12 @@
   <p><span class="badge bg-primary">{{editResource.id}}</span></p>
   <form>
       <label><Title></Title> </label>
-      <input type="text" title="title" [(ngModel)]="editResource.title" class="form-control" /><br>
+      <label>Title </label>
+      <input type="text" name="title" [(ngModel)]="editResource.title" class="form-control" /><br>
       <label>Description </label>
-      <input type="text" title="description" [(ngModel)]="editResource.description" class="form-control" /><br>
+      <input type="text" name="description" [(ngModel)]="editResource.description" class="form-control" /><br>
       <label>Resource URL </label>
-      <input type="text" title="resourceUrl" [(ngModel)]="editResource.resourceUrl" class="form-control" /><br>
+      <input type="text" name="resourceUrl" [(ngModel)]="editResource.resourceUrl" class="form-control" /><br>
 
       <button type="button" (click)="cancelEdit()" class="btn btn-danger m-2">Cancel</button>
       <button (click)="updateResource(editResource)" class="btn btn-success">Save</button>

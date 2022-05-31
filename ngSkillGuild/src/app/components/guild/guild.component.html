@@ -26,7 +26,7 @@
         </table>
     </div>
 
-    <div *ngIf="selected">
+    <div *ngIf="selected && !editGuild">
         <header class="pb-3 mb-4 border-bottom">
             <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
                 <a [routerLink]="['/guild']"><button (click)="displayAll()"
@@ -45,6 +45,7 @@
         <p>Created By: {{selected.createdByUser.id}}</p>
         <p>Created On: {{selected.createdOn}}</p>
         <p>Last Updated: {{selected.lastUpdated}}</p>
+        <button (click)="setEditGuild()" class="btn btn-info m-1">Edit</button>
         <button (click)="deleteGuild(selected.id)" class="btn btn-danger">Delete</button>
     </div>
     <div *ngIf="!guilds">
@@ -52,6 +53,30 @@
         <hr>
         <p>No guilds found</p>
     </div>
+</div>
+
+<div *ngIf="editGuild">
+  <p><span class="badge bg-primary">{{editGuild.id}}</span></p>
+  <form>
+      <label><Title></Title> </label>
+      <label>Name </label>
+      <input type="text" name="name" [(ngModel)]="editGuild.name" class="form-control" /><br>
+      <label>Description </label>
+      <input type="text" name="description" [(ngModel)]="editGuild.description" class="form-control" /><br>
+      <label>Is Public </label>
+      <input type="checkbox" name="isPublic" [(ngModel)]="editGuild.isPublic" class="m-2" /><br>
+      <label>Cover Image Url </label>
+      <input type="text" name="coverImg" [(ngModel)]="editGuild.coverImg" class="form-control" /><br>
+      <label>Membership Criteria</label>
+      <input type="text" name="membershipCriteria" [(ngModel)]="editGuild.membershipCriteria" class="form-control" /><br>
+      <label>Date Created On</label>
+      <input type="text" name="createdOn" [(ngModel)]="editGuild.createdOn" class="form-control" placeholder='2022-06-02'/><br>
+      <label>Last Updated</label>
+      <input type="text" name="lastUpdated" [(ngModel)]="editGuild.lastUpdated" class="form-control" placeholder='2022-06-02'/><br>
+
+      <button type="button" (click)="cancelEdit()" class="btn btn-danger m-2">Cancel</button>
+      <button (click)="updateResource(editGuild)" class="btn btn-success">Save</button>
+  </form>
 </div>
 
 <div *ngIf="createForm">

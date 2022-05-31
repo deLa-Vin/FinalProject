@@ -75,6 +75,19 @@ export class GuildService {
     );
   }
 
+  update(guild: Guild) {
+    return this.http.put(this.url + `${guild.id}`, guild).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Resource service update() error: ' + err
+          )
+        );
+      })
+    )
+  };
+
   join(gid: number, uid: number) {
     return this.http.post<Guild>(this.url + gid + '/' + uid, null).pipe(
       catchError((err: any) => {

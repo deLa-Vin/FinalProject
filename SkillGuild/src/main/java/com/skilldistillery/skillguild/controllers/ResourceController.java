@@ -44,27 +44,20 @@ public class ResourceController {
 		return resource;
 	}
 
-	@PostMapping("resourcetype/{rtid}/resources")
+	@PostMapping("resources/{rtid}")
 	public Resource create(HttpServletRequest req, HttpServletResponse res, @PathVariable int rtid,
-			@RequestBody Resource resource) {
+			@RequestBody Resource newResource) {
 
 		try {
-
-			if (resourceServ.create(rtid, resource) == null) {
-				res.setStatus(400);
-			} else {
-				res.setStatus(201);
-				StringBuffer url = req.getRequestURL().append("/").append(resource.getId());
-				res.setHeader("Location", url.toString());
-			}
+			resourceServ.create(rtid, newResource);
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL();
+			res.setHeader("Location", url.toString());
 		} catch (Exception e) {
 			e.printStackTrace();
 			res.setStatus(400);
-
 		}
-
-		return resource;
-
+		return newResource;
 	}
 
 	@DeleteMapping("resources/{rid}")

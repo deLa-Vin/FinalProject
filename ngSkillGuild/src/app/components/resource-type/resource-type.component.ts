@@ -124,7 +124,6 @@ export class ResourceTypeComponent implements OnInit {
       id: [0],
       name: [''],
       description: [''],
-      imgUrl: ['https://via.placeholder.com/150']
     });
     this.createResourceTypeForm.updateValueAndValidity();
     this.isEditing = true;

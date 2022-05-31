@@ -140,5 +140,6 @@ export class QuestionComponent implements OnInit {
     }
     this.isEditing = false;
     this.createQuestion(question.contentId, question);
+    console.log(question);
   }
 }
