@@ -30,4 +30,8 @@ export class ProfileComponent implements OnInit {
     )
   }
 
+  editProfile() {
+    console.log("Editing profile...");
+  }
+
 }

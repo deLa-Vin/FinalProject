@@ -1,21 +1,44 @@
 <nav class="navbar navbar-expand-lg bg-light">
-    <div class="container-fluid">
-      <a class="navbar-brand" [routerLink]="['/home']" >SkillGuild</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div *ngIf="((isAdmin())); else hasAccountNavBar" class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/home']">SkillGuild</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/guild']"> Guild </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/user']"> User </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/content']"> Content </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/comment']"> Comment </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/topic']"> Topic </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/statuses']"> Status </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/category']"> Category </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/question']"> Question </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/resource']"> Resource </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/resource-type']"> Resource Type </a></li>
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/profile']"> Profile </a></li>
+      </ul>
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="!loggedIn()">
+          <app-login-registration-modal></app-login-registration-modal>
+        </li>
+        <li class="nav-item" *ngIf="loggedIn()">
+          <app-logout></app-logout>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <ng-template #hasAccountNavBar>
+    <div *ngIf="(loggedIn()); else noAccountNavBar" class="container-fluid">
+      <a class="navbar-brand" [routerLink]="['/home']">SkillGuild</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/guild']"> Guild </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/user']"> User </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/content']"> Content </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/comment']"> Comment </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/topic']"> Topic </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/statuses']"> Status </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/category']"> Category </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/question']"> Question </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/resource']"> Resource </a></li>
-          <li class="nav-item"><a class="nav-link" [routerLink]="['/resource-type']"> Resource Type </a></li>
+          <li class="nav-item"><a class="nav-link" [routerLink]="['/guild']"> Guilds </a></li>
           <li class="nav-item"><a class="nav-link" [routerLink]="['/profile']"> Profile </a></li>
         </ul>
         <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
@@ -28,4 +51,26 @@
         </ul>
       </div>
     </div>
-  </nav>
+  </ng-template>
+
+  <ng-template #noAccountNavBar class="container-fluid">
+    <a class="navbar-brand" [routerLink]="['/home']">SkillGuild</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" [routerLink]="['/guild']"> Guild </a></li>
+      </ul>
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="!loggedIn()">
+          <app-login-registration-modal></app-login-registration-modal>
+        </li>
+        <li class="nav-item" *ngIf="loggedIn()">
+          <app-logout></app-logout>
+        </li>
+      </ul>
+    </div>
+  </ng-template>
+</nav>

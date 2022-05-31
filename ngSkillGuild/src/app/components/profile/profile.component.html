@@ -10,9 +10,18 @@
             alt="">
         </ng-template>
         <br>
-        <h5 class="card-title text-center">{{user.username}}</h5>
+        <div class="d-flex align-items-center">
+          <div class="ml-auto" style="width: 26px;">&nbsp;</div>
+          <div class="mx-auto">
+            <h5 style="margin: 0;">{{user.username}}</h5>
+          </div>
+          <div class="mr-auto">
+            <button class="btn btn-outline-secondary" id="editButton"><i class="bi bi-pen" (click)="editProfile()"></i></button>
+          </div>
+        </div>
         <hr>
         <table>
+
           <body>
             <tr>
               <td class="card-text"><strong>Name: </strong></td>

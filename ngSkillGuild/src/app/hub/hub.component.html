@@ -16,7 +16,7 @@
             </div>
         </section>
         <div class="album py-2 bg-light">
-            <div class="container">
+            <div class="container" style="padding: 0;">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div *ngFor="let guild of (guilds)">
                         <div class="col">
@@ -115,7 +115,7 @@
         <div class="album py-2 bg-light">
             <div class="container">
                 <button (click)="displayGuild()" class="btn btn-primary btn-sm mb-1">Back</button>
-                
+
                 <div *ngIf="attendees" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div *ngFor="let attendee of (attendees)">
                         <div class="col">

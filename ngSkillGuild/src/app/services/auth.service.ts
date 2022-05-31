@@ -1,3 +1,4 @@
+import { UserService } from './user.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap, catchError, throwError } from 'rxjs';
@@ -8,12 +9,17 @@ import { User } from '../models/user';
   providedIn: 'root'
 })
 export class AuthService {
+
+  isAdmin: boolean = false;
+
   // Set port number to server's port
   // private baseUrl = 'http://localhost:8085/';
   // private url = this.baseUrl;
   private url = environment.baseUrl;
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    ) {}
 
   login(username: string, password: string): Observable<User> {
     // Make credentials
@@ -32,6 +38,7 @@ export class AuthService {
         // While credentials are stored in browser localStorage, we consider
         // ourselves logged in.
         localStorage.setItem('credentials', credentials);
+        this.isAdmin = (newUser.role === 'data_admin')
         return newUser;
       }),
       catchError((err: any) => {
@@ -56,6 +63,7 @@ export class AuthService {
   }
 
   logout(): void {
+    this.isAdmin = false;
     localStorage.removeItem('credentials');
   }
 
@@ -64,6 +72,10 @@ export class AuthService {
       return true;
     }
     return false;
+  }
+
+  checkIsAdmin() {
+    return this.isAdmin;
   }
 
   generateBasicAuthCredentials(username: string, password: string): string {
