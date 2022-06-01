@@ -1,8 +1,10 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { GuildService } from 'src/app/services/guild.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Guild } from 'src/app/models/guild';
+import { User } from 'src/app/models/user';
 
 @Component({
   selector: 'app-create-guild-modal',
@@ -10,21 +12,36 @@ import { Guild } from 'src/app/models/guild';
   styleUrls: ['./create-guild-modal.component.css'],
 })
 export class CreateGuildModalComponent implements OnInit {
+  @ViewChild('openLog')
+  openLog!: ElementRef;
+
+  @ViewChild('openReg')
+  openReg!: ElementRef;
+
+  loginUser: User = new User();
 
   guild: Guild = new Guild();
+
+  newUser = new User();
 
   closeResult = '';
 
   constructor(
     private modalService: NgbModal,
     private guildSvc: GuildService,
-    private router: Router
+    private router: Router,
+    private auth: AuthService
   ) {}
 
   ngOnInit(): void {}
 
   toggleIsPublic() {
     this.guild.isPublic = !this.guild.isPublic;
+  }
+
+  loggedIn(): boolean {
+    console.log(this.auth.checkLogin());
+    return this.auth.checkLogin();
   }
 
   private getDismissReason(reason: any): string {
@@ -68,4 +85,81 @@ export class CreateGuildModalComponent implements OnInit {
       error: (err: any) => console.error('Error updating user: ', err),
     });
   };
+
+  openRegistration(content: any) {
+    this.modalService
+      .open(content, {
+        ariaLabelledBy: 'modal-basic-title',
+        windowClass: 'dark-modal',
+      })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+          this.registerUser(this.newUser);
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  registerUser(newUser: User): void {
+    console.log(newUser);
+    this.auth.register(newUser).subscribe({
+      next: (registeredUser) => {
+        console.log('Created successfully: ' + newUser.id);
+        this.auth.login(newUser.username, newUser.password).subscribe({
+          next: (loggedInUser) => {
+            this.router.navigateByUrl('/profile');
+          },
+          error: (fail) => {
+            console.error('LoginComponent.login(); login failed');
+            console.error(fail);
+          },
+        });
+      },
+      error: (err) => {
+        console.error('Error creating content: ', err);
+      },
+    });
+  }
+
+  openLogin(content: any) {
+    this.modalService
+      .open(content, {
+        ariaLabelledBy: 'modal-basic-title',
+        windowClass: 'dark-modal',
+      })
+      .result.then(
+        (result) => {
+          this.closeResult = `Closed with: ${result}`;
+          this.login(this.loginUser);
+        },
+        (reason) => {
+          this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+        }
+      );
+  }
+
+  login(user: User) {
+    this.auth.login(user.username, user.password).subscribe({
+      next: (loggedInUser) => {
+        this.router.navigateByUrl('/profile');
+      },
+      error: (fail) => {
+        console.error('LoginComponent.login(); login failed');
+        console.error(fail);
+      },
+    });
+
+    console.log(user);
+  }
+
+  openRegFunc() {
+    this.openReg.nativeElement.click();
+  }
+
+  openLogFunc() {
+    this.openReg.nativeElement.click();
+  }
 }

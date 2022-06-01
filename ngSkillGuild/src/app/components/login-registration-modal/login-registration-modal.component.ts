@@ -3,7 +3,6 @@ import { Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
-import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-login-registration-modal',
@@ -28,7 +27,6 @@ export class LoginRegistrationModalComponent implements OnInit {
     private modalService: NgbModal,
     private auth: AuthService,
     private router: Router,
-    private userSvc: UserService
   ) {}
 
   ngOnInit(): void {}
