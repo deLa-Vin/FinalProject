@@ -142,7 +142,6 @@ export class GuildComponent implements OnInit {
   }
 
   updateGuild = (guild: Guild) => {
-    console.log(guild);
     this.guildSvc.update(guild).subscribe(
       {
 
