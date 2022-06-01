@@ -7,10 +7,10 @@ img {
 }
 .overlay {
   position:absolute;
-  z-index:12;
+  z-index:1;
   top:8%;
   left:10%;
   width:100%;
-
 }
+
 

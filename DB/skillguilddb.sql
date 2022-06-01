@@ -523,9 +523,10 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (1, 'slides', 'Presentation slides');
+INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (1, 'slides', 'Slides for presenting');
 INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (2, 'video', 'Presentation video');
 INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (3, 'blog', 'Presentation blog');
+INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (4, 'code', 'Sample code ');
 
 COMMIT;
 
