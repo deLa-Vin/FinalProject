@@ -15,7 +15,7 @@ export class ProfileAccordianComponent implements OnInit {
   paginationGuilds: Guild[] = [];
   myContents: Content[] = [];
   paginationContents: Content[] = [];
-
+  contents: Content[] = [];
 
 
   key: number = 0;
@@ -25,9 +25,7 @@ export class ProfileAccordianComponent implements OnInit {
   constructor(
     private guildSvc: GuildService,
     private contentSvc: ContentService
-
     ) {}
-
 
   ngOnInit(): void {
     this.memberOfGuilds();
@@ -40,12 +38,12 @@ export class ProfileAccordianComponent implements OnInit {
     });
   }
 
-  // getUserContent () {
-  //   this.contentSvc.getUserContent().subscribe((contents)) => {
-  //     this.myContents = contents;
-  //     this.refreshContents();
-  //   }
-  // }
+  getUserContent (uid: number) {
+    this.contentSvc.showContentByUser(uid).subscribe((contents) => {
+      this.contents = contents;
+      this.refreshContents();
+    });
+  }
 
   refreshGuilds() {
     console.log(this.paginationGuilds);

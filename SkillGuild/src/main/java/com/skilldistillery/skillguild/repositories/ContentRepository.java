@@ -10,4 +10,8 @@ public interface ContentRepository extends JpaRepository<Content, Integer> {
 	
 	List<Content> findByGuild_id(int gid);
 
+	List<Content> findByUserCreatedContent(int uid);
+
+	
+
 }

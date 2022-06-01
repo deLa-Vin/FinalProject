@@ -11,6 +11,7 @@ export class ContentService {
 
   private url = environment.baseUrl + 'v1/contents/';
   private guildContentUrl = environment.baseUrl + 'v1/guilds/';
+  private userContentUrl = environment.baseUrl + 'v1/users/';
 
   constructor(
     private http: HttpClient
@@ -67,8 +68,9 @@ export class ContentService {
     return this.http.get<Content[]>(this.guildContentUrl + gid + '/contents');
   }
 
-  // showContentByUser(uid: number): Observable<Content[]> {
-  //   return this.http.get<Content[]>(this.guildContentUrl + uid + '/contents');
-  // }
+
+  showContentByUser(uid: number): Observable<Content[]> {
+    return this.http.get<Content[]>(this.userContentUrl + uid + '/contents');
+  }
 
 }
