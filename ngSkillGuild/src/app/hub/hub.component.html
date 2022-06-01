@@ -13,11 +13,11 @@
             </div>
         </section>
         </div>
-        <div class="album py-2">
+        <div class="album py-1">
             <div class="container" style="padding: 0;">
-                <div class="row">
+                <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <div *ngFor="let guild of (guilds)">
-                        <div class="col col-md-12 col-md-6 col-lg-4" (click)="selectGuild(this.guild)">
+                        <div class="col" (click)="selectGuild(this.guild)">
                             <div class="card shadow-sm">
                                 <img src="{{guild.coverImg || this.defaultImage}}">
                                 <div class="card-body">
