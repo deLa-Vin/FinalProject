@@ -67,12 +67,12 @@ export class HubComponent implements OnInit {
     if (this.gid) {
       this.shareUrl = this.url + "guild/" + this.gid + "/contents/" + this.selectedContent?.id;
       this.getGuildById(this.gid);
-      console.log(this.selectedGuild);
       this.getGuildContents(this.gid);
       this.getUserProfile();
+      // console.log(this.selectedGuild);
       // this.checkMembership(this.selectedGuild);
-      console.log(this.selectedGuild);
-      console.log("END");
+      // console.log(this.selectedGuild);
+      // console.log("END");
     }
   }
 
