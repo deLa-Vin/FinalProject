@@ -321,9 +321,9 @@
                         </div>
 
                         <!-- Comments -->
-                        <div class="container">
-                            <app-comment-modal [selectedContentId]="selectedContent.id" [shareUrl]="shareUrl"></app-comment-modal>
-                            <h6><i class="bi bi-chat-right-text-fill"></i>  Comments</h6>
+                        <div class="hstack gap-3 mt-4 mb-2">
+                            <span class="mt-2"><h6><i class="bi bi-chat-right-text-fill align-middle"></i>  Comments</h6></span>
+                            <app-comment-modal [selectedContentId]="selectedContent.id" class="align-middle ms-auto"></app-comment-modal>
                         </div>
                         <div *ngIf="comments" class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
                             <div *ngFor="let comment of comments"
