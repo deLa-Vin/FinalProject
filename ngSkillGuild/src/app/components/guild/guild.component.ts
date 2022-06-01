@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guild } from 'src/app/models/guild';
+import { AuthService } from 'src/app/services/auth.service';
 import { GuildService } from 'src/app/services/guild.service';
 
 @Component({
@@ -30,6 +31,7 @@ export class GuildComponent implements OnInit {
   constructor(
     private guildSvc: GuildService,
     private fb: FormBuilder,
+    private auth: AuthService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -38,6 +40,10 @@ export class GuildComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllGuilds();
+  }
+
+  isAdmin(): boolean {
+    return this.auth.checkIsAdmin();
   }
 
   getAllGuilds() {
