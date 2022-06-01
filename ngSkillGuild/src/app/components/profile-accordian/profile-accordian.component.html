@@ -9,7 +9,7 @@
             <th class="text-center"></th>
         </thead>
         <tbody>
-            <tr *ngFor="let guild of (paginationGuilds)">
+            <tr *ngFor="let guild of (paginationGuilds)" (click)="goToGuild(guild.id)">
                 <td>{{guild.name}}</td>
                 <td>{{guild.description}}</td>
                 <td *ngIf="guild.isPublic; else unlockIcon" class="text-center"><i class="bi bi-lock-fill" id="locks"></i></td>

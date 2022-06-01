@@ -72,4 +72,8 @@ export class ProfileAccordianComponent implements OnInit {
   goToContent(gid: number, cid: number) {
     this.router.navigateByUrl('/guild/' + gid + '/contents/' + cid);
   }
+
+  goToGuild(gid: number) {
+    this.router.navigateByUrl('/guild/' + gid);
+  }
 }
