@@ -357,7 +357,10 @@
                         </div>
 
                         <!-- Comments -->
-                        <h6 class="mt-3">Comments</h6>
+                        <div class="container">
+                            <app-comment-modal [selectedContentId]="selectedContent.id"></app-comment-modal>
+                            <h6><i class="bi bi-chat-right-text-fill"></i>  Comments</h6>
+                        </div>
                         <div *ngIf="comments" class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
                             <div *ngFor="let comment of comments"
                                 class="list-group list-group-flush border-bottom scrollarea">
