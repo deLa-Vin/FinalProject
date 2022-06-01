@@ -1,4 +1,4 @@
-<div *ngIf="!selectContent" class="container py-4">
+<div *ngIf="isAdmin()" class="container py-4">
     <div *ngIf="contents && !createForm && !selected">
         <h3 class="m-2 display-6">Content</h3>
         <button (click)="showCreateForm()" class="btn btn-success btn-lg px-4 m-1">New Content</button>
@@ -221,7 +221,7 @@
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
-                                    </div>         
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel id="toggle-2" title="Video" *ngIf="selectedContent.resources[0].resourceType?.id == 2">
@@ -231,7 +231,7 @@
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
-                                    </div> 
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel id="toggle-3" title="Blog" *ngIf="selectedContent.resources[0].resourceType?.id == 3">
@@ -241,7 +241,7 @@
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
-                                    </div> 
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel id="toggle-4" title="Code" *ngIf="selectedContent.resources[0].resourceType?.id == 4">
@@ -251,7 +251,7 @@
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
-                                    </div> 
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                         </ngb-accordion>
@@ -265,21 +265,21 @@
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-semibold">{{ questions[0].correctAnswer }}</p>
-                                    </div>         
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel *ngIf="questions[1]" id="toggle-2" title="{{ questions[1].question }}">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-semibold">{{ questions[1].correctAnswer }}</p>
-                                    </div>         
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel *ngIf="questions[2]" id="toggle-3" title="{{ questions[2].question }}">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-semibold">{{ questions[2].correctAnswer }}</p>
-                                    </div>         
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                         </ngb-accordion>

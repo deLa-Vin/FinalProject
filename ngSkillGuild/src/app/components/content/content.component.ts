@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
@@ -58,9 +59,14 @@ export class ContentComponent implements OnInit {
     private commentSvc: CommentService,
     private questionSvc: QuestionService,
     private userSvc: UserService,
-    private guildSvc: GuildService
-  ) { 
+    private guildSvc: GuildService,
+    private auth: AuthService
+  ) {
     this.createFormInit(fb);
+  }
+
+  isAdmin(): boolean {
+    return this.auth.checkIsAdmin();
   }
 
   ngOnInit(): void {
@@ -72,11 +78,11 @@ export class ContentComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.route.snapshot.paramMap.get('gid')) {
         this.gid = Number(this.route.snapshot.paramMap.get('gid'));
-        console.log("GUILD ID: " + this.gid); // 
+        console.log("GUILD ID: " + this.gid); //
       }
       if (this.route.snapshot.paramMap.get('cid')) {
         this.cid = Number(this.route.snapshot.paramMap.get('cid'));
-        console.log("CONTENT ID: " + this.gid); // 
+        console.log("CONTENT ID: " + this.gid); //
       }
     });
 
@@ -222,7 +228,7 @@ export class ContentComponent implements OnInit {
     );
   }
 
-  // Direct access to content 
+  // Direct access to content
   selectContent(cid: number) {
     this.contentSvc.show(cid).subscribe(content => {
       this.selectedContent = content;
@@ -237,7 +243,7 @@ export class ContentComponent implements OnInit {
         this.questions = questions;
       });
     }
-  
+
     // Comments
     getContentComments(cid: number) {
       this.commentSvc.showByContentId(cid).subscribe(comments => {
