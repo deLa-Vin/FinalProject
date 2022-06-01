@@ -407,7 +407,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (1, 2, 'Frontend Development', 'We share content on fundamentals and advanced frontend development', 0, 'https://images.unsplash.com/3/doctype-hi-res.jpg', 'Anyone with an interest in learning frontend development can join. We encourage publishing at least 2-3 times per month', '2022-05-25 12:30:00', '2022-05-26 12:30:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (1, 2, 'Code Brains', 'Learn by doing. Try a holistic approach to learning in which you study the theory and immediately put it into practice by building working applications.', 0, 'https://images.unsplash.com/photo-1575089976121-8ed7b2a54265', 'Anyone with an interest in learning frontend development can join. We encourage publishing 2 to 3 times per month.', '2022-05-25 12:30:00', '2022-05-26 12:30:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (2, 3, 'Tech in Motion', 'Tech in Motion is a tech event series where thought leaders come together and share ideas. This is a place where enthusiasts can learn from professionals and inspire one another.', 1, 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40', 'Open to all', '2022-04-01 11:00:00', '2022-04-15 12:00:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (3, 3, 'General Assembly ', 'Start building responsive websites with HTML, CSS, and JavaScript — a versatile skill set with powerful applications in a variety of design, marketing, and other tech-adjacent roles', 1, 'https://images.unsplash.com/photo-1558403194-611308249627', 'No experience required, open to anyone who wants to learn about FE development', '2022-04-10 9:00:00', '2022-04-15 12:00:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (4, 5, 'Life Hacker', 'With so many cameras available, figuring out how all the specifications and options translate into your everyday use is complicated.', 1, 'https://images.unsplash.com/photo-1516961642265-531546e84af2', 'Geared to novices with basic camera knowledge, members are encouraged to keep an active profile and share their work', '2022-05-01 6:30:00', '2022-05-01 6:30:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (5, 2, 'Fader Pro', 'Learn Ableton Live by watching how our globally-successful artists and producers take this incredible Digital Audio Workstation (DAW) utilise it to the full to create their hit tracks.', 0, 'https://images.unsplash.com/photo-1593697820910-a2b68670c1e1', 'Must be a member of the Fader Pro community ', '2022-05-15 10:00:00', '2022-05-25 12:00:00');
 
 COMMIT;
 
@@ -417,9 +421,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (1, 'Web Development', 'Web Development', 'Image url: https://images.unsplash.com/photo-1490109875367-0dbd3c96fa1c');
-INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (2, 'Product Management', 'Product Management', NULL);
-INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (3, 'Data Engineering', 'Data Engineering', NULL);
+INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (1, 'Web Development', 'Web Development', 'https://images.unsplash.com/photo-1549082984-1323b94df9a6');
+INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (2, 'Product Management', 'Product Management', 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4');
+INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (3, 'Data Engineering', 'Data Engineering', 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0');
+INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (4, 'Photography', 'Photography', 'https://images.unsplash.com/photo-1520390138845-fd2d229dd553?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80');
+INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (5, 'Music Production', 'Music Production', 'https://images.unsplash.com/photo-1629834790224-7c0bd37f5d39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80');
 
 COMMIT;
 
@@ -429,9 +435,13 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (1, 'Frontend', 'Angular specific', 1);
-INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (2, 'Backend', 'Java basics', 1);
-INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (3, 'Product', 'Final product', 0);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (1, 'Frontend Web Development', 'Web development frontend', 1);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (2, 'Backend Web Development', 'Web development backend', 1);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (3, 'Product Development', 'All aspects of product development', 0);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (4, 'Data Engineering', 'Building systems that make sense of data', 1);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (5, 'Career Development', 'Maximizing developer growth and productivity', 0);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (6, 'Photography Composition', 'Getting the most out of our cameras', 0);
+INSERT INTO `topic` (`id`, `name`, `description`, `is_tech`) VALUES (7, 'Music Production Workflow', 'Ableton focoused lessons regarding workflow tips and techniques', 0);
 
 COMMIT;
 
@@ -453,7 +463,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (1, 1, 2, 2, 'Angular Fundamentals', 'Overview of Angular application architecture essentials', '2022-05-25 12:30:00', 0, 0, '2022-05-25 12:30:00', 10, '2022-05-26 12:30:00');
+INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (1, 1, 2, 2, 'Angular Fundamentals', 'Overview of Angular application architecture essentials', '2022-05-25 12:30:00', 0, 0, '2022-05-25 12:30:00', 60, '2022-05-26 12:30:00');
+INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (2, 2, 3, 3, 'Advanced Angular', 'Introduces topics related to advanced usage of the Angular framework.', '2022-06-01 12:30:00', 0, 0, '2022-06-01 12:30:00', 30, '2022-06-06 12:30:00');
+INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (3, 3, 3, 3, 'HTML and CSS fundamentals', 'Introduction to two cornerstones of the web world- CSS and HTML', '2022-06-01 12:00:00', 1, 1, '2022-06-03 12:00:00', 90, '2022-06-10 12:00:00');
+INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (4, 4, 5, 2, 'Photo Composition For Novices', 'A well-composed photograph is really a matter of opinion, but there are a few tricks that tend to result in better pictures. That\'s what we take a look at in this lesson.', '2022-05-17 7:10:00', 1, 1, '2022-05-17 7:10:00', 90, '2022-06-15 9:00:00');
+INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (5, 5, 2, 1, 'Ableton Workflow', 'Marc takes you through his entire production process from top to bottom', '2022-05-12 4:46:00', 1, 0, '2022-06-02 10:00:00', 120, '2022-07-01 7:00:00');
 
 COMMIT;
 
@@ -504,6 +518,10 @@ COMMIT;
 START TRANSACTION;
 USE `skillguilddb`;
 INSERT INTO `member` (`guild_id`, `user_id`, `approved_by`, `moderator`, `created_on`) VALUES (1, 2, 1, 2, '2022-05-25 12:30:00');
+INSERT INTO `member` (`guild_id`, `user_id`, `approved_by`, `moderator`, `created_on`) VALUES (2, 3, 1, 3, '2022-05-29 12:00:00');
+INSERT INTO `member` (`guild_id`, `user_id`, `approved_by`, `moderator`, `created_on`) VALUES (3, 2, 4, 4, '2022-05-20 7:15:00');
+INSERT INTO `member` (`guild_id`, `user_id`, `approved_by`, `moderator`, `created_on`) VALUES (4, 5, 4, 4, '2022-04-28 5:15:00');
+INSERT INTO `member` (`guild_id`, `user_id`, `approved_by`, `moderator`, `created_on`) VALUES (5, 4, 5, 5, '2022-05-01 8:15:00');
 
 COMMIT;
 
@@ -527,6 +545,7 @@ INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (1, 'slides', '
 INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (2, 'video', 'Presentation video');
 INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (3, 'blog', 'Presentation blog');
 INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (4, 'code', 'Sample code ');
+INSERT INTO `resource_type` (`id`, `name`, `description`) VALUES (5, 'external link', 'URL');
 
 COMMIT;
 
@@ -536,7 +555,11 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `resource` (`id`, `resource_type_id`, `title`, `description`, `resource_url`) VALUES (1, 1, 'Angular fundementals ', 'Essentials of Angular', 'https://docs.google.com/presentation/d/1XXJrCPqYbSV2cdk8z8rBNjmMe2sBGjIT6Eil0a3l56I/edit?usp=sharing');
+INSERT INTO `resource` (`id`, `resource_type_id`, `title`, `description`, `resource_url`) VALUES (1, 1, 'Angular Fundamentals ', 'Essentials of Angular', 'https://docs.google.com/presentation/d/1XXJrCPqYbSV2cdk8z8rBNjmMe2sBGjIT6Eil0a3l56I/edit?usp=sharing');
+INSERT INTO `resource` (`id`, `resource_type_id`, `title`, `description`, `resource_url`) VALUES (2, 4, 'Passing data between components', '@Input and @Output decorators can be used to pass data between parent and child components', 'https://gist.github.com/acary/8ff5ed6f08797023bcad2ec130679e01');
+INSERT INTO `resource` (`id`, `resource_type_id`, `title`, `description`, `resource_url`) VALUES (3, 5, 'Ableton Workflow', 'Ableton Live workflow resource', 'https://www.ableton.com/en/live/learn-live/workflows/');
+INSERT INTO `resource` (`id`, `resource_type_id`, `title`, `description`, `resource_url`) VALUES (4, 2, 'Angular 13 Crash Course', 'Get up to speed with the changes of Angular 13', 'https://www.youtube.com/watch?v=PUxNiC6Qye4');
+INSERT INTO `resource` (`id`, `resource_type_id`, `title`, `description`, `resource_url`) VALUES (5, 2, 'Angular Tutorial for Beginners: Learn Angular & TypeScript', 'Angular tutorial for beginners: Learn Angular & TypeScript from scratch. ', 'https://www.youtube.com/watch?v=k5E2AVpwsko&t');
 
 COMMIT;
 
@@ -556,7 +579,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `skillguilddb`;
-INSERT INTO `question` (`id`, `content_id`, `question`, `correct_answer`) VALUES (1, 1, 'what does TS stand for?', 'TypeScript');
+INSERT INTO `question` (`id`, `content_id`, `question`, `correct_answer`) VALUES (1, 1, 'What does TS stand for?', 'TypeScript');
+INSERT INTO `question` (`id`, `content_id`, `question`, `correct_answer`) VALUES (2, 1, 'What is a Directive?', 'Class that adds additional behavior to elements');
+INSERT INTO `question` (`id`, `content_id`, `question`, `correct_answer`) VALUES (3, 1, 'What is a Module?', 'A place to group components, directives, services, and pipes');
+INSERT INTO `question` (`id`, `content_id`, `question`, `correct_answer`) VALUES (4, 2, 'How can data be passed between components?', '@Input and @Output decorators can be used to pass data between child and parent components');
+INSERT INTO `question` (`id`, `content_id`, `question`, `correct_answer`) VALUES (5, 4, 'What is the rule of thirds?', 'The rule of thirds is a composition guideline that places your subject in the left or right third of an image, leaving the other two thirds more open. While there are other forms of composition, the rule of thirds generally leads to compelling and well-composed shots.');
+INSERT INTO `question` (`id`, `content_id`, `question`, `correct_answer`) VALUES (6, 4, 'What is the best time of day for capturing well-composed photographs?', 'Genrally about an hour right after sunrise and an hour right before sunset is considered to be the best light for taking photos');
 
 COMMIT;
 
