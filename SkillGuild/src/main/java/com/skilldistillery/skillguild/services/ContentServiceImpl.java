@@ -45,6 +45,17 @@ public class ContentServiceImpl implements ContentService {
 
 		return null;
 	}
+	
+	@Override
+	public List<Content> userContents(String username) {
+
+		User user = userRepo.findByUsername(username);
+		if (user != null ) {
+			return contentRepo.findByUserCreatedContent_username(username);
+		}
+
+		return null;
+	}
 
 	@Override
 	public Content showGuildContent(int gid, int cid) {
@@ -123,6 +134,27 @@ public class ContentServiceImpl implements ContentService {
 	}
 
 	@Override
+	public Content showUserContent (int uid, int cid) {
+
+		Optional<User> userOp = userRepo.findById(uid);
+		if (userOp.isPresent()) {
+
+			Optional<Content> contentOp = contentRepo.findById(cid);
+			if (contentOp.isPresent()) {
+
+				List<Content> contentList = contentRepo.findByUserCreatedContent(uid);
+
+				if (contentList.contains(contentOp.get())) {
+					return contentOp.get();
+				}
+
+			}
+		}
+
+		return null;
+	}
+
+	@Override
 	public boolean delete(int cid) {
 
 		Optional<Content> op = contentRepo.findById(cid);
@@ -134,5 +166,6 @@ public class ContentServiceImpl implements ContentService {
 		}
 		return false;
 	}
+
 
 }

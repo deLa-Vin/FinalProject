@@ -19,4 +19,10 @@ public interface ContentService {
 	boolean delete(int cid);
 	
 	Content showGuildContent(int gid, int cid);
+
+	List<Content> userContents(String username);
+
+	Content showUserContent(int uid, int cid);
+	
+	
 }

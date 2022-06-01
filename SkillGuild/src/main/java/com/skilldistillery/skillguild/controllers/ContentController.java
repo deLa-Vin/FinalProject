@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -60,6 +61,17 @@ public class ContentController {
 		return contents;
 	}
 
+	@GetMapping("users/contents")
+	public List<Content> userContent(Principal principal, HttpServletRequest req, HttpServletResponse res) {
+
+		List<Content> contents = contentServ.userContents(principal.getName());
+
+		if (contents.isEmpty()) {
+			res.setStatus(404);
+		}
+		return contents;
+	}
+	
 	@GetMapping("guilds/{gid}/contents/{cid}")
 	public Content showGuildContent(HttpServletRequest req, HttpServletResponse res, @PathVariable int gid,
 			@PathVariable int cid) {
@@ -73,6 +85,20 @@ public class ContentController {
 		return content;
 	}
 
+	@GetMapping("users/{uid}/contents/{cid}")
+	public Content showUserContent(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid,
+			@PathVariable int cid) {
+
+		Content content = contentServ.showGuildContent(uid, cid);
+
+		if (content == null) {
+			res.setStatus(404);
+		}
+
+		return content;
+	}
+	
+	
 	@PostMapping("users/{uid}/guilds/{gid}/statuses/{sid}/contents")
 	public Content create(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid, @PathVariable int gid,
 			@PathVariable int sid, @RequestBody Content content) {
