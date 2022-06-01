@@ -107,6 +107,7 @@ public class GuildController {
 
 		Guild newGuild;
 		try {
+			System.out.println(guild);
 			newGuild = guildServ.update(gid, guild);
 			if (newGuild == null) {
 				res.setStatus(404);

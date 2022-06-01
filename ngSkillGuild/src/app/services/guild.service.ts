@@ -76,12 +76,12 @@ export class GuildService {
   }
 
   update(guild: Guild) {
-    return this.http.put(this.url + `${guild.id}`, guild).pipe(
+    return this.http.put(this.url + `${guild.id}`, guild, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
           () => new Error(
-            'Resource service update() error: ' + err
+            'Guild service update() error: ' + err
           )
         );
       })
