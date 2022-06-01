@@ -40,7 +40,6 @@ export class CreateGuildModalComponent implements OnInit {
   }
 
   loggedIn(): boolean {
-    console.log(this.auth.checkLogin());
     return this.auth.checkLogin();
   }
 

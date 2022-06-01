@@ -1,5 +1,5 @@
 <div class="overlay container-fluid mt-3 col-md-8">
-  <div class="billboard-banner">
+  <div class="billboard-banner rounded">
     <h1 class="hometext display-5 fw-bold">SkillGuild</h1>
     <p class="fw-semibold">Create and join groups around areas of interest<br>
       and learn by teaching!<br>
@@ -13,7 +13,7 @@
   [showNavigationIndicators]="showNavigationIndicators">
   <ng-template ngbSlide *ngFor="let image of images">
     <div class="picsum-img-wrapper">
-      <img class="rounded-3" [src]="image" alt="SkillGuild">
+      <img class="rounded" [src]="image" alt="SkillGuild">
     </div>
   </ng-template>
 </ngb-carousel>

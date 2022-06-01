@@ -15,14 +15,14 @@
           [(ngModel)]="guild.description">
         <label>Description</label>
       </div>
-      <div *ngIf="guild.isPublic; else isPrivate" class="form-group form-check form-switch mb-3">
+      <div *ngIf="guild.isPublic; else isPrivate" class="form-group form-check form-switch mb-3 d-flex align-items-center">
         <input type="checkbox" class="form-check-input" (click)="toggleIsPublic()">
-        <label class="form-check-label"><i class="bi bi-unlock"></i> Public</label>
+        <label class="form-check-label">&nbsp;&nbsp;<i class="bi bi-unlock" id="locks"></i> Public</label>
       </div>
       <ng-template #isPrivate>
-        <div class="form-group form-check form-switch mb-3">
+        <div class="form-group form-check form-switch mb-3 d-flex align-items-center">
           <input type="checkbox" class="form-check-input" role="switch" checked (click)="toggleIsPublic()">
-          <label class="form-check-label"><i class="bi bi-lock-fill"></i> Private</label>
+          <label class="form-check-label">&nbsp;<i class="bi bi-lock-fill" id="locks"></i> Private</label>
         </div>
       </ng-template>
       <div class="form-group form-floating mb-3">
