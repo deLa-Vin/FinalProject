@@ -10,7 +10,7 @@
 </div>
 
 <ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows"
-  [showNavigationIndicators]="showNavigationIndicators">
+  [showNavigationIndicators]="showNavigationIndicators" style="z-index:-999;">
   <ng-template ngbSlide *ngFor="let image of images">
     <div class="picsum-img-wrapper">
       <img class="rounded" [src]="image" alt="SkillGuild">
