@@ -29,3 +29,38 @@
     </ng-template>
   </ngb-panel>
 </ngb-accordion>
+<br>
+<!-- Second Accordian -->
+<ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
+  <ngb-panel [disabled]="myContents.length === 0"><ng-template [ngbPanelTitle]><h3><i class="bi bi-grid-3x3-gap-fill"></i> My Content&nbsp;&nbsp;</h3><h5><span class="badge bg-success">{{myContents.length}}</span></h5></ng-template>
+    <ng-template ngbPanelContent>
+      <table class="table table-striped table-bordered table-hover">
+        <thead>
+            <th class="text-center">Guild Name</th>
+            <th class="text-center">Content Title</th>
+            <th class="text-center">Description</th>
+            <th class="text-center">Public<i class="bi bi-unlock"></i>/&nbsp;&nbsp;&nbsp;Private<i class="bi bi-lock-fill"></i></th>
+            <th class="text-center"></th>
+        </thead>
+        <tbody>
+            <tr *ngFor="let content of (paginationContents)">
+                <td>{{content.guild.name}}</td>
+                <td>{{content.title}}</td>
+                <td>{{content.description}}</td>
+                <td *ngIf="content.isPublic; else unlockIcon" class="text-center"><i class="bi bi-lock-fill" id="locks"></i></td>
+                <ng-template #unlockIcon><td class="text-center"><i class="bi bi-unlock" id="locks"></i></td></ng-template>
+            </tr>
+        </tbody>
+    </table>
+    <div class="d-flex justify-content-between p-2">
+      <ngb-pagination [collectionSize]="myContents.length" [(page)]="page" [pageSize]="pageSize" (pageChange)="refreshContents()">
+      </ngb-pagination>
+
+      <select class="form-select form-select-sm" style="width: auto" [(ngModel)]="pageSize" (ngModelChange)="refreshContents()">
+        <option [ngValue]="5">5 items per page</option>
+        <option [ngValue]="10">10 items per page</option>
+      </select>
+    </div>
+    </ng-template>
+  </ngb-panel>
+</ngb-accordion>
