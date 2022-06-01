@@ -12,7 +12,7 @@ import {NgbCarouselConfig} from '@ng-bootstrap/ng-bootstrap';
 export class HomeComponent implements OnInit {
 
   showNavigationArrows = false;
-  showNavigationIndicators = false;
+  showNavigationIndicators = true;
 
   images: any[] =
   [
