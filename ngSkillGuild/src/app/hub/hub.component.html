@@ -2,12 +2,13 @@
 
     <!-- Guilds -->
     <div *ngIf="guilds && !selectedGuild">
-        <section class="py-5 text-center container"
+        <div>
+            <section class="py-5 text-center container"
             style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
             <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light contrastText">Find your guild</h1>
-                    <p class="lead text-muted contrastText">Guilds are groups with common interests.<br>
+                <div class="content-banner col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">Find your guild</h1>
+                    <p class="lead text-muted">Guilds are groups with common interests.<br>
                         Browse guilds below - or create your own!</p>
                     <p>
                         <app-create-guild-modal></app-create-guild-modal>
@@ -15,6 +16,7 @@
                 </div>
             </div>
         </section>
+        </div>
         <div class="album py-2 bg-light">
             <div class="container" style="padding: 0;">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -30,7 +32,7 @@
                                             <button type="button" (click)="selectGuild(this.guild)"
                                                 class="btn btn-sm btn-outline-primary">View Guild</button>
                                         </div>
-                                        <small class="text-muted">Created on {{ guild.createdOn | date }}</small>
+                                        <small class="text-muted">Created {{ guild.createdOn | date }}</small>
                                     </div>
                                 </div>
                             </div>
@@ -46,9 +48,9 @@
         <section class="py-5 text-center container"
             style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
             <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light contrastText">{{selectedGuild.name}}</h1>
-                    <p class="lead text-muted contrastText">{{selectedGuild.description}}</p>
+                <div class="content-banner col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">{{selectedGuild.name}}</h1>
+                    <p class="lead text-muted">{{selectedGuild.description}}</p>
                     <p>
                         <span *ngIf="user && this.memberOfGuild">
                             <a [routerLink]="['/content']" class="btn btn-primary my-2" style="color:white;">Create content</a>
@@ -150,11 +152,11 @@
         <section class="py-5 text-center container"
             style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
             <div class="row py-lg-5">
-                <div class="col-lg-6 col-md-8 mx-auto">
-                    <h1 class="fw-light contrastText">{{selectedContent.title}}</h1>
-                    <p class="lead contrastText">{{selectedContent.description}}</p>
-                    <!-- <p><button (click)="attendContent(selectedContent.id)" class="btn btn-primary my-2">Attend</button></p> -->
-                    <p class="lead text-muted contrastText">Presented by {{selectedContent.createdByUser.username}}</p>
+                <div class="content-banner col-lg-6 col-md-8 mx-auto">
+                    <h1 class="fw-light">{{selectedContent.title}}</h1>
+                    <span class="lead">{{selectedContent.description}}</span><br>
+                    <span class="text-muted"><small>By {{selectedContent.createdByUser.username}}</small></span><br>
+                    <span class="mb-0 opacity-50"><small>{{selectedContent.presentationDate | date}}</small></span>
                 </div>
             </div>
         </section>
@@ -168,6 +170,10 @@
 
                 <div class="row">
                     <div class="col-8">
+                        <h1 class="fw-light">{{selectedContent.title}}</h1>
+                        <span class="lead">{{selectedContent.description}}</span><br>
+                        <span class="text-muted"><small>By {{selectedContent.createdByUser.username}} on {{selectedContent.presentationDate | date}} about {{ selectedContent.topics[0].name }}</small></span><br>
+                        <hr class="my-3">
                         <!-- Resources-->
                         <h5 class="mt-2">Content Resources</h5>
                         <div class="my-2">
@@ -223,7 +229,7 @@
                             </ngb-panel>
                         </ngb-accordion>
 
-                        <hr>
+                        <hr class="my-3">
                         <!-- Questions -->
                         <h5 class="mt-2">Questions</h5>
 
