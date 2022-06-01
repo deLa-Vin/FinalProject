@@ -138,7 +138,7 @@ export class HubComponent implements OnInit {
     });
   }
 
-  // Content 
+  // Content
   getGuildContents(gid: number) {
     this.contentSvc.showContentByGuild(gid).subscribe(contents => {
       this.contents = contents;

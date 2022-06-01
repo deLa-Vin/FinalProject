@@ -9,11 +9,11 @@ import { Comment } from 'src/app/models/comment';
 @Component({
   selector: 'app-comment-modal',
   templateUrl: './comment-modal.component.html',
-  styleUrls: ['./comment-modal.component.css']
+  styleUrls: ['./comment-modal.component.css'],
 })
 export class CommentModalComponent implements OnInit {
-
   @Input() selectedContentId: number = 0;
+  @Input() shareUrl: string = '';
 
   comment: Comment = new Comment();
 
@@ -24,10 +24,9 @@ export class CommentModalComponent implements OnInit {
     private commentSvc: CommentService,
     private router: Router,
     private auth: AuthService
-  ) { }
+  ) {}
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void {}
 
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
@@ -49,11 +48,7 @@ export class CommentModalComponent implements OnInit {
         (result) => {
           this.closeResult = `Closed with: ${result}`;
           this.createNewComment(this.selectedContentId, this.comment);
-          // this.createNewGuild(this.guild);
-          // this.router.navigateByUrl('guild');
-          // setTimeout(() => {
-          //   window.location.reload();
-          // }, 100);
+          this.goToContent(this.shareUrl);
         },
         (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -70,4 +65,14 @@ export class CommentModalComponent implements OnInit {
     });
   };
 
+  goToContent(shareUrl: string) {
+    // console.log(shareUrl);
+    if (shareUrl === '') {
+    } else {
+      this.router.navigateByUrl(shareUrl);
+    }
+    setTimeout(() => {
+      window.location.reload();
+    }, 10);
+  }
 }
