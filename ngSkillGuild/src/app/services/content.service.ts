@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { Content } from '../models/content';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -14,7 +15,8 @@ export class ContentService {
   private userContentUrl = environment.baseUrl + 'v1/users/';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthService
   ) { }
 
   index(): Observable<Content[]> {
@@ -24,6 +26,17 @@ export class ContentService {
   show(id: number): Observable<Content> {
     return this.http.get<Content>(this.url + id);
   }
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
+
 
   create(uid: number, gid: number, sid: number, content: Content):Observable<Content> {
     return this.http.post<Content>(environment.baseUrl + 'v1/users/' + uid + '/guilds/' + gid + '/statuses/' + sid + '/contents', content).pipe(
@@ -69,8 +82,8 @@ export class ContentService {
   }
 
 
-  showContentByUser(uid: number): Observable<Content[]> {
-    return this.http.get<Content[]>(this.userContentUrl + uid + '/contents');
+  showContentByUser(): Observable<Content[]> {
+    return this.http.get<Content[]>(this.userContentUrl + 'contents', this.getHttpOptions());
   }
 
 }

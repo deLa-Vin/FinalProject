@@ -20,7 +20,9 @@ public interface ContentService {
 	
 	Content showGuildContent(int gid, int cid);
 
-	List<Content> userContents(int uid);
+	List<Content> userContents(String username);
 
 	Content showUserContent(int uid, int cid);
+	
+	
 }

@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -60,10 +61,10 @@ public class ContentController {
 		return contents;
 	}
 
-	@GetMapping("users/{uid}/contents")
-	public List<Content> userContent(HttpServletRequest req, HttpServletResponse res, @PathVariable int uid) {
+	@GetMapping("users/contents")
+	public List<Content> userContent(Principal principal, HttpServletRequest req, HttpServletResponse res) {
 
-		List<Content> contents = contentServ.userContents(uid);
+		List<Content> contents = contentServ.userContents(principal.getName());
 
 		if (contents.isEmpty()) {
 			res.setStatus(404);

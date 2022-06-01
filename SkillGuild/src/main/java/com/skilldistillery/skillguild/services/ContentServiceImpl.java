@@ -47,11 +47,11 @@ public class ContentServiceImpl implements ContentService {
 	}
 	
 	@Override
-	public List<Content> userContents(int uid) {
+	public List<Content> userContents(String username) {
 
-		Optional<User> userOp = userRepo.findById(uid);
-		if (userOp.isPresent()) {
-			return contentRepo.findByUserCreatedContent(uid);
+		User user = userRepo.findByUsername(username);
+		if (user != null ) {
+			return contentRepo.findByUserCreatedContent_username(username);
 		}
 
 		return null;

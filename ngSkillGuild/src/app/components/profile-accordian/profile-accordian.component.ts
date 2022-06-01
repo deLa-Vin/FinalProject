@@ -15,12 +15,14 @@ export class ProfileAccordianComponent implements OnInit {
   paginationGuilds: Guild[] = [];
   myContents: Content[] = [];
   paginationContents: Content[] = [];
-  contents: Content[] = [];
-
 
   key: number = 0;
   page: number = 1;
   pageSize: number = 5;
+
+  keyC: number = 0;
+  pageC: number = 1;
+  pageSizeC: number = 5;
 
   constructor(
     private guildSvc: GuildService,
@@ -29,6 +31,7 @@ export class ProfileAccordianComponent implements OnInit {
 
   ngOnInit(): void {
     this.memberOfGuilds();
+    this.getUserContent();
   }
 
   memberOfGuilds() {
@@ -38,9 +41,9 @@ export class ProfileAccordianComponent implements OnInit {
     });
   }
 
-  getUserContent (uid: number) {
-    this.contentSvc.showContentByUser(uid).subscribe((contents) => {
-      this.contents = contents;
+  getUserContent () {
+    this.contentSvc.showContentByUser().subscribe((contents) => {
+      this.myContents = contents;
       this.refreshContents();
     });
   }
@@ -58,10 +61,10 @@ export class ProfileAccordianComponent implements OnInit {
 refreshContents() {
   console.log(this.paginationContents);
   this.paginationContents = this.myContents
-    .map((content, i) => ({ key: i + 1, ...content }))
+    .map((content, i) => ({ keyC: i + 1, ...content }))
     .slice(
-      (this.page - 1) * this.pageSize,
-      (this.page - 1) * this.pageSize + this.pageSize
+      (this.pageC - 1) * this.pageSizeC,
+      (this.pageC- 1) * this.pageSizeC + this.pageSizeC
     );
 }
 }
