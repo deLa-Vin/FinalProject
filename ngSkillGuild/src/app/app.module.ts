@@ -43,6 +43,7 @@ import { CreateGuildModalComponent } from './components/create-guild-modal/creat
 import { InteractionTypeComponent } from './components/interaction-type/interaction-type.component';
 import { InteractionComponent } from './components/interaction/interaction.component';
 import { CommentModalComponent } from './components/comment-modal/comment-modal.component';
+import { CreateContentModalComponent } from './components/create-content-modal/create-content-modal.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +72,8 @@ import { CommentModalComponent } from './components/comment-modal/comment-modal.
     CreateGuildModalComponent,
     InteractionTypeComponent,
     InteractionComponent,
-    CommentModalComponent
+    CommentModalComponent,
+    CreateContentModalComponent
   ],
   imports: [
     CommonModule,

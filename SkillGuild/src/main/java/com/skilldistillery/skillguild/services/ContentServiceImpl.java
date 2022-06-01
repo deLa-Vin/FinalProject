@@ -116,6 +116,33 @@ public class ContentServiceImpl implements ContentService {
 
 		return null;
 	}
+	
+	@Override
+	public Content createNewContent(int gid, int sid, Content content, String username) {
+		
+		User user = userRepo.findByUsername(username);
+		if (user != null) {
+			
+			content.setUserCreatedContent(user);
+			
+			Optional<Guild> guildOp = guildRepo.findById(gid);
+			if (guildOp.isPresent()) {
+				Guild guild = guildOp.get();
+				content.setGuild(guild);
+				
+				Optional<Status> statusOp = statusRepo.findById(sid);
+				if (statusOp.isPresent()) {
+					Status status = statusOp.get();
+					content.setStatus(status);
+					
+				}
+				
+				return contentRepo.saveAndFlush(content);
+			}
+		}
+		
+		return null;
+	}
 
 	@Override
 	public Content update(int cid, Content content) {

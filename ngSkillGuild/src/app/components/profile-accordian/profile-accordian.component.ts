@@ -60,7 +60,6 @@ export class ProfileAccordianComponent implements OnInit {
   }
 
   refreshContents() {
-    console.log(this.paginationContents);
     this.paginationContents = this.myContents
       .map((content, i) => ({ keyC: i + 1, ...content }))
       .slice(
