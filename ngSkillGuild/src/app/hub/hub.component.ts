@@ -164,10 +164,7 @@ export class HubComponent implements OnInit {
 
   selectContent(cid: number) {
     this.contentSvc.show(cid).subscribe(content => {
-      this.selectedContent = content;
-      this.getContentComments(this.selectedContent.id);
-      this.getContentQuestions(this.selectedContent.id);
-      this.shareUrl = this.url + "guild/" + this.selectedGuild?.id + "/contents/" + this.selectedContent?.id;
+      this.router.navigateByUrl("/guild/" + this.selectedGuild?.id + "/contents/" + cid);
     });
   }
 
