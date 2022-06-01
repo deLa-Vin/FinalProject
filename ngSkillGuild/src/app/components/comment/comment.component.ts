@@ -32,7 +32,7 @@ export class CommentComponent implements OnInit {
     private fb: FormBuilder,
     private route: ActivatedRoute,
     private router: Router
-  ) { 
+  ) {
     this.createFormInit(fb);
   }
 
@@ -58,20 +58,20 @@ export class CommentComponent implements OnInit {
     )
   }
 
-  createComment(uid: number, cid: number, comment: Comment): void {
-    this.commentSvc.create(uid, cid, comment).subscribe({
-      next: comment => {
-        console.log("Created successfully: " + comment.id);
-        this.comments.push(comment);
-        this.newComment = new Comment();
-        this.toggleAllComments();
-        this.getAllComments();
-      },
-      error: (err) => {
-        console.error('Error creating content: ', err);
-      }
-    })
-  }
+  // createComment(uid: number, cid: number, comment: Comment): void {
+  //   this.commentSvc.create(uid, cid, comment).subscribe({
+  //     next: comment => {
+  //       console.log("Created successfully: " + comment.id);
+  //       this.comments.push(comment);
+  //       this.newComment = new Comment();
+  //       this.toggleAllComments();
+  //       this.getAllComments();
+  //     },
+  //     error: (err) => {
+  //       console.error('Error creating content: ', err);
+  //     }
+  //   })
+  // }
 
   updateComment(comment: Comment) {
     this.commentSvc.update(comment).subscribe(
@@ -141,7 +141,7 @@ export class CommentComponent implements OnInit {
     }
     this.isEditing = false;
     console.log(comment);
-    this.createComment(1, 1, comment);
+    // this.createComment(1, 1, comment);
   }
 
 }
