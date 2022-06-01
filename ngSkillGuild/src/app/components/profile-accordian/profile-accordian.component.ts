@@ -46,7 +46,6 @@ export class ProfileAccordianComponent implements OnInit {
   }
 
   refreshGuilds() {
-    console.log(this.paginationGuilds);
     this.paginationGuilds = this.myGuilds
       .map((guild, i) => ({ key: i + 1, ...guild }))
       .slice(

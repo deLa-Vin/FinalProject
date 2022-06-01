@@ -47,23 +47,42 @@ public class CommentServiceImpl implements CommentService {
 		return commentRepo.findByContent_id(contentId);
 	}
 
+//	@Override
+//	public Comment create(int uid, int contentId, Comment comment) {
+//
+//		Optional<User> userOp = userRepo.findById(uid);
+//		if (userOp.isPresent()) {
+//			User user = userOp.get();
+//			comment.setUser(user);
+//
+//			Optional<Content> contentOp = contentRepo.findById(contentId);
+//			if (contentOp.isPresent()) {
+//				Content content = contentOp.get();
+//				comment.setContent(content);
+//
+//				return commentRepo.saveAndFlush(comment);
+//			}
+//		}
+//
+//		return null;
+//	}
+	
 	@Override
-	public Comment create(int uid, int contentId, Comment comment) {
-
-		Optional<User> userOp = userRepo.findById(uid);
-		if (userOp.isPresent()) {
-			User user = userOp.get();
+	public Comment create(int contentId, Comment comment, String username) {
+		
+		User user = userRepo.findByUsername(username);
+		if (user != null) {
 			comment.setUser(user);
-
+			
 			Optional<Content> contentOp = contentRepo.findById(contentId);
 			if (contentOp.isPresent()) {
 				Content content = contentOp.get();
 				comment.setContent(content);
-
+				
 				return commentRepo.saveAndFlush(comment);
 			}
 		}
-
+		
 		return null;
 	}
 
