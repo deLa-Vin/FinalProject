@@ -126,11 +126,9 @@ export class HubComponent implements OnInit {
   checkMembership(guild: Guild) {
     this.myGuilds.map(current => {
       if (current.id === guild.id) {
-        console.log("Member: " + true);
         this.memberOfGuild = true;
         return true;
       }
-      console.log("Member: " + false);
       return false;
     });
   }
