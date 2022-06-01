@@ -10,6 +10,7 @@ import { GuildService } from '../services/guild.service';
 import { UserService } from '../services/user.service';
 import { Question } from '../models/question';
 import { QuestionService } from '../services/question.service';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'app-hub',
@@ -18,9 +19,12 @@ import { QuestionService } from '../services/question.service';
 })
 export class HubComponent implements OnInit {
 
+  private url = ""; // environment.baseUrl;
+  shareUrl = "";
+
   guilds: Guild[] = [];
   selectedGuild: Guild | null = null;
-  guildId: number = 0;
+  gid: number = 0;
 
   contents: Content[] = [];
   selectedContent: Content | null = null;
@@ -55,15 +59,16 @@ export class HubComponent implements OnInit {
   checkRouteParams() {
     this.route.queryParams.subscribe(params => {
       if (this.route.snapshot.paramMap.get('id')) {
-        this.guildId = Number(this.route.snapshot.paramMap.get('id'));
-        console.log("GUILD ID: " + this.guildId);
+        this.gid = Number(this.route.snapshot.paramMap.get('id'));
+        console.log("GUILD ID: " + this.gid);
       }
     });
 
-    if (this.guildId) {
-      this.getGuildById(this.guildId);
+    if (this.gid) {
+      this.shareUrl = this.url + "guild/" + this.gid + "/contents/" + this.selectedContent?.id;
+      this.getGuildById(this.gid);
       console.log(this.selectedGuild);
-      this.getGuildContents(this.guildId);
+      this.getGuildContents(this.gid);
       this.getUserProfile();
       // this.checkMembership(this.selectedGuild);
       console.log(this.selectedGuild);
@@ -162,6 +167,7 @@ export class HubComponent implements OnInit {
       this.selectedContent = content;
       this.getContentComments(this.selectedContent.id);
       this.getContentQuestions(this.selectedContent.id);
+      this.shareUrl = this.url + "guild/" + this.selectedGuild?.id + "/contents/" + this.selectedContent?.id;
     });
   }
 
