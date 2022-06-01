@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Guild } from './../../models/guild';
 import { GuildService } from 'src/app/services/guild.service';
 import { Component, OnInit } from '@angular/core';
@@ -26,8 +27,9 @@ export class ProfileAccordianComponent implements OnInit {
 
   constructor(
     private guildSvc: GuildService,
-    private contentSvc: ContentService
-    ) {}
+    private contentSvc: ContentService,
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     this.memberOfGuilds();
@@ -41,7 +43,7 @@ export class ProfileAccordianComponent implements OnInit {
     });
   }
 
-  getUserContent () {
+  getUserContent() {
     this.contentSvc.showContentByUser().subscribe((contents) => {
       this.myContents = contents;
       this.refreshContents();
@@ -57,16 +59,17 @@ export class ProfileAccordianComponent implements OnInit {
       );
   }
 
+  refreshContents() {
+    console.log(this.paginationContents);
+    this.paginationContents = this.myContents
+      .map((content, i) => ({ keyC: i + 1, ...content }))
+      .slice(
+        (this.pageC - 1) * this.pageSizeC,
+        (this.pageC - 1) * this.pageSizeC + this.pageSizeC
+      );
+  }
 
-refreshContents() {
-  console.log(this.paginationContents);
-  this.paginationContents = this.myContents
-    .map((content, i) => ({ keyC: i + 1, ...content }))
-    .slice(
-      (this.pageC - 1) * this.pageSizeC,
-      (this.pageC- 1) * this.pageSizeC + this.pageSizeC
-    );
+  goToContent(gid: number, cid: number) {
+    this.router.navigateByUrl('/guild/' + gid + '/contents/' + cid);
+  }
 }
-}
-
-

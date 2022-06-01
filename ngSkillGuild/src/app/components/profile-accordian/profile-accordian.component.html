@@ -44,13 +44,15 @@
             <th class="text-center"></th>
         </thead>
         <tbody>
-            <tr *ngFor="let content of (paginationContents)">
+          <ng-container *ngFor="let content of (paginationContents)">
+            <tr (click)="goToContent(content.guild.id, content.id)">
                 <td>{{content.guild.name}}</td>
                 <td>{{content.title}}</td>
                 <td>{{content.description}}</td>
                 <td *ngIf="content.isPublic; else unlockIcon" class="text-center"><i class="bi bi-lock-fill" id="locks"></i></td>
                 <ng-template #unlockIcon><td class="text-center"><i class="bi bi-unlock" id="locks"></i></td></ng-template>
             </tr>
+          </ng-container>
         </tbody>
     </table>
     <div class="d-flex justify-content-between p-2">
