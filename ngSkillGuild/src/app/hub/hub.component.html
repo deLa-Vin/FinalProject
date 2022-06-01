@@ -51,7 +51,7 @@
                     <p class="lead text-muted contrastText">{{selectedGuild.description}}</p>
                     <p>
                         <span *ngIf="user && this.memberOfGuild">
-                            <a [routerLink]="['/content']" class="btn btn-primary my-2">Create content</a>
+                            <a [routerLink]="['/content']" class="btn btn-primary my-2" style="color:white;">Create content</a>
                         </span>
                         <span *ngIf="!this.checkLogin()">
                             <app-login-registration-modal></app-login-registration-modal>
@@ -75,9 +75,9 @@
                     <!-- Content List -->
                     <div class="col-8">
                         <h5 class="my-2">Available Content</h5>
-                        <div *ngIf="contents" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                        <div *ngIf="contents" class="row g-3">
                             <div *ngFor="let content of (contents)">
-                                <div class="col" (click)="selectContent(content.id)">
+                                <div class="col col-6" (click)="selectContent(content.id)">
                                     <div class="card shadow-sm">
                                         <img src="{{selectedGuild.coverImg || this.defaultImage}}">
                                         <div class="card-body">
@@ -184,6 +184,8 @@
                             <ngb-panel id="toggle-1" title="Slides" *ngIf="selectedContent.resources[0].resourceType?.id == 1">
                                 <ng-template ngbPanelContent>
                                     <div>
+                                        <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
+                                        <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
                                     </div>         
@@ -192,6 +194,8 @@
                             <ngb-panel id="toggle-2" title="Video" *ngIf="selectedContent.resources[0].resourceType?.id == 2">
                                 <ng-template ngbPanelContent>
                                     <div>
+                                        <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
+                                        <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
                                     </div> 
@@ -200,6 +204,8 @@
                             <ngb-panel id="toggle-3" title="Blog" *ngIf="selectedContent.resources[0].resourceType?.id == 3">
                                 <ng-template ngbPanelContent>
                                     <div>
+                                        <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
+                                        <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
                                     </div> 
@@ -208,6 +214,8 @@
                             <ngb-panel id="toggle-4" title="Code" *ngIf="selectedContent.resources[0].resourceType?.id == 4">
                                 <ng-template ngbPanelContent>
                                     <div>
+                                        <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
+                                        <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
                                     </div> 
@@ -216,38 +224,35 @@
                         </ngb-accordion>
 
                         <hr>
-                        <!-- Attendees -->
-                        <h5 class="mt-2">Attendees</h5>
-                        <div *ngIf="attendees" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                            <div *ngFor="let attendee of attendees">
-                                <div class="col">
-                                    <div class="card shadow-sm">
-                                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                                            xmlns="http://www.w3.org/2000/svg" role="img"
-                                            aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice"
-                                            focusable="false">
-                                            <title>{{ attendee.username }}</title>
-                                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%"
-                                                fill="#eceeef" dy=".3em">{{attendee.username}}</text>
-                                        </svg>
+                        <!-- Questions -->
+                        <h5 class="mt-2">Questions</h5>
 
-                                        <div class="card-body">
-                                            <p class="card-text">{{attendee.username}}</p>
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div class="btn-group">
-                                                    <button type="button"
-                                                        class="btn btn-sm btn-outline-primary">View</button>
-                                                </div>
-                                                <small class="text-muted"></small>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div *ngIf="attendees.length == 0">
-                            <br>
-                            <p>No attendees found for {{selectedContent.title}}.</p>
+                        <ngb-accordion *ngIf="questions" #acc="ngbAccordion" class="my-2">
+                            <ngb-panel *ngIf="questions[0]" id="toggle-1" title="{{ questions[0].question }}">
+                                <ng-template ngbPanelContent>
+                                    <div>
+                                        <p class="fw-semibold">{{ questions[0].correctAnswer }}</p>
+                                    </div>         
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel *ngIf="questions[1]" id="toggle-2" title="{{ questions[1].question }}">
+                                <ng-template ngbPanelContent>
+                                    <div>
+                                        <p class="fw-semibold">{{ questions[1].correctAnswer }}</p>
+                                    </div>         
+                                </ng-template>
+                            </ngb-panel>
+                            <ngb-panel *ngIf="questions[2]" id="toggle-3" title="{{ questions[2].question }}">
+                                <ng-template ngbPanelContent>
+                                    <div>
+                                        <p class="fw-semibold">{{ questions[2].correctAnswer }}</p>
+                                    </div>         
+                                </ng-template>
+                            </ngb-panel>
+                        </ngb-accordion>
+
+                        <div *ngIf="questions.length == 0">
+                            <p>No questions found for {{selectedContent.title}}.</p>
                         </div>
                     </div>
 
@@ -326,7 +331,6 @@
                             </div>
                         </div>
                         <div *ngIf="comments.length == 0">
-                            <br>
                             <p>No comments found for {{selectedContent.title}}.</p>
                         </div>
                     </div>

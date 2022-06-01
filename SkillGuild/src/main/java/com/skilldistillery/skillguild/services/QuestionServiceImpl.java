@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.skilldistillery.skillguild.entities.Comment;
 import com.skilldistillery.skillguild.entities.Content;
 import com.skilldistillery.skillguild.entities.Question;
 import com.skilldistillery.skillguild.repositories.ContentRepository;
@@ -82,6 +83,11 @@ public class QuestionServiceImpl implements QuestionService {
 		} else {
 			return false;
 		}
+	}
+	
+	@Override
+	public List<Question> showContentQuestions(int cid) {
+		return 	questionRepo.findByContent_id(cid);
 	}
 
 }

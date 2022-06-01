@@ -68,5 +68,10 @@ export class QuestionService {
         );
       })
     )
-  };
+  }
+
+  showByContentId(cid: number): Observable<Question[]> {
+    return this.http.get<Question[]>(environment.baseUrl + 'v1/questions/' + cid + '/questions');
+  }
+
 }

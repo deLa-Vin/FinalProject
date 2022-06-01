@@ -15,4 +15,6 @@ public interface QuestionService {
 	Question update(int qid, Question question);
 
 	boolean delete(int qid);
+
+	List<Question> showContentQuestions(int cid);
 }

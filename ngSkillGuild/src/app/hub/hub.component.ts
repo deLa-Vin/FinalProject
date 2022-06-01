@@ -8,6 +8,8 @@ import { CommentService } from '../services/comment.service';
 import { ContentService } from '../services/content.service';
 import { GuildService } from '../services/guild.service';
 import { UserService } from '../services/user.service';
+import { Question } from '../models/question';
+import { QuestionService } from '../services/question.service';
 
 @Component({
   selector: 'app-hub',
@@ -23,7 +25,7 @@ export class HubComponent implements OnInit {
   contents: Content[] = [];
   selectedContent: Content | null = null;
 
-  attendees: User[] = [];
+  questions: Question[] = [];
 
   defaultImage: string = 'https://images.unsplash.com/3/doctype-hi-res.jpg';
 
@@ -38,6 +40,7 @@ export class HubComponent implements OnInit {
     private contentSvc: ContentService,
     private userSvc: UserService,
     private commentSvc: CommentService,
+    private questionSvc: QuestionService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -160,6 +163,7 @@ export class HubComponent implements OnInit {
     this.contentSvc.show(cid).subscribe(content => {
       this.selectedContent = content;
       this.getContentComments(this.selectedContent.id);
+      this.getContentQuestions(this.selectedContent.id);
     });
   }
 
@@ -182,12 +186,11 @@ export class HubComponent implements OnInit {
     return false;
   }
 
-  // Attendees
-  attendContent(cid: number) {
-    console.log("User wants to attend: " + cid);
-    // this.contentSvc.show(cid).subscribe(content => {
-    //   this.selectedContent = content;
-    // });
+  // Questions
+  getContentQuestions(cid: number) {
+    this.questionSvc.showByContentId(cid).subscribe(questions => {
+      this.questions = questions;
+    });
   }
 
   // Comments

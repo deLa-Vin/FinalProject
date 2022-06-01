@@ -1,5 +1,6 @@
 package com.skilldistillery.skillguild.controllers;
 
+import java.security.Principal;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.skilldistillery.skillguild.entities.Comment;
 import com.skilldistillery.skillguild.entities.Question;
 import com.skilldistillery.skillguild.services.QuestionService;
 
@@ -85,6 +87,19 @@ public class QuestionController {
 			question = null;
 		}
 		return question;
+	}
+	
+	@GetMapping("questions/{cid}/questions")
+	public List<Question> showContentQuestions(Principal principal, HttpServletRequest req, HttpServletResponse res,
+			@PathVariable int cid) {
+		
+		List<Question> questions = questionServ.showContentQuestions(cid);
+		
+		if (questions.isEmpty()) {
+			res.setStatus(404);
+		}
+		
+		return questions;
 	}
 
 }
