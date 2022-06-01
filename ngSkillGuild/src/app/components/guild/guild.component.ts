@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Guild } from 'src/app/models/guild';
+import { User } from 'src/app/models/user';
 import { GuildService } from 'src/app/services/guild.service';
 
 @Component({
@@ -102,8 +103,9 @@ export class GuildComponent implements OnInit {
       name: ['', Validators.required],
       description: ['', Validators.required],
       isPublic: [''],
-      createdByUserId: [''],
+      createdByUser: [''],
       membershipCriteria: [''],
+      coverImg: ['']
     });
     this.createGuildForm.updateValueAndValidity();
     this.isEditing = true;
@@ -116,7 +118,7 @@ export class GuildComponent implements OnInit {
       description: this.createGuildForm.get('description').value,
       isPublic: this.createGuildForm.get('isPublic').value,
       membershipCriteria: this.createGuildForm.get('membershipCriteria').value,
-      createdByUser: this.createGuildForm.get('createdByUser').value,
+      createdByUser: new User(),//this.createGuildForm.get('createdByUser').value,
       coverImg: '',
       createdOn: '',
       lastUpdated: '',
@@ -133,9 +135,12 @@ export class GuildComponent implements OnInit {
     this.editGuild = null;
   }
 
-  updateResource = (guild: Guild) => {
+  updateGuild = (guild: Guild) => {
+    console.log(guild);
     this.guildSvc.update(guild).subscribe(
       {
+
+
         next: () => {
           console.log("Updated guild successfully: " + guild.id);
           this.selected = null;
