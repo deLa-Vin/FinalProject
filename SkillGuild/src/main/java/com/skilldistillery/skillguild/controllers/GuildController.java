@@ -102,22 +102,20 @@ public class GuildController {
 	}
 
 	@PutMapping("guilds/{gid}")
-	public Guild update(HttpServletRequest req, HttpServletResponse res, @PathVariable int gid,
+	public Guild update(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable int gid,
 			@RequestBody Guild guild) {
 
-		Guild newGuild;
 		try {
-			System.out.println(guild);
-			newGuild = guildServ.update(gid, guild);
-			if (newGuild == null) {
+			guild = guildServ.update(gid, guild);
+			if (guild == null) {
 				res.setStatus(404);
 			}
 		} catch (Exception e) {
 			res.setStatus(400);
-			newGuild = null;
+			guild = null;
 		}
 
-		return newGuild;
+		return guild;
 
 	}
 

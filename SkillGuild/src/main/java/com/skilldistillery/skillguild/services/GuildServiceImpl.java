@@ -95,11 +95,9 @@ public class GuildServiceImpl implements GuildService {
 		if (op.isPresent()) {
 			Guild result = op.get();
 			result = guild;
-			System.out.println("*********************************" + result);
-//			result.setId(gid);
-//			result.setUserCreatedBy(guild.getUserCreatedBy());
-//			return guildRepo.saveAndFlush(result);
-			return guild;
+			result.setId(gid);
+			result.setUserCreatedBy(guild.getUserCreatedBy());
+			return guildRepo.saveAndFlush(result);
 		}
 
 		return null;
