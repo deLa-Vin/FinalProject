@@ -17,7 +17,7 @@
             <div class="container" style="padding: 0;">
                 <div class="row">
                     <div *ngFor="let guild of (guilds)">
-                        <div class="col col-md-12 col-md-6 col-lg-8" (click)="selectGuild(this.guild)">
+                        <div class="col col-md-12 col-md-6 col-lg-4" (click)="selectGuild(this.guild)">
                             <div class="card shadow-sm">
                                 <img src="{{guild.coverImg || this.defaultImage}}">
                                 <div class="card-body">
@@ -148,7 +148,7 @@
         <section class="py-5 text-center container"
             style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
             <div class="row">
-                <div class="content-banner col col-sm-12 col-lg-8">
+                <div class="content-banner col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">{{selectedContent.title}}</h1>
                     <span class="lead">{{selectedContent.description}}</span><br>
                     <span class="text-muted"><small>By {{selectedContent.createdByUser.username}}</small></span><br>
