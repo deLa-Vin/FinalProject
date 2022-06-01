@@ -47,7 +47,8 @@
                 <div class="content-banner col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">{{selectedGuild.name}}</h1>
                     <small class="text-muted line-clamp">{{selectedGuild.description}}</small>
-                    <a *ngIf="user && this.memberOfGuild" [routerLink]="['/content']" class="btn btn-primary my-2" style="color:white;">Create content</a>
+                    <!-- <a *ngIf="user && this.memberOfGuild" [routerLink]="['/content']" class="btn btn-primary my-2" style="color:white;">Create content</a> -->
+                    <app-create-content-modal *ngIf="user && this.memberOfGuild" [gid]="selectedGuild.id"></app-create-content-modal>
                     <app-login-registration-modal *ngIf="!this.checkLogin()"></app-login-registration-modal>
                     <br>
                     <button (click)="joinGuild(this.selectedGuild.id, this.user.id)"

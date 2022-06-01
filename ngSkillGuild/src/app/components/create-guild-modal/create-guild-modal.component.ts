@@ -76,7 +76,6 @@ export class CreateGuildModalComponent implements OnInit {
   }
 
   createNewGuild = (guild: Guild) => {
-    console.log(guild);
     this.guildSvc.createNewGuild(guild).subscribe({
       next: () => {
         console.log('Created Guild successfully');

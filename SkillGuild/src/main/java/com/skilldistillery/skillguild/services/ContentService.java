@@ -13,6 +13,7 @@ public interface ContentService {
 	Content show(int cid);
 
 	Content create(int uid, int gid, int sid, Content content);
+	Content createNewContent(int gid, int sid, Content content, String username);
 	
 	Content update(int cid, Content content);
 	

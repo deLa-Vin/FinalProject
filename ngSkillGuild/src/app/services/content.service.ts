@@ -51,6 +51,19 @@ export class ContentService {
     );
   }
 
+  createNewContent(gid: number, sid: number, content: Content):Observable<Content> {
+    return this.http.post<Content>(this.guildContentUrl + gid + '/statuses/' + sid + '/contents', content, this.getHttpOptions()).pipe(
+      catchError((err: any) => {
+        console.log(err);
+        return throwError(
+          () => new Error(
+            'Content service create() error: ' + err
+          )
+        );
+      })
+    );
+  }
+
   delete(id: number) {
     return this.http.delete<boolean>(this.url + id).pipe(
       catchError((err: any) => {

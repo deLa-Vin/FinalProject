@@ -117,6 +117,25 @@ public class ContentController {
 		return content;
 
 	}
+	
+	@PostMapping("guilds/{gid}/statuses/{sid}/contents")
+	public Content createNewContent(Principal principal, HttpServletRequest req, HttpServletResponse res, @PathVariable int gid,
+			@PathVariable int sid, @RequestBody Content content) {
+		
+		try {
+			contentServ.createNewContent(gid, sid, content, principal.getName());
+			res.setStatus(201);
+			StringBuffer url = req.getRequestURL().append("/").append(content.getId());
+			res.setHeader("Location", url.toString());
+		} catch (Exception e) {
+			e.printStackTrace();
+			res.setStatus(400);
+			
+		}
+		
+		return content;
+		
+	}
 
 	@PutMapping("contents/{cid}")
 	public Content update(HttpServletRequest req, HttpServletResponse res, @PathVariable int cid,
