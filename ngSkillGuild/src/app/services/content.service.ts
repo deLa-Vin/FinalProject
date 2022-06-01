@@ -67,4 +67,8 @@ export class ContentService {
     return this.http.get<Content[]>(this.guildContentUrl + gid + '/contents');
   }
 
+  // showContentByUser(uid: number): Observable<Content[]> {
+  //   return this.http.get<Content[]>(this.guildContentUrl + uid + '/contents');
+  // }
+
 }

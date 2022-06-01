@@ -42,6 +42,7 @@ import { EditProfileModalComponent } from './components/edit-profile-modal/edit-
 import { CreateGuildModalComponent } from './components/create-guild-modal/create-guild-modal.component';
 import { InteractionTypeComponent } from './components/interaction-type/interaction-type.component';
 import { InteractionComponent } from './components/interaction/interaction.component';
+import { CommentModalComponent } from './components/comment-modal/comment-modal.component';
 
 @NgModule({
   declarations: [
@@ -69,7 +70,8 @@ import { InteractionComponent } from './components/interaction/interaction.compo
     EditProfileModalComponent,
     CreateGuildModalComponent,
     InteractionTypeComponent,
-    InteractionComponent
+    InteractionComponent,
+    CommentModalComponent
   ],
   imports: [
     CommonModule,

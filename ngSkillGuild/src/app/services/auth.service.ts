@@ -37,7 +37,6 @@ export class AuthService {
         // ourselves logged in.
         localStorage.setItem('credentials', credentials);
         localStorage.setItem('role', this.generateBasicAuthCredentials('stillBetterThanStraightPlainText', newUser.role));
-        // this.isAdmin = (newUser.role === 'data_admin')
         return newUser;
       }),
       catchError((err: any) => {

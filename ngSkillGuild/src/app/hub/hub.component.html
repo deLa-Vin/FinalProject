@@ -1,5 +1,4 @@
-<main>
-
+<div class="container-fluid">
     <!-- Guilds -->
     <div *ngIf="guilds && !selectedGuild">
         <div>
@@ -9,12 +8,15 @@
                 <div class="content-banner col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">Find your guild</h1>
                     <p class="lead text-muted">Guilds are groups with common interests.<br>
-                    <app-create-guild-modal></app-create-guild-modal>
+                        Browse guilds below - or create your own!</p>
+                    <p>
+                        <app-create-guild-modal></app-create-guild-modal>
+                    </p>
                 </div>
             </div>
         </section>
         </div>
-        <div class="album py-2 bg-light">
+        <div class="album py-2">
             <div class="container" style="padding: 0;">
                 <div class="row">
                     <div *ngFor="let guild of (guilds)">
@@ -50,20 +52,20 @@
                     <p class="lead text-muted">{{selectedGuild.description}}</p>
                     <p>
                         <span *ngIf="user && this.memberOfGuild">
-                            <a [routerLink]="['/content']" class="btn btn-sm btn-primary my-2" style="color:white;">Create content</a>
+                            <a [routerLink]="['/content']" class="btn btn-primary my-2" style="color:white;">Create content</a>
                         </span>
                         <span *ngIf="!this.checkLogin()">
                             <app-login-registration-modal></app-login-registration-modal>
                         </span>
                         <span *ngIf="this.checkLogin() && !this.memberOfGuild">
                             <button (click)="joinGuild(this.selectedGuild.id, this.user.id)"
-                                class="btn btn-sm btn-primary my-2">Join</button>
+                                class="btn btn-primary my-2">Join</button>
                         </span>
                     </p>
                 </div>
             </div>
         </section>
-        <div class="album py-2 bg-light" *ngIf="selectedGuild">
+        <div class="album py-2" *ngIf="selectedGuild">
             <div class="container">
                 <div class="row">
                     <div class="col-1">
@@ -72,11 +74,11 @@
                 </div>
                 <div class="row">
                     <!-- Content List -->
-                    <div class="col col-md-12 col-md-6 col-lg-8">
+                    <div class="col-8">
                         <h5 class="my-2">Available Content</h5>
                         <div *ngIf="contents" class="row g-3">
                             <div *ngFor="let content of (contents)">
-                                <div class="col col-sm-12 col-lg-6" (click)="selectContent(content.id)">
+                                <div class="col col-6" (click)="selectContent(content.id)">
                                     <div class="card shadow-sm">
                                         <img src="{{selectedGuild.coverImg || this.defaultImage}}">
                                         <div class="card-body">
@@ -102,7 +104,7 @@
                         </div>
                     </div>
                     <!-- Content Details-->
-                    <div class="col col-md-12 col-lg-4 align-top">
+                    <div class="col-4 align-top">
                         <h6 class="mt-3">About {{ selectedGuild.name }}</h6>
                         <!-- Details -->
                         <div class="list-group w-auto">
@@ -157,7 +159,7 @@
                 </div>
             </div>
         </section>
-        <div class="album py-2 bg-light">
+        <div class="album py-2">
             <div class="container">
                 <div class="row">
                     <div class="col-1">
@@ -166,13 +168,13 @@
                 </div>
 
                 <div class="row">
-                    <div class="col col-sm-12 col-lg-8">
+                    <div class="col-8">
                         <h1 class="fw-light">{{selectedContent.title}}</h1>
                         <span class="lead">{{selectedContent.description}}</span><br>
                         <span class="text-muted"><small>By {{selectedContent.createdByUser.username}} on {{selectedContent.presentationDate | date}} about {{ selectedContent.topics[0].name }}</small></span><br>
                         <hr class="my-3">
                         <!-- Resources-->
-                        <h5 class="mt-2">Content Resources</h5>
+                        <h5 class="mt-2"><i class="bi bi-boxes"></i>  Content Resources</h5>
                         <div class="my-2">
                             <button class="btn btn-sm btn-outline-primary me-2"
                                 (click)="acc.toggle('toggle-1')" *ngIf="selectedContent.resources[0].resourceType?.id == 1">Slides</button>
@@ -191,7 +193,7 @@
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
-                                    </div>         
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel id="toggle-2" title="Video" *ngIf="selectedContent.resources[0].resourceType?.id == 2">
@@ -201,7 +203,7 @@
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
-                                    </div> 
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel id="toggle-3" title="Blog" *ngIf="selectedContent.resources[0].resourceType?.id == 3">
@@ -211,7 +213,7 @@
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
-                                    </div> 
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel id="toggle-4" title="Code" *ngIf="selectedContent.resources[0].resourceType?.id == 4">
@@ -221,35 +223,36 @@
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
-                                    </div> 
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                         </ngb-accordion>
 
                         <hr class="my-3">
                         <!-- Questions -->
-                        <h5 class="mt-2">Questions</h5>
-
+                          <!-- <div class="container"> -->
+                        <h5 class="d-inline-block mt-2">Questions</h5>
+                        <!-- </div> -->
                         <ngb-accordion *ngIf="questions" #acc="ngbAccordion" class="my-2">
                             <ngb-panel *ngIf="questions[0]" id="toggle-1" title="{{ questions[0].question }}">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-semibold">{{ questions[0].correctAnswer }}</p>
-                                    </div>         
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel *ngIf="questions[1]" id="toggle-2" title="{{ questions[1].question }}">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-semibold">{{ questions[1].correctAnswer }}</p>
-                                    </div>         
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                             <ngb-panel *ngIf="questions[2]" id="toggle-3" title="{{ questions[2].question }}">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-semibold">{{ questions[2].correctAnswer }}</p>
-                                    </div>         
+                                    </div>
                                 </ng-template>
                             </ngb-panel>
                         </ngb-accordion>
@@ -260,7 +263,7 @@
                     </div>
 
                     <!-- Content Details-->
-                    <div class="col col-md-12 col-lg-4 align-self-end">
+                    <div class="col-4 align-self-end">
                         <!-- Creator Controls -->
                         <div class="my-2 text-end" *ngIf="selectedContent.createdByUser === this.user">
                             <button class="btn btn-outline-success mx-1">Publish</button>
@@ -321,7 +324,9 @@
                         </div>
 
                         <!-- Comments -->
-                        <h6 class="mt-3">Comments</h6>
+                        <div class="container">
+                          <h6 class="mt-3"><i class="bi bi-chat-right-text-fill"></i>  Comments<app-comment-modal class="float-end" [selectedContentId]="selectedContent.id"></app-comment-modal></h6>
+                        </div>
                         <div *ngIf="comments" class="d-flex flex-column align-items-stretch flex-shrink-0 bg-white">
                             <div *ngFor="let comment of comments"
                                 class="list-group list-group-flush border-bottom scrollarea">
@@ -343,8 +348,7 @@
             </div>
         </div>
     </div>
-
-</main>
+</div>
 
 <footer class="py-4">
     <div class="container">

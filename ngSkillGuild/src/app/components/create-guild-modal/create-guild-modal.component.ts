@@ -79,7 +79,7 @@ export class CreateGuildModalComponent implements OnInit {
     console.log(guild);
     this.guildSvc.createNewGuild(guild).subscribe({
       next: () => {
-        console.log('Created Guild successfully: ' + guild.id);
+        console.log('Created Guild successfully');
       },
       error: (err: any) => console.error('Error updating user: ', err),
     });
@@ -103,10 +103,9 @@ export class CreateGuildModalComponent implements OnInit {
   }
 
   registerUser(newUser: User): void {
-    console.log(newUser);
     this.auth.register(newUser).subscribe({
       next: (registeredUser) => {
-        console.log('Created successfully: ' + newUser.id);
+        console.log('Created successfully');
         this.auth.login(newUser.username, newUser.password).subscribe({
           next: (loggedInUser) => {
             this.router.navigateByUrl('/profile');
@@ -151,7 +150,6 @@ export class CreateGuildModalComponent implements OnInit {
       },
     });
 
-    console.log(user);
   }
 
   openRegFunc() {

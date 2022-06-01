@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { Comment } from './../models/comment';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -12,8 +13,19 @@ export class CommentService {
   private url = environment.baseUrl + 'v1/comments/';
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private auth: AuthService
   ) { }
+
+  getHttpOptions() {
+    let options = {
+      headers: {
+        Authorization: 'Basic ' + this.auth.getCredentials(),
+        'X-Requested-With': 'XMLHttpRequest',
+      },
+    };
+    return options;
+  }
 
   index(): Observable<Comment[]> {
     return this.http.get<Comment[]>(this.url);
@@ -23,8 +35,21 @@ export class CommentService {
     return this.http.get<Comment>(this.url + id);
   }
 
-  create(uid: number, cid: number, comment: Comment) {
-    return this.http.post<Comment>(environment.baseUrl + 'v1/users/' + uid + '/contents/' + cid + '/comments', comment).pipe(
+  // create(uid: number, cid: number, comment: Comment) {
+  //   return this.http.post<Comment>(environment.baseUrl + 'v1/users/' + uid + '/contents/' + cid + '/comments', comment).pipe(
+  //     catchError((err: any) => {
+  //       console.log(err);
+  //       return throwError(
+  //         () => new Error(
+  //           'Content service create() error: ' + err
+  //         )
+  //       );
+  //     })
+  //   );
+  // }
+
+  create(cid: number, comment: Comment) {
+    return this.http.post<Comment>(environment.baseUrl + 'v1/contents/' + cid + '/comments', comment, this.getHttpOptions()).pipe(
       catchError((err: any) => {
         console.log(err);
         return throwError(
