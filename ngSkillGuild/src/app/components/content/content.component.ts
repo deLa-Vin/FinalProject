@@ -78,17 +78,17 @@ export class ContentComponent implements OnInit {
     this.route.queryParams.subscribe(params => {
       if (this.route.snapshot.paramMap.get('gid')) {
         this.gid = Number(this.route.snapshot.paramMap.get('gid'));
+        this.getGuildById(this.gid);
         console.log("GUILD ID: " + this.gid); //
       }
       if (this.route.snapshot.paramMap.get('cid')) {
         this.cid = Number(this.route.snapshot.paramMap.get('cid'));
+        this.selectContent(this.cid);
         console.log("CONTENT ID: " + this.gid); //
       }
     });
 
     if (this.gid && this.cid) {
-      this.getGuildById(this.gid);
-      this.selectContent(this.cid);
       this.shareUrl = this.url + "guild/" + this.gid + "/contents/" + this.cid;
       return true;
     }
@@ -97,8 +97,8 @@ export class ContentComponent implements OnInit {
     }
   }
 
-  getGuildById(id: number) {
-    this.guildSvc.show(id).subscribe(
+  getGuildById(gid: number) {
+    this.guildSvc.show(gid).subscribe(
       guild => {
         this.selectedGuild = guild;
       }
@@ -250,4 +250,5 @@ export class ContentComponent implements OnInit {
         this.comments = comments;
       });
     }
+
 }

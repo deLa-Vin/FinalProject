@@ -187,9 +187,7 @@
             <div class="row py-lg-5">
                 <div class="content-banner col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">{{selectedContent.title}}</h1>
-                    <span class="lead">{{selectedContent.description}}</span><br>
-                    <span class="text-muted"><small>By {{selectedContent.createdByUser.username}}</small></span><br>
-                    <span class="mb-0 opacity-50"><small>{{selectedContent.presentationDate | date}}</small></span>
+                    <small class="text-muted line-clamp">{{selectedContent.description}}</small><br>
                 </div>
             </div>
         </section>
@@ -199,22 +197,22 @@
                     <div class="col col-sm-12 col-lg-8">
                         <h1 class="fw-light">{{selectedContent.title}}</h1>
                         <span class="lead">{{selectedContent.description}}</span><br>
-                        <span class="text-muted"><small>By {{selectedContent.createdByUser.username}} on {{selectedContent.presentationDate | date}} about {{ selectedContent.topics[0].name }}</small></span><br>
+                        <span class="text-muted"><small>By {{selectedContent.createdByUser.username}} on {{selectedContent.presentationDate | date}} <span *ngIf="selectedContent.topics[0]">about {{ selectedContent.topics[0]?.name }}</span></small></span><br>
                         <hr class="my-3">
                         <!-- Resources-->
                         <h5 class="mt-2">Content Resources</h5>
                         <div class="my-2">
                             <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-1')" *ngIf="selectedContent.resources[0].resourceType?.id == 1">Slides</button>
+                                (click)="acc.toggle('toggle-1')" *ngIf="selectedContent.resources[0]?.resourceType?.id == 1">Slides</button>
                             <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-2')" *ngIf="selectedContent.resources[0].resourceType?.id == 2">Video</button>
+                                (click)="acc.toggle('toggle-2')" *ngIf="selectedContent.resources[0]?.resourceType?.id == 2">Video</button>
                             <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-3')" *ngIf="selectedContent.resources[0].resourceType?.id == 3">Blog</button>
+                                (click)="acc.toggle('toggle-3')" *ngIf="selectedContent.resources[0]?.resourceType?.id == 3">Blog</button>
                             <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-4')" *ngIf="selectedContent.resources[0].resourceType?.id == 4">Code</button>
+                                (click)="acc.toggle('toggle-4')" *ngIf="selectedContent.resources[0]?.resourceType?.id == 4">Code</button>
                         </div>
                         <ngb-accordion #acc="ngbAccordion" class="my-2">
-                            <ngb-panel id="toggle-1" title="Slides" *ngIf="selectedContent.resources[0].resourceType?.id == 1">
+                            <ngb-panel id="toggle-1" title="Slides" *ngIf="selectedContent.resources[0]?.resourceType?.id == 1">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
@@ -224,7 +222,7 @@
                                     </div>
                                 </ng-template>
                             </ngb-panel>
-                            <ngb-panel id="toggle-2" title="Video" *ngIf="selectedContent.resources[0].resourceType?.id == 2">
+                            <ngb-panel id="toggle-2" title="Video" *ngIf="selectedContent.resources[0]?.resourceType?.id == 2">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
@@ -234,7 +232,7 @@
                                     </div>
                                 </ng-template>
                             </ngb-panel>
-                            <ngb-panel id="toggle-3" title="Blog" *ngIf="selectedContent.resources[0].resourceType?.id == 3">
+                            <ngb-panel id="toggle-3" title="Blog" *ngIf="selectedContent.resources[0]?.resourceType?.id == 3">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
@@ -244,41 +242,44 @@
                                     </div>
                                 </ng-template>
                             </ngb-panel>
-                            <ngb-panel id="toggle-4" title="Code" *ngIf="selectedContent.resources[0].resourceType?.id == 4">
+                            <ngb-panel id="toggle-4" title="Code" *ngIf="selectedContent.resources[0]?.resourceType?.id == 4">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
-                                            target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
+                                            target="_blank"><code>{{ selectedContent.resources[0]?.resourceUrl }}</code></a>
                                     </div>
                                 </ng-template>
                             </ngb-panel>
                         </ngb-accordion>
+                        <div *ngIf="selectedContent.resources[0] == null">
+                            <p>No content resources found for {{selectedContent.title}}.</p>
+                        </div>
 
                         <hr class="my-3">
                         <!-- Questions -->
                         <h5 class="mt-2">Questions</h5>
 
                         <ngb-accordion *ngIf="questions" #acc="ngbAccordion" class="my-2">
-                            <ngb-panel *ngIf="questions[0]" id="toggle-1" title="{{ questions[0].question }}">
+                            <ngb-panel *ngIf="questions[0]" id="toggle-1" title="{{ questions[0]?.question }}">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-semibold">{{ questions[0].correctAnswer }}</p>
                                     </div>
                                 </ng-template>
                             </ngb-panel>
-                            <ngb-panel *ngIf="questions[1]" id="toggle-2" title="{{ questions[1].question }}">
+                            <ngb-panel *ngIf="questions[1]" id="toggle-2" title="{{ questions[1]?.question }}">
                                 <ng-template ngbPanelContent>
                                     <div>
                                         <p class="fw-semibold">{{ questions[1].correctAnswer }}</p>
                                     </div>
                                 </ng-template>
                             </ngb-panel>
-                            <ngb-panel *ngIf="questions[2]" id="toggle-3" title="{{ questions[2].question }}">
+                            <ngb-panel *ngIf="questions[2]" id="toggle-3" title="{{ questions[2]?.question }}">
                                 <ng-template ngbPanelContent>
                                     <div>
-                                        <p class="fw-semibold">{{ questions[2].correctAnswer }}</p>
+                                        <p class="fw-semibold">{{ questions[2]?.correctAnswer }}</p>
                                     </div>
                                 </ng-template>
                             </ngb-panel>
@@ -308,7 +309,7 @@
                                         <p class="mb-0 opacity-75">{{selectedContent.description}}</p>
                                         <p class="my-2"><small>Share: <code><a href="{{ this.shareUrl }}" target="_blank">{{ this.shareUrl }}</a></code></small></p>
                                     </div>
-                                    <small class="opacity-75 text-nowrap">{{ selectedContent.topics[0].name }}</small>
+                                    <small class="opacity-75 text-nowrap">{{ selectedContent.topics[0]?.name }}</small>
                                 </div>
                             </span>
                             <span class="list-group-item list-group-item-action d-flex gap-3 py-3" aria-current="true">
