@@ -40,7 +40,6 @@ export class LoginRegistrationModalComponent implements OnInit {
       .result.then(
         (result) => {
           this.closeResult = `Closed with: ${result}`;
-          this.submitMe(); // submit login code here
           this.login(this.loginUser);
         },
         (reason) => {
@@ -59,10 +58,6 @@ export class LoginRegistrationModalComponent implements OnInit {
     }
   }
 
-  submitMe() {
-    console.log('Login Submitted');
-  }
-
   login(user: User) {
     this.auth.login(user.username, user.password).subscribe({
       next: (loggedInUser) => {
@@ -74,14 +69,12 @@ export class LoginRegistrationModalComponent implements OnInit {
       },
     });
 
-    console.log(user);
   }
 
   registerUser(newUser: User): void {
-    console.log(newUser);
     this.auth.register(newUser).subscribe({
       next: (registeredUser) => {
-        console.log('Created successfully: ' + newUser.id);
+        console.log('Created successfully');
         this.auth.login(newUser.username, newUser.password).subscribe({
           next: (loggedInUser) => {
             this.router.navigateByUrl('/profile');
@@ -107,7 +100,6 @@ export class LoginRegistrationModalComponent implements OnInit {
       .result.then(
         (result) => {
           this.closeResult = `Closed with: ${result}`;
-          this.submitMe(); // submit login code here
           this.registerUser(this.newUser);
         },
         (reason) => {
