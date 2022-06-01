@@ -1,38 +1,29 @@
-<!-- <div class="p-5 mb-4 bg-light rounded-3"
-style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
-  <div class="container-fluid py-5">
-    <h1 class="display-5 fw-bold contrastText">SkillGuild</h1>
-    <p class="col-md-8 fs-4 contrastText">Create and join groups around areas of interest,<br>
-      sharpen and explore skills, and learn by teaching!</p>
-      <a [routerLink]="['/hub']" ><button class="btn btn-primary btn-lg my-2"
-        type="button"><i class="bi bi-search"></i> Find a Guild</button></a>
+<div class="overlay container-fluid mt-3 col-md-8">
+  <div class="billboard-banner">
+    <h1 class="hometext display-5 fw-bold">SkillGuild</h1>
+    <p class="fw-semibold">Create and join groups around areas of interest<br>
+      and learn by teaching!<br>
+      <a [routerLink]="['/hub']"><button class="btn btn-primary btn-sm my-2" type="button"><i class="bi bi-search"></i> Find
+          your Guild</button></a>
+    </p>
   </div>
-</div> -->
-<div class="overlay container-fluid py-5">
-  <h1 class="hometext display-5 fw-bold contrastText">SkillGuild</h1>
-  <p class="hometext col-md-8 fs-4 contrastText">Create and join groups around areas of interest,<br>
-    sharpen and explore skills, and learn by teaching!</p>
-    <a [routerLink]="['/hub']" ><button class="btn btn-primary btn-lg my-2"
-      type="button"><i class="bi bi-search"></i> Find a Guild</button></a>
 </div>
 
-<ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows" [showNavigationIndicators]="showNavigationIndicators">
+<ngb-carousel *ngIf="images" [showNavigationArrows]="showNavigationArrows"
+  [showNavigationIndicators]="showNavigationIndicators">
   <ng-template ngbSlide *ngFor="let image of images">
     <div class="picsum-img-wrapper">
-      <img [src]="image" alt="Random slide" >
+      <img [src]="image" alt="SkillGuild">
     </div>
   </ng-template>
 </ngb-carousel>
 
-<footer class="text-muted py-5">
+<footer class="py-4">
   <div class="container">
     <p class="float-end mb-1">
-      <!-- <a [routerLink]="['/guild']" class="btn btn-primary my-2">Create a guild</a> -->
       <app-create-guild-modal></app-create-guild-modal>
     </p>
-    <p class="mb-1">SkillGuild</p>
-    <p class="mb-0">Create and join groups around areas of interest,
-          sharpen and explore skills, and learn by teaching!</p>
-        </div>
-      </footer>
-
+    <p class="display-6 mb-1">A compelling selection of guilds</p>
+    <p class="mb-0 fw-semibold">Sharpen your skills, explore new ones and learn by teaching!</p>
+  </div>
+</footer>
