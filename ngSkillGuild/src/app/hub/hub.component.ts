@@ -39,6 +39,8 @@ export class HubComponent implements OnInit {
   memberOfGuild = false;
 
   comments: Comment[] = [];
+  guildImgArr: string[] = ['assets/images/guild_1.jpeg','assets/images/guild_2.avif', 'assets/images/guild_3.avif',
+  'assets/images/guild_4.avif', 'assets/images/guild_5.jpeg', 'assets/images/guild_6.webp'];
 
   constructor(
     private guildSvc: GuildService,
