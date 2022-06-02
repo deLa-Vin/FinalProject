@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/services/auth.service';
   styleUrls: ['./create-content-modal.component.css'],
 })
 export class CreateContentModalComponent implements OnInit {
+
   @Input() gid: number = 0;
 
   content: Content = new Content();

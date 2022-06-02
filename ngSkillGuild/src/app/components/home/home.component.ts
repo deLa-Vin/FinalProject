@@ -16,11 +16,11 @@ export class HomeComponent implements OnInit {
 
   images: any[] =
   [
-    "/assets/images/carousel_7.avif",
-    "/assets/images/carousel_8.avif",
-    "/assets/images/carousel_9.avif",
-    "/assets/images/carousel_10.avif",
-    "/assets/images/carousel_11.avif",
+    "assets/images/carousel_7.avif",
+    "assets/images/carousel_8.avif",
+    "assets/images/carousel_9.avif",
+    "assets/images/carousel_10.avif",
+    "assets/images/carousel_11.avif"
     // "https://images.unsplash.com/photo-1441471349424-351990746ff4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
     // "https://images.unsplash.com/photo-1493863641943-9b68992a8d07?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1758&q=80",
     // "https://images.unsplash.com/photo-1555099962-4199c345e5dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80",
