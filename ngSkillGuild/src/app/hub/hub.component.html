@@ -26,7 +26,7 @@
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <button type="button" (click)="selectGuild(this.guild)"
-                                                class="btn btn-sm btn-outline-primary">View Guild</button>
+                                                class="btn btn-sm btn-outline-primary mx-1">View Guild</button>
                                         </div>
                                         <small class="text-muted">Created {{ guild.createdOn | date }}</small>
                                     </div>
@@ -59,17 +59,15 @@
         <div class="album py-2" *ngIf="selectedGuild">
             <div class="container">
                 <div class="row">
-                    <div class="col-1">
+                    <div>
                         <button (click)="displayAllGuilds()" class="btn btn-primary btn-sm mb-1">Back</button>
                     </div>
-                </div>
-                <div class="row">
-                    <!-- Content List -->
-                    <div class="col-8">
-                        <h5 class="my-2">Available Content</h5>
-                        <div *ngIf="contents" class="row">
-                            <div *ngFor="let content of (contents)">
-                                <div class="col col-sm-12 col-lg-6" (click)="selectContent(content.id)">
+                    <div class="album py-1 col-8">
+                        <!-- Content List -->
+                        <div class="container" style="padding: 0;">
+                            <h5 class="my-2">Available Content</h5>
+                            <div *ngIf="contents" class="row">
+                                <div *ngFor="let content of (contents)" class="col col-lg-6 col-md-4 col-sm-12" (click)="selectContent(content.id)">
                                     <div class="card shadow-sm">
                                         <img src="{{selectedGuild.coverImg || this.defaultImage}}" class="content-img">
                                         <div class="card-body">
@@ -88,10 +86,10 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div *ngIf="contents.length == 0">
-                            <br>
-                            <p>No content found for {{selectedGuild.name}}.</p>
+                            <div *ngIf="contents.length == 0">
+                                <br>
+                                <p>No content found for {{selectedGuild.name}}.</p>
+                            </div>
                         </div>
                     </div>
                     <!-- Content Details-->
