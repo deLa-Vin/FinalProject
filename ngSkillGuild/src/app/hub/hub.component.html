@@ -6,7 +6,7 @@
         style="background-image: url('/assets/images/doctype-hi-res_3.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
         <!-- style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;"> -->
         <div class="row py-lg-5">
-          <div class="content-banner col-lg-6 col-md-8 mx-auto">
+          <div class="content-banner rounded col-lg-6 col-md-8 mx-auto">
             <h1 class="fw-light">Find your guild</h1>
             <p class="lead text-muted">Guilds are groups with common interests.</p>
             <app-create-guild-modal></app-create-guild-modal>
@@ -48,7 +48,7 @@
       style="background-image: url('/assets/images/doctype-hi-res_3.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
       <!-- style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;"> -->
       <div class="row py-lg-5">
-        <div class="content-banner col-lg-6 col-md-8 mx-auto">
+        <div class="content-banner rounded col-lg-6 col-md-8 mx-auto">
           <h1 class="fw-light">{{selectedGuild.name}}</h1>
           <small class="text-muted line-clamp">{{selectedGuild.description}}</small>
           <!-- <a *ngIf="user && this.memberOfGuild" [routerLink]="['/content']" class="btn btn-primary my-2" style="color:white;">Create content</a> -->
@@ -76,7 +76,7 @@
                   (click)="selectContent(content.id)">
                   <div class="card shadow-sm">
                     <img src="{{selectedGuild.coverImg || this.defaultImage}}" class="content-img">
-                    <div id="container">
+                    <div id="containertwo">
                       <div class="card-body">
                         <h5 class="card-title">{{content.title}}</h5>
                         <p class="card-text">{{content.publishDate | date}}</p>

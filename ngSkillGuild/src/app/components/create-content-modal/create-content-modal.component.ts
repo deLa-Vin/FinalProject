@@ -8,10 +8,9 @@ import { AuthService } from 'src/app/services/auth.service';
 @Component({
   selector: 'app-create-content-modal',
   templateUrl: './create-content-modal.component.html',
-  styleUrls: ['./create-content-modal.component.css']
+  styleUrls: ['./create-content-modal.component.css'],
 })
 export class CreateContentModalComponent implements OnInit {
-
   @Input() gid: number = 0;
 
   content: Content = new Content();
@@ -23,9 +22,10 @@ export class CreateContentModalComponent implements OnInit {
     private contentService: ContentService,
     private auth: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.content.lengthMinutes = 30;
   }
 
   toggleIsPublic() {
@@ -53,7 +53,6 @@ export class CreateContentModalComponent implements OnInit {
         (result) => {
           this.closeResult = `Closed with: ${result}`;
           this.createNewContent(this.content);
-
         },
         (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -62,15 +61,15 @@ export class CreateContentModalComponent implements OnInit {
   }
 
   createNewContent = (content: Content) => {
-
     content.presentationDate = new Date(this.content.presentationDate);
 
     this.contentService.createNewContent(this.gid, 1, content).subscribe({
       next: (newContent) => {
-        this.router.navigateByUrl('/guild/' + this.gid + '/contents/' + newContent.id)
+        this.router.navigateByUrl(
+          '/guild/' + this.gid + '/contents/' + newContent.id
+        );
       },
       error: (err: any) => console.error('Error updating user: ', err),
     });
   };
-
 }

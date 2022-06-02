@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-3" style="max-width: 430px;">
-    <div class="card mx-auto">
+    <div class="card shadow mx-auto">
       <div class="card-body">
 
         <div class="text-center"><img *ngIf="user.profileImgUrl; else elseBlock" class="rounded-circle" height="200px"
@@ -21,32 +21,29 @@
         </div>
         <hr>
         <table>
-
-          <body>
-            <tr>
-              <td class="card-text"><strong>Name: </strong></td>
-              <td class=" card-text text-center">{{user.firstName}} {{user.lastName}}</td>
-            </tr>
-            <tr>
-              <td><strong>Email:</strong></td>
-              <td class=" card-text text-center">{{user.email}}</td>
-            </tr>
-            <tr>
-              <td><strong>Role:</strong></td>
-              <td class=" card-text text-center">{{user.role}}</td>
-            </tr>
-            <tr>
-              <td style="width: 90px;"><strong>About Me:</strong></td>
-              <td class=" card-text text-center">{{user.aboutMe}}</td>
-            </tr>
-          </body>
+          <tr>
+            <td class="card-text"><strong>Name: </strong></td>
+            <td class=" card-text text-center">{{user.firstName}} {{user.lastName}}</td>
+          </tr>
+          <tr>
+            <td><strong>Email:</strong></td>
+            <td class=" card-text text-center">{{user.email}}</td>
+          </tr>
+          <tr>
+            <td><strong>Role:</strong></td>
+            <td class=" card-text text-center">{{user.role}}</td>
+          </tr>
+          <tr>
+            <td style="width: 90px;"><strong>About Me:</strong></td>
+            <td class=" card-text text-center">{{user.aboutMe}}</td>
+          </tr>
         </table>
       </div>
     </div>
   </div>
 
   <div class="col">
-    <div class="card mx-auto">
+    <div class="card shadow mx-auto">
       <div class="card-body">
         <app-profile-accordian></app-profile-accordian>
       </div>
