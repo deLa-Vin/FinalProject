@@ -31,7 +31,8 @@ export class HubComponent implements OnInit {
 
   questions: Question[] = [];
 
-  defaultImage: string = 'https://images.unsplash.com/3/doctype-hi-res.jpg';
+  // defaultImage: string = 'https://images.unsplash.com/3/doctype-hi-res.jpg';
+  defaultImage: string = '/assets/images/doctype-hi-res_3.jpg';
 
   user: User = new User();
   myGuilds: Guild[] = [];
@@ -54,6 +55,7 @@ export class HubComponent implements OnInit {
     this.getAllGuilds();
     this.getMyGuilds();
     this.checkRouteParams();
+    // console.log("ngInit");
   }
 
   checkRouteParams() {
@@ -67,12 +69,12 @@ export class HubComponent implements OnInit {
     if (this.gid) {
       this.shareUrl = this.url + "guild/" + this.gid + "/contents/" + this.selectedContent?.id;
       this.getGuildById(this.gid);
+      console.log(this.selectedGuild);
       this.getGuildContents(this.gid);
       this.getUserProfile();
-      // console.log(this.selectedGuild);
       // this.checkMembership(this.selectedGuild);
-      // console.log(this.selectedGuild);
-      // console.log("END");
+      console.log(this.selectedGuild);
+      console.log("END");
     }
   }
 
