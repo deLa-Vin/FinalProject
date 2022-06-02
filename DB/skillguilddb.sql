@@ -408,10 +408,11 @@ COMMIT;
 START TRANSACTION;
 USE `skillguilddb`;
 INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (1, 2, 'Code Brains', 'Learn by doing. Try a holistic approach to learning in which you study the theory and immediately put it into practice by building working applications.', 0, 'https://images.unsplash.com/photo-1575089976121-8ed7b2a54265', 'Anyone with an interest in learning frontend development can join. We encourage publishing 2 to 3 times per month.', '2022-05-25 12:30:00', '2022-05-26 12:30:00');
-INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (2, 3, 'Tech in Motion', 'Tech in Motion is a tech event series where thought leaders come together and share ideas. This is a place where enthusiasts can learn from professionals and inspire one another.', 1, 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40', 'Open to all', '2022-04-01 11:00:00', '2022-04-15 12:00:00');
-INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (3, 3, 'General Assembly ', 'Start building responsive websites with HTML, CSS, and JavaScript — a versatile skill set with powerful applications in a variety of design, marketing, and other tech-adjacent roles', 1, 'https://images.unsplash.com/photo-1558403194-611308249627', 'No experience required, open to anyone who wants to learn about FE development', '2022-04-10 9:00:00', '2022-04-15 12:00:00');
-INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (4, 5, 'Life Hacker', 'With so many cameras available, figuring out how all the specifications and options translate into your everyday use is complicated.', 1, 'https://images.unsplash.com/photo-1516961642265-531546e84af2', 'Geared to novices with basic camera knowledge, members are encouraged to keep an active profile and share their work', '2022-05-01 6:30:00', '2022-05-01 6:30:00');
-INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (5, 2, 'Fader Pro', 'Learn Ableton Live by watching how our globally-successful artists and producers take this incredible Digital Audio Workstation (DAW) utilise it to the full to create their hit tracks.', 0, 'https://images.unsplash.com/photo-1593697820910-a2b68670c1e1', 'Must be a member of the Fader Pro community ', '2022-05-15 10:00:00', '2022-05-25 12:00:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (2, 3, 'Tech in Motion', 'Tech in Motion is a tech event series where thought leaders come together and share ideas. This is a place where enthusiasts can learn from professionals and inspire one another.', 1, 'https://images.unsplash.com/photo-1597534458220-9fb4969f2df5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1674&q=80', 'Open to all', '2022-04-01 11:00:00', '2022-04-15 12:00:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (3, 3, 'Design Geeks', 'Start building responsive websites with HTML, CSS, and JavaScript — a versatile skill set with powerful applications in a variety of design, marketing, and other tech-adjacent roles', 1, 'https://images.unsplash.com/photo-1533122250115-6bb28e9a48c3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80', 'No experience required, open to anyone who wants to learn about FE development', '2022-04-10 9:00:00', '2022-04-15 12:00:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (4, 5, 'Photo Phactory', 'With so many cameras available, figuring out how all the specifications and options translate into your everyday use is complicated.', 1, 'https://images.unsplash.com/photo-1452780212940-6f5c0d14d848?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1776&q=80', 'Geared to novices with basic camera knowledge, members are encouraged to keep an active profile and share their work', '2022-05-01 6:30:00', '2022-05-01 6:30:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (5, 2, 'The Mixdown', 'Learn Ableton Live by watching how our globally-successful artists and producers take this incredible Digital Audio Workstation (DAW) utilise it to the full to create their hit tracks.', 0, 'https://images.unsplash.com/photo-1593697820910-a2b68670c1e1', 'Must be a member of the Fader Pro community ', '2022-05-15 10:00:00', '2022-05-25 12:00:00');
+INSERT INTO `guild` (`id`, `created_by_user_id`, `name`, `description`, `is_public`, `cover_img`, `membership_criteria`, `created_on`, `last_updated`) VALUES (6, 2, 'Easton Brazilian Jiu Jitsu', 'Above all, we are dedicated to providing martial arts and fitness content of the highest quality. If you are looking for a new way to train or work out check us out!', 0, 'https://pmaabjj.com/wp-content/uploads/2014/03/Professor-Ryan-Cunningham.jpg', 'Must be an active member Of Easton BJJ to join', '2022-04-01 9:00:00', '2022-04-01 9:00:00');
 
 COMMIT;
 
@@ -426,6 +427,7 @@ INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (2, 'Prod
 INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (3, 'Data Engineering', 'Data Engineering', 'https://images.unsplash.com/photo-1518186285589-2f7649de83e0');
 INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (4, 'Photography', 'Photography', 'https://images.unsplash.com/photo-1520390138845-fd2d229dd553?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1332&q=80');
 INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (5, 'Music Production', 'Music Production', 'https://images.unsplash.com/photo-1629834790224-7c0bd37f5d39?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80');
+INSERT INTO `category` (`id`, `name`, `description`, `img_url`) VALUES (6, 'Brazilian Jiu Jitsu', 'Brazilian Jiu Jitsu', 'https://images.unsplash.com/photo-1585511543150-dc91145bbc77?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1740&q=80');
 
 COMMIT;
 
@@ -468,6 +470,7 @@ INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `tit
 INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (3, 3, 3, 3, 'HTML and CSS fundamentals', 'Introduction to two cornerstones of the web world- CSS and HTML', '2022-06-01 12:00:00', 1, 1, '2022-06-03 12:00:00', 90, '2022-06-10 12:00:00');
 INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (4, 4, 5, 2, 'Photo Composition For Novices', 'A well-composed photograph is really a matter of opinion, but there are a few tricks that tend to result in better pictures. That\'s what we take a look at in this lesson.', '2022-05-17 7:10:00', 1, 1, '2022-05-17 7:10:00', 90, '2022-06-15 9:00:00');
 INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (5, 5, 2, 1, 'Ableton Workflow', 'Marc takes you through his entire production process from top to bottom', '2022-05-12 4:46:00', 1, 0, '2022-06-02 10:00:00', 120, '2022-07-01 7:00:00');
+INSERT INTO `content` (`id`, `guild_id`, `created_by_user_id`, `status_id`, `title`, `description`, `publish_date`, `is_public`, `is_live`, `last_updated`, `length_minutes`, `presentation_date`) VALUES (6, 6, 2, 1, 'Improving Your Half Guard Game', 'Learn how to improve your half guard from some of our best coaches and half guard players. We cover everything from retention, passes, and sweeps.', '2022-05-15 5:30:00', 0, 1, '2022-06-15 5:30:00', 90, '2022-06-15 5:30:00');
 
 COMMIT;
 
@@ -508,6 +511,10 @@ COMMIT;
 START TRANSACTION;
 USE `skillguilddb`;
 INSERT INTO `content_topic` (`content_id`, `topic_id`) VALUES (1, 1);
+INSERT INTO `content_topic` (`content_id`, `topic_id`) VALUES (2, 1);
+INSERT INTO `content_topic` (`content_id`, `topic_id`) VALUES (3, 1);
+INSERT INTO `content_topic` (`content_id`, `topic_id`) VALUES (4, 6);
+INSERT INTO `content_topic` (`content_id`, `topic_id`) VALUES (5, 7);
 
 COMMIT;
 
@@ -532,6 +539,11 @@ COMMIT;
 START TRANSACTION;
 USE `skillguilddb`;
 INSERT INTO `group_category` (`guild_id`, `category_id`) VALUES (1, 1);
+INSERT INTO `group_category` (`guild_id`, `category_id`) VALUES (4, 4);
+INSERT INTO `group_category` (`guild_id`, `category_id`) VALUES (5, 5);
+INSERT INTO `group_category` (`guild_id`, `category_id`) VALUES (6, 6);
+INSERT INTO `group_category` (`guild_id`, `category_id`) VALUES (2, 1);
+INSERT INTO `group_category` (`guild_id`, `category_id`) VALUES (3, 1);
 
 COMMIT;
 
@@ -570,6 +582,10 @@ COMMIT;
 START TRANSACTION;
 USE `skillguilddb`;
 INSERT INTO `content_resource` (`content_id`, `resource_id`) VALUES (1, 1);
+INSERT INTO `content_resource` (`content_id`, `resource_id`) VALUES (1, 2);
+INSERT INTO `content_resource` (`content_id`, `resource_id`) VALUES (1, 4);
+INSERT INTO `content_resource` (`content_id`, `resource_id`) VALUES (2, 5);
+INSERT INTO `content_resource` (`content_id`, `resource_id`) VALUES (5, 3);
 
 COMMIT;
 

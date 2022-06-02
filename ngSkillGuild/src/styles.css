@@ -73,12 +73,13 @@ a:hover {
 html {
     position: relative;
     min-height: 100%;
-    background-color: #eeeee4;
+
 
 }
 
 body {
     margin-bottom: 60px; /* Margin bottom by footer height */
+    background-color: #f2f2f2;
 }
 
 .footer {
@@ -87,7 +88,7 @@ body {
     width: 100%;
     height: 60px; /* Set the fixed height of the footer here */
     line-height: 60px; /* Vertically center the text there */
-    background-color: #eeeee4;
+    background-color: #f2f2f2;
   }
 
 .container {
@@ -123,3 +124,10 @@ body {
 }
 
 
+.navbar {
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/white-waves.png");
+}
+
+.brand-bg {
+  background-color: #f2f2f2;
+}
