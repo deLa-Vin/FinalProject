@@ -20,7 +20,7 @@
           <div *ngFor="let guild of (guilds)">
             <div class="col" (click)="selectGuild(this.guild)">
               <div class="card shadow">
-                <img src="{{guild.coverImg || this.defaultImage}}" class="content-img">
+                <img src="{{guildImgArr[guild.id - 1] || this.defaultImage}}" class="content-img">
                 <div id="container">
                   <div class="card-body">
                     <h5 class="card-title">{{guild.name}}</h5>
@@ -75,7 +75,7 @@
                 <div *ngFor="let content of (contents)" class="col col-lg-6 col-md-12 col-sm-12"
                   (click)="selectContent(content.id)">
                   <div class="card shadow-sm">
-                    <img src="{{selectedGuild.coverImg || this.defaultImage}}" class="content-img">
+                    <img src="{{guildImgArr[selectedGuild.id - 1] || this.defaultImage}}" class="content-img">
                     <div id="containertwo">
                       <div class="card-body">
                         <h5 class="card-title">{{content.title}}</h5>
