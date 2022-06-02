@@ -3,7 +3,8 @@
     <div *ngIf="guilds && !selectedGuild">
         <div>
             <section class="py-5 text-center container"
-            style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
+            style="background-image: url('/assets/images/doctype-hi-res_3.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
+            <!-- style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;"> -->
             <div class="row py-lg-5">
                 <div class="content-banner col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">Find your guild</h1>
@@ -42,7 +43,8 @@
     <!-- Guild -->
     <div *ngIf="selectedGuild && !selectedContent">
         <section class="py-5 text-center container"
-            style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
+            style="background-image: url('/assets/images/doctype-hi-res_3.jpg'); background-size: cover; background-position:center; height: auto; width: auto;">
+            <!-- style="background-image: url('https://images.unsplash.com/3/doctype-hi-res.jpg'); background-size: cover; background-position:center; height: auto; width: auto;"> -->
             <div class="row py-lg-5">
                 <div class="content-banner col-lg-6 col-md-8 mx-auto">
                     <h1 class="fw-light">{{selectedGuild.name}}</h1>
