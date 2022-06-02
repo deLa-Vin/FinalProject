@@ -48,7 +48,10 @@ export class CommentModalComponent implements OnInit {
         (result) => {
           this.closeResult = `Closed with: ${result}`;
           this.createNewComment(this.selectedContentId, this.comment);
-          this.goToContent(this.shareUrl);
+          setTimeout(() => {
+            window.location.reload();
+          }, 10);
+          // this.goToContent(this.shareUrl);
         },
         (reason) => {
           this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -65,14 +68,14 @@ export class CommentModalComponent implements OnInit {
     });
   };
 
-  goToContent(shareUrl: string) {
-    // console.log(shareUrl);
-    if (shareUrl === '') {
-    } else {
-      this.router.navigateByUrl(shareUrl);
-    }
-    setTimeout(() => {
-      window.location.reload();
-    }, 10);
-  }
+  // goToContent(shareUrl: string) {
+  //   // console.log(shareUrl);
+  //   if (shareUrl === '') {
+  //   } else {
+  //     this.router.navigateByUrl(shareUrl);
+  //   }
+  //   setTimeout(() => {
+  //     window.location.reload();
+  //   }, 10);
+  // }
 }
