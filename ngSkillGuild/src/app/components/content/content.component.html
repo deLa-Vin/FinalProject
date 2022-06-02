@@ -202,54 +202,44 @@
                         <hr class="my-3">
                         <!-- Resources-->
                         <h5 class="mt-2">Content Resources</h5>
-                        <div class="my-2">
-                            <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-1')" *ngIf="selectedContent.resources[0]?.resourceType?.id == 1">Slides</button>
-                            <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-2')" *ngIf="selectedContent.resources[0]?.resourceType?.id == 2">Video</button>
-                            <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-3')" *ngIf="selectedContent.resources[0]?.resourceType?.id == 3">Blog</button>
-                            <button class="btn btn-sm btn-outline-primary me-2"
-                                (click)="acc.toggle('toggle-4')" *ngIf="selectedContent.resources[0]?.resourceType?.id == 4">Code</button>
-                        </div>
                         <ngb-accordion #acc="ngbAccordion" class="my-2">
-                            <ngb-panel id="toggle-1" title="Slides" *ngIf="selectedContent.resources[0]?.resourceType?.id == 1">
+                            <ngb-panel id="toggle-1" title="{{ selectedContent.resources[0].title }}" *ngIf="selectedContent.resources[0]">
                                 <ng-template ngbPanelContent>
                                     <div>
-                                        <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
+                                        <!-- <p class="fw-bold">{{ selectedContent.resources[0].title }}</p> -->
                                         <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
                                         <a href="{{ selectedContent.resources[0].resourceUrl }}"
                                             target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
                                     </div>
                                 </ng-template>
                             </ngb-panel>
-                            <ngb-panel id="toggle-2" title="Video" *ngIf="selectedContent.resources[0]?.resourceType?.id == 2">
+                            <ngb-panel id="toggle-2" title="{{ selectedContent.resources[1].title }}" *ngIf="selectedContent.resources[1]">
                                 <ng-template ngbPanelContent>
                                     <div>
-                                        <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
-                                        <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
-                                        <a href="{{ selectedContent.resources[0].resourceUrl }}"
-                                            target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
+                                        <!-- <p class="fw-bold">{{ selectedContent.resources[1].title }}</p> -->
+                                        <p class="fw-semibold">{{ selectedContent.resources[1].description }}</p>
+                                        <a href="{{ selectedContent.resources[1].resourceUrl }}"
+                                            target="_blank"><code>{{ selectedContent.resources[1].resourceUrl }}</code></a>
                                     </div>
                                 </ng-template>
                             </ngb-panel>
-                            <ngb-panel id="toggle-3" title="Blog" *ngIf="selectedContent.resources[0]?.resourceType?.id == 3">
+                            <ngb-panel id="toggle-3" title="{{ selectedContent.resources[2].title }}" *ngIf="selectedContent.resources[2]">
                                 <ng-template ngbPanelContent>
                                     <div>
-                                        <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
-                                        <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
-                                        <a href="{{ selectedContent.resources[0].resourceUrl }}"
-                                            target="_blank"><code>{{ selectedContent.resources[0].resourceUrl }}</code></a>
+                                        <!-- <p class="fw-bold">{{ selectedContent.resources[2].title }}</p> -->
+                                        <p class="fw-semibold">{{ selectedContent.resources[2].description }}</p>
+                                        <a href="{{ selectedContent.resources[2].resourceUrl }}"
+                                            target="_blank"><code>{{ selectedContent.resources[2].resourceUrl }}</code></a>
                                     </div>
                                 </ng-template>
                             </ngb-panel>
-                            <ngb-panel id="toggle-4" title="Code" *ngIf="selectedContent.resources[0]?.resourceType?.id == 4">
+                            <ngb-panel id="toggle-4" title="{{ selectedContent.resources[3].title }}" *ngIf="selectedContent.resources[3]">
                                 <ng-template ngbPanelContent>
                                     <div>
-                                        <p class="fw-bold">{{ selectedContent.resources[0].title }}</p>
-                                        <p class="fw-semibold">{{ selectedContent.resources[0].description }}</p>
-                                        <a href="{{ selectedContent.resources[0].resourceUrl }}"
-                                            target="_blank"><code>{{ selectedContent.resources[0]?.resourceUrl }}</code></a>
+                                        <!-- <p class="fw-bold">{{ selectedContent.resources[3].title }}</p> -->
+                                        <p class="fw-semibold">{{ selectedContent.resources[3].description }}</p>
+                                        <a href="{{ selectedContent.resources[3].resourceUrl }}"
+                                            target="_blank"><code>{{ selectedContent.resources[3]?.resourceUrl }}</code></a>
                                     </div>
                                 </ng-template>
                             </ngb-panel>
