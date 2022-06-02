@@ -73,6 +73,8 @@ a:hover {
 html {
     position: relative;
     min-height: 100%;
+    background-color: #eeeee4;
+
 }
 
 body {
@@ -115,6 +117,9 @@ body {
     -webkit-line-clamp: 3;
     overflow: hidden;
     -webkit-box-orient: vertical;
+}
+.content-banner{
+  background-image: url("https://www.toptal.com/designers/subtlepatterns/uploads/white-waves.png");
 }
 
 
