@@ -67,7 +67,7 @@
                         <div class="container" style="padding: 0;">
                             <h5 class="my-2">Available Content</h5>
                             <div *ngIf="contents" class="row">
-                                <div *ngFor="let content of (contents)" class="col col-lg-6 col-md-4 col-sm-12" (click)="selectContent(content.id)">
+                                <div *ngFor="let content of (contents)" class="col col-lg-6 col-md-12 col-sm-12" (click)="selectContent(content.id)">
                                     <div class="card shadow-sm">
                                         <img src="{{selectedGuild.coverImg || this.defaultImage}}" class="content-img">
                                         <div class="card-body">
